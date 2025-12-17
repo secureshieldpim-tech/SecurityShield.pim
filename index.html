@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - SecurityShield</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class='bx bx-menu'></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="planes.html">Planes</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="login.html" class="btn-login">Acceso Lab</a></li>
+        </ul>
+    </nav>
+
+    <main class="container hero">
+        <h1>Defensa en Profundidad</h1>
+        <p>Un usuario informado es la barrera más eficaz. Protegemos tu infraestructura con estrategias proactivas y auditorías avanzadas.</p>
+        <a href="planes.html" class="btn-submit" style="display:inline-block; width:auto; padding: 1rem 3rem;">Ver Soluciones</a>
+    </main>
+
+    <section class="container">
+        <div class="features-grid">
+            <div class="glass-card">
+                <i class='bx bx-radar feature-icon'></i>
+                <h3>Auditoría Nmap</h3>
+                <p>Identificamos tu superficie de ataque visible antes de que lo hagan los ciberdelincuentes.</p>
+            </div>
+            <div class="glass-card">
+                <i class='bx bx-lock-alt feature-icon'></i>
+                <h3>AppArmor Hardening</h3>
+                <p>Contención de daños mediante perfiles de seguridad obligatorios. Tu servidor, blindado.</p>
+            </div>
+            <div class="glass-card">
+                <i class='bx bx-key feature-icon'></i>
+                <h3>Autenticación SSH</h3>
+                <p>Implementación de llaves criptográficas para eliminar el riesgo de las contraseñas débiles.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Script simple para menú móvil
+        const menuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

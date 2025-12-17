@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - SecurityShield</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
+        <div class="menu-toggle" id="mobile-menu"><i class='bx bx-menu'></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="planes.html">Planes</a></li>
+            <li><a href="contacto.html" class="active">Contacto</a></li>
+            <li><a href="login.html" class="btn-login">Acceso Lab</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h1>Hablemos de Seguridad</h1>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Estamos ubicados en el IES Pablo Serrano, Zaragoza. Contáctanos para auditorías o formación.</p>
+                
+                <div class="glass-card" style="margin-bottom: 1rem;">
+                    <h3><i class='bx bx-user'></i> Iván Rosado</h3>
+                    <p style="color: var(--primary);">Red Team / Auditoría Ofensiva</p>
+                </div>
+                <div class="glass-card" style="margin-bottom: 1rem;">
+                    <h3><i class='bx bx-user'></i> David Serrano</h3>
+                    <p style="color: var(--secondary);">Blue Team / Hardening</p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class='bx bx-server'></i> Ángel Sanmartín</h3>
+                    <p style="color: var(--text-muted);">Infraestructura / Cyber Range</p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <form>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-input" placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-input" placeholder="correo@ejemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea class="form-input" rows="5" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                    </div>
+                    <button type="button" class="btn-submit">Enviar Mensaje <i class='bx bx-send'></i></button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

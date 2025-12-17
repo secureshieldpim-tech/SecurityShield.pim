@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes - SecurityShield</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
+        <div class="menu-toggle" id="mobile-menu"><i class='bx bx-menu'></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="planes.html" class="active">Planes</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="login.html" class="btn-login">Acceso Lab</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Nuestros Planes</h2>
+        <p style="text-align: center; color: var(--text-muted);">Escalabilidad desde la auditoría básica hasta la contención total.</p>
+
+        <div class="pricing-grid">
+            <div class="glass-card plan-card">
+                <h3>Plan Personal</h3>
+                <div class="plan-price">Gratis</div>
+                <p>Ideal para diagnósticos iniciales.</p>
+                <ul class="plan-features">
+                    <li><i class='bx bx-check-circle'></i> Auditoría de Puertos Nmap</li>
+                    <li><i class='bx bx-check-circle'></i> Informe de Exposición</li>
+                    <li><i class='bx bx-x' style="color: #666;"></i> Sin Hardening AppArmor</li>
+                    <li><i class='bx bx-x' style="color: #666;"></i> Soporte Básico</li>
+                </ul>
+                <button class="btn-submit" style="background: transparent; border: 1px solid var(--primary); color: #fff; margin-top: 2rem;">Solicitar</button>
+            </div>
+
+            <div class="glass-card plan-card premium">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--secondary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">RECOMENDADO</div>
+                <h3>Plan Empresarial</h3>
+                <div class="plan-price">Consultar</div>
+                <p>Defensa en profundidad completa.</p>
+                <ul class="plan-features">
+                    <li><i class='bx bxs-shield-check'></i> <strong>Perfiles AppArmor Custom</strong></li>
+                    <li><i class='bx bx-check-circle'></i> Bastionado SSH & SQL</li>
+                    <li><i class='bx bx-check-circle'></i> Configuración Firewall UFW</li>
+                    <li><i class='bx bx-check-circle'></i> Simulación de Ataques</li>
+                </ul>
+                <button class="btn-submit" style="margin-top: 2rem;">Contratar Escudo</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
