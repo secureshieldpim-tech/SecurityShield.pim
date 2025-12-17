@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         botonEnviar.disabled = true;
 
         try {
-            const respuesta = await fetch('api/procesar.php', {
+            const respuesta = await fetch('api/procesar_contacto.php', { 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)

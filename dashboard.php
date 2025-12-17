@@ -40,7 +40,7 @@ $mensajes = $db->leerRegistros();
             <?php if (empty($mensajes)):?>
                 <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
                     <i class='bx bx-envelope' style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
-                    <p>No hay mensajes nuevos en el sistema.</p>
+                    <p style="text-align: center;">No hay mensajes nuevos en el sistema.</p>
                 </div>
             <?php else:?>
                 <div style="overflow-x: auto;"> <table class="msg-table">

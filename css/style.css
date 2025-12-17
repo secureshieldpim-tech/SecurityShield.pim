@@ -110,18 +110,45 @@ main > p {
 }
 .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2.5rem; text-align: center; }
 
+/* --- INICIO CORRECCIÓN BOTONES --- */
+
 .btn-submit {
-    background: var(--bg-glass);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    background: var(--primary);
     border: 1px solid var(--primary);
-    color: var(--primary);
+    
+    /* CORRECCIÓN: Quitamos !important para que el botón de Planes pueda seguir siendo blanco */
+    color: #000; 
+    
     padding: 0.8rem 2rem;
     border-radius: var(--radius);
     font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: 600;
-    display: inline-block;
+    box-shadow: 0 0 15px var(--primary-glow);
+    transition: all 0.3s ease;
 }
-.btn-submit:hover { background: var(--primary); color: #000; }
+
+/* Regla SOLO para la flecha dentro del botón */
+.btn-submit i {
+    color: #000 !important; /* La flecha sí obligada a ser negra */
+    font-size: 1.3rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    top: 1px; 
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px var(--primary-glow);
+}
+
+/* --- FIN CORRECCIÓN --- */
 
 /* --- CARDS & GRID SYSTEM --- */
 .features-grid, .pricing-grid {
