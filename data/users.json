@@ -1,1 +1,7 @@
-[]
+[
+    {
+        "nombre": "Administrador",
+        "email": "admin@secureshield.com",
+        "password": "$2y$10$6ZWqZvCk1gSxI7v3loWMdeklxWDRIJ\/ONlyMqhvUk7bq4EGEAnwoS"
+    }
+]
