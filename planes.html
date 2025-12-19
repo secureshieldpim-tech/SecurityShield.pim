@@ -7,6 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="images/shield.png">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/translations.js"></script>
 </head>
 <body>
 
@@ -14,43 +15,55 @@
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
         <div class="menu-toggle" id="mobile-menu"><i class='bx bx-menu'></i></div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="planes.html" class="active">Planes</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="login.html" class="btn-login">Acceso Lab</a></li>
+            <li><a href="index.html" data-i18n="nav_inicio">Inicio</a></li>
+            <li><a href="planes.html" class="active" data-i18n="nav_planes">Planes</a></li>
+            <li><a href="contacto.html" data-i18n="nav_contacto">Contacto</a></li>
+            <li><a href="login.html" class="btn-login" data-i18n="nav_login">Acceso Lab</a></li>
+            <li>
+                <select id="language-selector" class="lang-select">
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="ca">🏴 CA</option>
+                    <option value="eu">🏴 EU</option>
+                </select>
+            </li>
         </ul>
     </nav>
 
     <main class="container">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Nuestros Planes</h2>
-        <p style="text-align: center; color: var(--text-muted);">Escalabilidad desde la auditoría básica hasta la contención total.</p>
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;" data-i18n="page_planes_title">Nuestros Planes</h2>
+        <p style="text-align: center; color: var(--text-muted);" data-i18n="page_planes_subtitle">Escalabilidad desde la auditoría básica hasta la contención total.</p>
 
         <div class="pricing-grid">
             <div class="glass-card plan-card">
-                <h3>Plan Personal</h3>
-                <div class="plan-price">Gratis</div>
-                <p>Ideal para diagnósticos iniciales.</p>
+                <h3 data-i18n="plan_personal_title">Plan Personal</h3>
+                <div class="plan-price" data-i18n="plan_personal_price">Gratis</div>
+                <p data-i18n="plan_personal_desc">Ideal para diagnósticos iniciales.</p>
                 <ul class="plan-features">
-                    <li><i class='bx bx-check-circle'></i> Auditoría de Puertos Nmap</li>
-                    <li><i class='bx bx-check-circle'></i> Informe de Exposición</li>
-                    <li><i class='bx bx-x' style="color: #666;"></i> Sin Hardening AppArmor</li>
-                    <li><i class='bx bx-x' style="color: #666;"></i> Soporte Básico</li>
+                    <li><i class='bx bx-check-circle'></i> <span data-i18n="feat_audit">Auditoría de Puertos Nmap</span></li>
+                    <li><i class='bx bx-check-circle'></i> <span data-i18n="feat_report">Informe de Exposición</span></li>
+                    <li><i class='bx bx-x' style="color: #666;"></i> <span data-i18n="feat_no_armor">Sin Hardening AppArmor</span></li>
+                    <li><i class='bx bx-x' style="color: #666;"></i> <span data-i18n="feat_support">Soporte Básico</span></li>
                 </ul>
-                <a href="pasarela.html?plan=personal&precio=0" class="btn-submit" style="display:inline-block; text-align:center; background: transparent; border: 1px solid var(--primary); color: #fff; margin-top: 2rem; text-decoration: none;">Solicitar</a>
+                <a href="pasarela.html?plan=personal&precio=0" class="btn-submit" style="display:inline-block; text-align:center; background: transparent; border: 1px solid var(--primary); color: #fff; margin-top: 2rem; text-decoration: none;">
+                    <span data-i18n="btn_request">Solicitar</span>
+                </a>
             </div>
 
             <div class="glass-card plan-card premium">
-                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--secondary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">RECOMENDADO</div>
-                <h3>Plan Empresarial</h3>
-                <div class="plan-price">Consultar</div>
-                <p>Defensa en profundidad completa.</p>
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--secondary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;" data-i18n="badge_rec">RECOMENDADO</div>
+                <h3 data-i18n="plan_business_title">Plan Empresarial</h3>
+                <div class="plan-price" data-i18n="plan_business_price">Consultar</div>
+                <p data-i18n="plan_business_desc">Defensa en profundidad completa.</p>
                 <ul class="plan-features">
-                    <li><i class='bx bxs-shield-check'></i> <strong>Perfiles AppArmor Custom</strong></li>
-                    <li><i class='bx bx-check-circle'></i> Bastionado SSH & SQL</li>
-                    <li><i class='bx bx-check-circle'></i> Configuración Firewall UFW</li>
-                    <li><i class='bx bx-check-circle'></i> Simulación de Ataques</li>
+                    <li><i class='bx bxs-shield-check'></i> <strong data-i18n="feat_armor_custom">Perfiles AppArmor Custom</strong></li>
+                    <li><i class='bx bx-check-circle'></i> <span data-i18n="feat_bastion">Bastionado SSH & SQL</span></li>
+                    <li><i class='bx bx-check-circle'></i> <span data-i18n="feat_fw">Configuración Firewall UFW</span></li>
+                    <li><i class='bx bx-check-circle'></i> <span data-i18n="feat_sim">Simulación de Ataques</span></li>
                 </ul>
-                <a href="pasarela.html?plan=empresarial&precio=consultar" class="btn-submit" style="display:inline-block; text-align:center; margin-top: 2rem; text-decoration: none;">Contratar Escudo</a>
+                <a href="pasarela.html?plan=empresarial&precio=consultar" class="btn-submit" style="display:inline-block; text-align:center; margin-top: 2rem; text-decoration: none;">
+                    <span data-i18n="btn_hire">Contratar Escudo</span>
+                </a>
             </div>
         </div>
     </main>

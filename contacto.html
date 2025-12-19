@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="images/shield.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/translations.js"></script>
 </head>
 <body>
 
@@ -14,48 +15,58 @@
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
         <div class="menu-toggle" id="mobile-menu"><i class='bx bx-menu'></i></div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="planes.html">Planes</a></li>
-            <li><a href="contacto.html" class="active">Contacto</a></li>
-            <li><a href="login.html" class="btn-login">Acceso Lab</a></li>
+            <li><a href="index.html" data-i18n="nav_inicio">Inicio</a></li>
+            <li><a href="planes.html" data-i18n="nav_planes">Planes</a></li>
+            <li><a href="contacto.html" class="active" data-i18n="nav_contacto">Contacto</a></li>
+            <li><a href="login.html" class="btn-login" data-i18n="nav_login">Acceso Lab</a></li>
+            <li>
+                <select id="language-selector" class="lang-select">
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="ca">🏴 CA</option>
+                    <option value="eu">🏴 EU</option>
+                </select>
+            </li>
         </ul>
     </nav>
 
     <main class="container">
         <div class="contact-wrapper">
             <div class="contact-info">
-                <h1>Hablemos de Seguridad</h1>
-                <p style="color: var(--text-muted); margin-bottom: 2rem;">Estamos ubicados en el IES Pablo Serrano, Zaragoza. Contáctanos para auditorías o formación.</p>
+                <h1 data-i18n="contact_title">Hablemos de Seguridad</h1>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;" data-i18n="contact_desc">Estamos ubicados en el IES Pablo Serrano, Zaragoza. Contáctanos para auditorías o formación.</p>
                 
                 <div class="glass-card" style="margin-bottom: 1rem;">
                     <h3><i class='bx bx-user'></i> Iván Rosado</h3>
-                    <p style="color: var(--primary);">Red Team / Auditoría Ofensiva</p>
+                    <p style="color: var(--primary);" data-i18n="role_red">Red Team / Auditoría Ofensiva</p>
                 </div>
                 <div class="glass-card" style="margin-bottom: 1rem;">
                     <h3><i class='bx bx-user'></i> David Serrano</h3>
-                    <p style="color: var(--secondary);">Blue Team / Hardening</p>
+                    <p style="color: var(--secondary);" data-i18n="role_blue">Blue Team / Hardening</p>
                 </div>
                 <div class="glass-card">
                     <h3><i class='bx bx-server'></i> Ángel Sanmartín</h3>
-                    <p style="color: var(--text-muted);">Infraestructura / Cyber Range</p>
+                    <p style="color: var(--text-muted);" data-i18n="role_infra">Infraestructura / Cyber Range</p>
                 </div>
             </div>
 
             <div class="glass-card">
                 <form>
                     <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" class="form-input" placeholder="Tu nombre">
+                        <label data-i18n="lbl_name">Nombre</label>
+                        <input type="text" class="form-input" placeholder="Tu nombre" data-i18n="ph_name">
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label data-i18n="lbl_email">Email</label>
                         <input type="email" class="form-input" placeholder="correo@ejemplo.com">
                     </div>
                     <div class="form-group">
-                        <label>Mensaje</label>
-                        <textarea class="form-input" rows="5" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                        <label data-i18n="lbl_msg">Mensaje</label>
+                        <textarea class="form-input" rows="5" placeholder="¿Cómo podemos ayudarte?" data-i18n="ph_msg"></textarea>
                     </div>
-                    <button type="button" class="btn-submit">Enviar Mensaje <i class='bx bx-send'></i></button>
+                    <button type="button" class="btn-submit">
+                        <span data-i18n="btn_send">Enviar Mensaje</span> <i class='bx bx-send'></i>
+                    </button>
                 </form>
             </div>
         </div>

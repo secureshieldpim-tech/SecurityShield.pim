@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="images/shield.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/translations.js"></script>
 </head>
 <body>
 
@@ -16,41 +17,50 @@
             <i class='bx bx-menu'></i>
         </div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html" class="active">Inicio</a></li>
-            <li><a href="planes.html">Planes</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="login.html" class="btn-login">Acceso Lab</a></li>
+            <li><a href="index.html" class="active" data-i18n="nav_inicio">Inicio</a></li>
+            <li><a href="planes.html" data-i18n="nav_planes">Planes</a></li>
+            <li><a href="contacto.html" data-i18n="nav_contacto">Contacto</a></li>
+            <li><a href="login.html" class="btn-login" data-i18n="nav_login">Acceso Lab</a></li>
+            <li>
+                <select id="language-selector" class="lang-select">
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="ca">🏴 CA</option>
+                    <option value="eu">🏴 EU</option>
+                </select>
+            </li>
         </ul>
     </nav>
 
     <main class="container hero">
-        <h1>Defensa en Profundidad</h1>
-        <p>Un usuario informado es la barrera más eficaz. Protegemos tu infraestructura con estrategias proactivas y auditorías avanzadas.</p>
-        <a href="planes.html" class="btn-submit" style="display:inline-block; width:auto; padding: 1rem 3rem;">Ver Soluciones</a>
+        <h1 data-i18n="hero_title">Defensa en Profundidad</h1>
+        <p data-i18n="hero_text">Un usuario informado es la barrera más eficaz. Protegemos tu infraestructura con estrategias proactivas y auditorías avanzadas.</p>
+        <a href="planes.html" class="btn-submit" style="display:inline-block; width:auto; padding: 1rem 3rem;">
+            <span data-i18n="hero_btn">Ver Soluciones</span>
+        </a>
     </main>
 
     <section class="container">
         <div class="features-grid">
             <div class="glass-card">
                 <i class='bx bx-radar feature-icon'></i>
-                <h3>Auditoría Nmap</h3>
-                <p>Identificamos tu superficie de ataque visible antes de que lo hagan los ciberdelincuentes.</p>
+                <h3 data-i18n="feat_nmap_title">Auditoría Nmap</h3>
+                <p data-i18n="feat_nmap_text">Identificamos tu superficie de ataque visible antes de que lo hagan los ciberdelincuentes.</p>
             </div>
             <div class="glass-card">
                 <i class='bx bx-lock-alt feature-icon'></i>
-                <h3>AppArmor Hardening</h3>
-                <p>Contención de daños mediante perfiles de seguridad obligatorios. Tu servidor, blindado.</p>
+                <h3 data-i18n="feat_armor_title">AppArmor Hardening</h3>
+                <p data-i18n="feat_armor_text">Contención de daños mediante perfiles de seguridad obligatorios. Tu servidor, blindado.</p>
             </div>
             <div class="glass-card">
                 <i class='bx bx-key feature-icon'></i>
-                <h3>Autenticación SSH</h3>
-                <p>Implementación de llaves criptográficas para eliminar el riesgo de las contraseñas débiles.</p>
+                <h3 data-i18n="feat_ssh_title">Autenticación SSH</h3>
+                <p data-i18n="feat_ssh_text">Implementación de llaves criptográficas para eliminar el riesgo de las contraseñas débiles.</p>
             </div>
         </div>
     </section>
 
     <script>
-        // Script simple para menú móvil
         const menuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
         menuBtn.addEventListener('click', () => {

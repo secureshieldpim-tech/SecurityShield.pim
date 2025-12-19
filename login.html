@@ -7,29 +7,39 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="images/shield.png">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/translations.js"></script>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
-        <a href="index.html" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+        
+        <div style="display:flex; align-items:center; gap:1rem;">
+            <select id="language-selector" class="lang-select">
+                <option value="es">🇪🇸 ES</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="ca">🏴 CA</option>
+                <option value="eu">🏴 EU</option>
+            </select>
+            <a href="index.html" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+        </div>
     </nav>
 
     <div class="login-container">
         <div class="glass-card login-card">
-            <h2 style="margin-bottom: 1.5rem;">Iniciar Sesión</h2>
+            <h2 style="margin-bottom: 1.5rem;" data-i18n="login_title">Iniciar Sesión</h2>
             
             <form action="api/login.php" method="POST">
                 <div class="form-group">
-                    <label>Usuario</label>
+                    <label data-i18n="lbl_user">Usuario</label>
                     <input type="email" name="email" class="form-input" placeholder="admin@secureshield.com" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Contraseña</label>
+                    <label data-i18n="lbl_pass">Contraseña</label>
                     <input type="password" name="password" class="form-input" placeholder="••••••••" required>
                 </div>
 
-                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;">Entrar al Panel</button>
+                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;" data-i18n="btn_enter">Entrar al Panel</button>
             </form>
         </div>
     </div>

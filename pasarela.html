@@ -7,6 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="images/shield.png">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/translations.js"></script>
     <style>
         .payment-container {
             display: flex;
@@ -33,7 +34,6 @@
         .card-number { font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 20px; font-family: monospace; text-shadow: 1px 1px 2px black; }
         .card-info { display: flex; justify-content: space-between; font-size: 0.9rem; text-transform: uppercase; }
         
-        /* Spinner para simular carga */
         .spinner {
             display: none;
             width: 20px;
@@ -49,12 +49,21 @@
 <body>
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-lock-alt'></i> SecureGateway</div>
-        <a href="planes.html" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+        
+        <div style="display:flex; align-items:center; gap:1rem;">
+             <select id="language-selector" class="lang-select">
+                <option value="es">🇪🇸 ES</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="ca">🏴 CA</option>
+                <option value="eu">🏴 EU</option>
+            </select>
+            <a href="planes.html" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+        </div>
     </nav>
 
     <div class="container payment-container">
         <div class="glass-card login-card">
-            <h2 style="text-align: center; margin-bottom: 1rem;">Confirmar Suscripción</h2>
+            <h2 style="text-align: center; margin-bottom: 1rem;" data-i18n="gw_title">Confirmar Suscripción</h2>
             <p id="plan-display" style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-weight: bold;"></p>
 
             <div class="card-visual">
@@ -68,31 +77,31 @@
 
             <form id="payment-form">
                 <div class="form-group">
-                    <label>Titular de la Tarjeta</label>
+                    <label data-i18n="lbl_cardholder">Titular de la Tarjeta</label>
                     <input type="text" class="form-input" placeholder="Nombre completo" required>
                 </div>
                 <div class="form-group">
-                    <label>Número de Tarjeta</label>
+                    <label data-i18n="lbl_cardnumber">Número de Tarjeta</label>
                     <input type="text" class="form-input" placeholder="0000 0000 0000 0000" maxlength="19" required>
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <div class="form-group" style="flex:1;">
-                        <label>Expira</label>
+                        <label data-i18n="lbl_expire">Expira</label>
                         <input type="text" class="form-input" placeholder="MM/YY" maxlength="5" required>
                     </div>
                     <div class="form-group" style="flex:1;">
-                        <label>CVC</label>
+                        <label data-i18n="lbl_cvc">CVC</label>
                         <input type="text" class="form-input" placeholder="123" maxlength="3" required>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-submit" style="width:100%; margin-top:1rem; display: flex; justify-content: center; gap: 10px;">
-                    <span id="btn-text">Pagar y Activar</span>
+                    <span id="btn-text" data-i18n="btn_pay">Pagar y Activar</span>
                     <div class="spinner" id="spinner"></div>
                 </button>
             </form>
             <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
-                <i class='bx bxs-lock'></i> Transacción cifrada de extremo a extremo.
+                <i class='bx bxs-lock'></i> <span data-i18n="secure_msg">Transacción cifrada de extremo a extremo.</span>
             </p>
         </div>
     </div>

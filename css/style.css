@@ -313,3 +313,31 @@ th { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; le
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(244, 63, 94, 0.5); /* Resplandor rojo */
 }
+
+/* --- TRADUCCIÓN --- */
+.lang-select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-main);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.lang-select:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+}
+
+.lang-select option {
+    background: #0a0e17;
+    color: var(--text-main);
+}
+/* Ajuste para móvil */
+@media (max-width: 768px) {
+    .lang-select { margin-left: 0; margin-top: 1rem; width: 100%; }
+}
