@@ -341,3 +341,53 @@ th { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; le
 @media (max-width: 768px) {
     .lang-select { margin-left: 0; margin-top: 1rem; width: 100%; }
 }
+.footer {
+    margin-top: auto; /* Empuja el footer al fondo si el contenido es corto */
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05); /* Cristal suave */
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: var(--text-muted);
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px; /* Botón redondeado */
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover {
+    background: var(--primary); /* Se ilumina en azul al pasar el ratón */
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--primary-glow);
+    color: #000; /* Texto negro para contraste */
+}
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row; /* Los pone lado a lado */
+        justify-content: space-between; /* Uno a la izquierda, otro a la derecha */
+        text-align: left;
+    }
+    
+    .footer {
+        text-align: left; /* Alinea el texto a la izquierda en PC */
+    }
+}
