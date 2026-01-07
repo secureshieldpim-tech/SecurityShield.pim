@@ -1,8 +1,16 @@
 <?php
 session_start();
-// Si no está logueado, lo echamos fuera
+
+// 1. SEGURIDAD: Si no ha iniciado sesión, fuera.
 if (!isset($_SESSION['usuario'])) {
     header('Location: login.html');
+    exit;
+}
+
+// 2. SEGURIDAD EXTRA: Si está logueado pero NO es Admin, a su panel de cliente.
+// Esto evita que un cliente escriba "dashboard.php" y vea tus datos.
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    header('Location: client_panel.php');
     exit;
 }
 
@@ -10,6 +18,7 @@ require_once 'classes/JsonHandler.php';
 $db = new JsonHandler('registros.json');
 $mensajes = $db->leerRegistros();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

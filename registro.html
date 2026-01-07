@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - SecurityShield</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
+        <a href="index.html" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+    </nav>
+
+    <div class="login-container">
+        <div class="glass-card login-card">
+            <h2 style="margin-bottom: 1.5rem; text-align: center;">Crear Cuenta</h2>
+            
+            <form action="api/registro.php" method="POST">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" class="form-input" placeholder="Tu Nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-input" placeholder="usuario@ejemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" class="form-input" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;">Registrarse</button>
+            </form>
+            
+            <div style="margin-top: 1rem; text-align: center; font-size: 0.9rem;">
+                <p style="color: var(--text-muted);">¿Ya tienes cuenta? <a href="login.html" style="color: var(--primary);">Inicia Sesión</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
