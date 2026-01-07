@@ -62,4 +62,3 @@ class JsonHandler {
         return is_array($datos) ? $datos : []; 
     }
 }
-?>
