@@ -22,9 +22,9 @@ foreach ($usuarios as $user) {
 
         // 3. Decidimos a dónde enviarlo
         if ($rol === 'admin') {
-            header('Location: ../dashboard.php');     // El jefe al panel de control
+            header('Location: ../dashboard');     // El jefe al panel de control
         } else {
-            header('Location: ../client_panel.php');  // Los clientes a su área privada
+            header('Location: ../client_panel');  // Los clientes a su área privada
         }
         exit;
     }
@@ -33,6 +33,6 @@ foreach ($usuarios as $user) {
 // Si llega aquí es que falló el login
 echo "<script>
     alert('Usuario o contraseña incorrectos');
-    window.location.href='../login.html';
+    window.location.href='../login';
 </script>";
 ?>

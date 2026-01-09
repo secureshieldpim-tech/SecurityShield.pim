@@ -3,7 +3,7 @@ session_start();
 
 // 1. Si no está logueado, fuera.
 if (!isset($_SESSION['usuario'])) {
-    header('Location: login.html');
+    header('Location: login');
     exit;
 }
 

@@ -3,7 +3,7 @@ session_start();
 
 // 1. SEGURIDAD: Si no ha iniciado sesión, fuera.
 if (!isset($_SESSION['usuario'])) {
-    header('Location: login.html');
+    header('Location: login');
     exit;
 }
 

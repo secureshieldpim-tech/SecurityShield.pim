@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('✅ Transacción completada con éxito.\nEl servicio ha sido activado.');
                 
                 // Redirigir al inicio
-                window.location.href = 'index.html';
+                window.location.href = 'index';
             } else {
                 alert('Error en el pago: ' + resultado.mensaje);
             }

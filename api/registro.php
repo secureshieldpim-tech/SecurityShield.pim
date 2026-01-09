@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($usuario['email'] === $email) {
                 echo "<script>
                         alert('Error: Este email ya está registrado.');
-                        window.location.href='../registro.html';
+                        window.location.href='../registro';
                       </script>";
                 exit;
             }
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($db->guardarRegistro($nuevoUsuario)) {
             echo "<script>
                     alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
-                    window.location.href='../login.html';
+                    window.location.href='../login';
                   </script>";
         } else {
             echo "<script>alert('Error al guardar en la base de datos.'); window.history.back();</script>";
