@@ -22,9 +22,9 @@ foreach ($usuarios as $user) {
 
         // 3. Decidimos a dónde enviarlo (SIN EXTENSIONES)
         if ($rol === 'admin') {
-            header('Location: ../dashboard');
+            header('Location: ../dashboard.php');
         } else {
-            header('Location: ../client_panel');
+            header('Location: ../client_panel.php');
         }
         exit;
     }
