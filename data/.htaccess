@@ -1,8 +1,0 @@
-# Prohibir el acceso web a todos los archivos de esta carpeta
-Require all denied
-
-# Configuración legacy para versiones antiguas de Apache incluidas en algunos XAMPP
-<IfModule!mod_authz_core.c>
-    Order Deny,Allow
-    Deny from all
-</IfModule>

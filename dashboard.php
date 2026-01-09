@@ -37,7 +37,7 @@ $mensajes = $db->leerRegistros();
             <p style="color: var(--text-secondary);">Bienvenido, <strong style="color: var(--accent-blue);"><?php echo htmlspecialchars($_SESSION['usuario']);?></strong></p>
             
             <div style="margin-top: 1.5rem;">
-                <a href="index.html" class="btn-danger">
+                <a href="index" class="btn-danger">
                     <i class='bx bx-log-out'></i> Cerrar Sesión
                 </a>
             </div>

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $db = new JsonHandler('users.json');
         
-        // 1. Verificar si el email ya existe para no duplicar
+        // 1. Verificar si el email ya existe
         $usuariosExistentes = $db->leerRegistros();
         foreach ($usuariosExistentes as $usuario) {
             if ($usuario['email'] === $email) {
@@ -22,14 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // 2. Crear el nuevo usuario con contraseña encriptada
+        // 2. Crear el nuevo usuario
         $nuevoUsuario = [
             'nombre' => $nombre,
             'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT) // ¡Importante!
+            'password' => password_hash($password, PASSWORD_DEFAULT)
         ];
 
-        // 3. Guardar usando tu JsonHandler
+        // 3. Guardar
         if ($db->guardarRegistro($nuevoUsuario)) {
             echo "<script>
                     alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
