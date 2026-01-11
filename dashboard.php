@@ -1,95 +1,67 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['usuario'])) {
-    header('Location: login');
-    exit;
-}
-
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
-    header('Location: client_panel.php');
-    exit;
-}
-
-require_once 'classes/JsonHandler.php';
-$db = new JsonHandler('registros.json');
-$mensajes = $db->leerRegistros();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - SecurityShield</title>
+    <title>Acceso - SecurityShield</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="images/shield.png">
     <link rel="stylesheet" href="css/style.css">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://securityshield.es/login">
+    <meta property="og:title" content="Acceso al Laboratorio - SecurityShield">
+    <meta property="og:description" content="Inicia sesión o regístrate para acceder al panel de control y herramientas de auditoría.">
+    <meta property="og:image" content="https://securityshield.es/images/social-preview.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://securityshield.es/login">
+    <meta property="twitter:title" content="Acceso al Laboratorio - SecurityShield">
+    <meta property="twitter:description" content="Inicia sesión o regístrate para acceder al panel de control.">
+    <meta property="twitter:image" content="https://securityshield.es/images/social-preview.jpg">
 </head>
 <body>
-    <div class="container dashboard-view">
+    <nav class="navbar">
+        <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
         
-        <header style="text-align: center; margin: 3rem 0;">
-            <h1><i class='bx bxs-dashboard'></i> <span data-i18n="dash_title">Panel de Control</span></h1>
-            <p style="color: var(--text-secondary);">Bienvenido, <strong style="color: var(--accent-blue);"><?php echo htmlspecialchars($_SESSION['usuario']);?></strong></p>
+        <div style="display:flex; align-items:center; gap:1rem;">
+            <select id="language-selector" class="lang-select">
+                <option value="es">🇪🇸 ES</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="ca">🏴 CA</option>
+                <option value="eu">🏴 EU</option>
+            </select>
+            <a href="index" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+        </div>
+    </nav>
+
+    <div class="login-container">
+        <div class="glass-card login-card">
+            <h2 style="margin-bottom: 1.5rem;" data-i18n="login_title">Iniciar Sesión</h2>
             
-            <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
-                <select id="language-selector" class="lang-select" style="margin: 0;">
-                    <option value="es">🇪🇸 ES</option>
-                    <option value="en">🇬🇧 EN</option>
-                    <option value="ca">🏴 CA</option>
-                    <option value="eu">🏴 EU</option>
-                </select>
-
-                <a href="index" class="btn-danger">
-                    <i class='bx bx-log-out'></i> <span data-i18n="btn_logout">Cerrar Sesión</span>
-                </a>
-            </div>
-        </header>
-
-        <div class="glass-card">
-            <h2 style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
-                <span data-i18n="dash_msgs_title">Mensajes Recibidos</span>
-            </h2>
-
-            <?php if (empty($mensajes)):?>
-                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
-                    <i class='bx bx-envelope' style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
-                    <p style="text-align: center;" data-i18n="dash_no_msg">No hay mensajes nuevos en el sistema.</p>
+            <form action="api/login.php" method="POST">
+                <div class="form-group">
+                    <label data-i18n="lbl_user">Usuario</label>
+                    <input type="email" name="email" class="form-input" placeholder="admin@secureshield.com" required>
                 </div>
-            <?php else:?>
-                <div style="overflow-x: auto;"> <table class="msg-table">
-                        <thead>
-                            <tr>
-                                <th data-i18n="table_date">Fecha</th>
-                                <th data-i18n="table_user">Usuario</th>
-                                <th data-i18n="table_msg">Mensaje</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach (array_reverse($mensajes) as $msg):?>
-                            <tr>
-                                <td style="font-size: 0.9rem; color: var(--text-secondary; white-space: nowrap;">
-                                    <?php echo htmlspecialchars($msg['fecha']);?>
-                                </td>
-                                <td>
-                                    <div style="font-weight: bold;"><?php echo htmlspecialchars($msg['nombre']);?></div>
-                                    <div style="font-size: 0.8rem; color: var(--accent-blue);"><?php echo htmlspecialchars($msg['email']);?></div>
-                                </td>
-                                <td style="color: var(--text-primary);">
-                                    <?php echo htmlspecialchars($msg['mensaje']);?>
-                                </td>
-                            </tr>
-                            <?php endforeach;?>
-                        </tbody>
-                    </table>
+
+                <div class="form-group">
+                    <label data-i18n="lbl_pass">Contraseña</label>
+                    <input type="password" name="password" class="form-input" placeholder="••••••••" required>
                 </div>
-            <?php endif;?>
+
+                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;" data-i18n="btn_enter">Entrar al Panel</button>
+            </form>
+        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="text_new_lab">¿Nuevo en el Lab?</p>
+            <a href="registro" class="btn-submit" style="background: transparent; border: 1px solid var(--primary); color: white; margin-top: 0.5rem; padding: 0.5rem 1rem; width: 100%; text-decoration: none; display: inline-block;">
+                <span data-i18n="btn_create_account">Crear Cuenta</span>
+            </a>
+        </div>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
+            <p data-i18n="footer_text">&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
             
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">
                 <i class='bx bx-envelope'></i> 
@@ -100,7 +72,7 @@ $mensajes = $db->leerRegistros();
 
             <div class="social-links">
                 <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank" rel="noopener noreferrer" title="Ver código fuente en GitHub">
-                    <i class='bx bxl-github'></i> Código Fuente
+                    <i class='bx bxl-github'></i> <span data-i18n="footer_source">Código Fuente</span>
                 </a>
             </div>
         </div>

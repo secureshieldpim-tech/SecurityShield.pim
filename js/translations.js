@@ -54,13 +54,11 @@ const translations = {
         "lbl_cvc": "CVC",
         "btn_pay": "Pagar y Activar",
         "secure_msg": "Transacción cifrada de extremo a extremo.",
-
         "reg_title": "Crear Cuenta",
         "btn_register": "Registrarse",
         "text_has_account": "¿Ya tienes cuenta?",
         "link_login_action": "Inicia Sesión",
         "ph_email_example": "usuario@ejemplo.com",
-
         "panel_client_title": "Área de Cliente",
         "btn_logout": "Cerrar Sesión",
         "panel_responses_title": "Respuestas del Equipo",
@@ -68,12 +66,17 @@ const translations = {
         "table_date": "Fecha",
         "table_subject": "Asunto",
         "table_response": "Respuesta",
-        
         "dash_title": "Panel de Control",
         "dash_msgs_title": "Mensajes Recibidos",
         "dash_no_msg": "No hay mensajes nuevos en el sistema.",
         "table_user": "Usuario",
-        "table_msg": "Mensaje"
+        "table_msg": "Mensaje",
+        "welcome_user": "Bienvenido,",
+        "hello_user": "Hola,",
+        "text_new_lab": "¿Nuevo en el Lab?",
+        "btn_create_account": "Crear Cuenta",
+        "footer_text": "© 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web",
+        "footer_source": "Código Fuente"
     },
     "en": {
         "nav_inicio": "Home", "nav_planes": "Pricing", "nav_contacto": "Contact", "nav_login": "Lab Access",
@@ -91,26 +94,17 @@ const translations = {
         "lbl_name": "Name", "ph_name": "Your name", "lbl_email": "Email", "lbl_msg": "Message", "ph_msg": "How can we help you?", "btn_send": "Send Message",
         "login_title": "Login", "lbl_user": "User", "lbl_pass": "Password", "btn_enter": "Enter Panel",
         "gw_title": "Confirm Subscription", "lbl_cardholder": "Card Holder", "lbl_cardnumber": "Card Number", "lbl_expire": "Expires", "lbl_cvc": "CVC", "btn_pay": "Pay & Activate", "secure_msg": "End-to-end encrypted transaction.",
-
-        "reg_title": "Create Account",
-        "btn_register": "Sign Up",
-        "text_has_account": "Already have an account?",
-        "link_login_action": "Log In",
-        "ph_email_example": "user@example.com",
-
-        "panel_client_title": "Client Area",
-        "btn_logout": "Logout",
-        "panel_responses_title": "Team Responses",
-        "panel_no_msg": "You have no new responses.",
-        "table_date": "Date",
-        "table_subject": "Subject",
-        "table_response": "Response",
-
-        "dash_title": "Control Panel",
-        "dash_msgs_title": "Received Messages",
-        "dash_no_msg": "No new messages in the system.",
-        "table_user": "User",
-        "table_msg": "Message"
+        "reg_title": "Create Account", "btn_register": "Sign Up",
+        "text_has_account": "Already have an account?", "link_login_action": "Log In", "ph_email_example": "user@example.com",
+        "panel_client_title": "Client Area", "btn_logout": "Logout",
+        "panel_responses_title": "Team Responses", "panel_no_msg": "You have no new responses.",
+        "table_date": "Date", "table_subject": "Subject", "table_response": "Response",
+        "dash_title": "Control Panel", "dash_msgs_title": "Received Messages", "dash_no_msg": "No new messages in the system.",
+        "table_user": "User", "table_msg": "Message",
+        "welcome_user": "Welcome,", "hello_user": "Hello,",
+        "text_new_lab": "New to the Lab?", "btn_create_account": "Create Account",
+        "footer_text": "© 2026 SecurityShield - PIM Project - Web Server Defense",
+        "footer_source": "Source Code"
     },
     "ca": {
         "nav_inicio": "Inici", "nav_planes": "Plans", "nav_contacto": "Contacte", "nav_login": "Accés Lab",
@@ -128,26 +122,16 @@ const translations = {
         "lbl_name": "Nom", "ph_name": "El teu nom", "lbl_email": "Email", "lbl_msg": "Missatge", "ph_msg": "Com et podem ajudar?", "btn_send": "Enviar Missatge",
         "login_title": "Iniciar Sessió", "lbl_user": "Usuari", "lbl_pass": "Contrasenya", "btn_enter": "Entrar al Panell",
         "gw_title": "Confirmar Subscripció", "lbl_cardholder": "Titular de la Targeta", "lbl_cardnumber": "Número de Targeta", "lbl_expire": "Expira", "lbl_cvc": "CVC", "btn_pay": "Pagar i Activar", "secure_msg": "Transacció xifrada d'extrem a extrem.",
-
-        "reg_title": "Crear Compte",
-        "btn_register": "Registrar-se",
-        "text_has_account": "Ja tens compte?",
-        "link_login_action": "Inicia Sessió",
-        "ph_email_example": "usuari@exemple.com",
-
-        "panel_client_title": "Àrea de Client",
-        "btn_logout": "Tancar Sessió",
-        "panel_responses_title": "Respostes de l'Equip",
-        "panel_no_msg": "No tens noves respostes.",
-        "table_date": "Data",
-        "table_subject": "Assumpte",
-        "table_response": "Resposta",
-
-        "dash_title": "Panell de Control",
-        "dash_msgs_title": "Missatges Rebuts",
-        "dash_no_msg": "No hi ha missatges nous al sistema.",
-        "table_user": "Usuari",
-        "table_msg": "Missatge"
+        "reg_title": "Crear Compte", "btn_register": "Registrar-se",
+        "text_has_account": "Ja tens compte?", "link_login_action": "Inicia Sessió", "ph_email_example": "usuari@exemple.com",
+        "panel_client_title": "Àrea de Client", "btn_logout": "Tancar Sessió", "panel_responses_title": "Respostes de l'Equip", "panel_no_msg": "No tens noves respostes.",
+        "table_date": "Data", "table_subject": "Assumpte", "table_response": "Resposta",
+        "dash_title": "Panell de Control", "dash_msgs_title": "Missatges Rebuts", "dash_no_msg": "No hi ha missatges nous al sistema.",
+        "table_user": "Usuari", "table_msg": "Missatge",
+        "welcome_user": "Benvingut,", "hello_user": "Hola,",
+        "text_new_lab": "Nou al Lab?", "btn_create_account": "Crear Compte",
+        "footer_text": "© 2026 SecurityShield - Projecte PIM - Defensa de Servidor Web",
+        "footer_source": "Codi Font"
     },
     "eu": {
         "nav_inicio": "Hasiera", "nav_planes": "Planak", "nav_contacto": "Kontaktua", "nav_login": "Laborategi Sarbidea",
@@ -165,26 +149,17 @@ const translations = {
         "lbl_name": "Izena", "ph_name": "Zure izena", "lbl_email": "Posta", "lbl_msg": "Mezua", "ph_msg": "Nola lagun zaitzakegu?", "btn_send": "Mezua Bidali",
         "login_title": "Saioa Hasi", "lbl_user": "Erabiltzailea", "lbl_pass": "Pasahitza", "btn_enter": "Panelean Sartu",
         "gw_title": "Harpidetza Berretsi", "lbl_cardholder": "Txartelaren Jabea", "lbl_cardnumber": "Txartel Zenbakia", "lbl_expire": "Iraungitze", "lbl_cvc": "CVC", "btn_pay": "Ordaindu eta Aktibatu", "secure_msg": "Muturretik muturrera zifratutako transakzioa.",
-
-        "reg_title": "Sortu Kontua",
-        "btn_register": "Erregistratu",
-        "text_has_account": "Baduzu konturik?",
-        "link_login_action": "Hasi Saioa",
-        "ph_email_example": "erabiltzailea@adibidea.com",
-
-        "panel_client_title": "Bezeroaren Arloa",
-        "btn_logout": "Saioa Itxi",
-        "panel_responses_title": "Taldearen Erantzunak",
-        "panel_no_msg": "Ez duzu erantzun berririk.",
-        "table_date": "Data",
-        "table_subject": "Gaia",
-        "table_response": "Erantzuna",
-
-        "dash_title": "Kontrol Panela",
-        "dash_msgs_title": "Jasotako Mezuak",
-        "dash_no_msg": "Ez dago mezu berririk sisteman.",
-        "table_user": "Erabiltzailea",
-        "table_msg": "Mezua"
+        "reg_title": "Sortu Kontua", "btn_register": "Erregistratu",
+        "text_has_account": "Baduzu konturik?", "link_login_action": "Hasi Saioa", "ph_email_example": "erabiltzailea@adibidea.com",
+        "panel_client_title": "Bezeroaren Arloa", "btn_logout": "Saioa Itxi",
+        "panel_responses_title": "Taldearen Erantzunak", "panel_no_msg": "Ez duzu erantzun berririk.",
+        "table_date": "Data", "table_subject": "Gaia", "table_response": "Erantzuna",
+        "dash_title": "Kontrol Panela", "dash_msgs_title": "Jasotako Mezuak", "dash_no_msg": "Ez dago mezu berririk sisteman.",
+        "table_user": "Erabiltzailea", "table_msg": "Mezua",
+        "welcome_user": "Ongi etorri,", "hello_user": "Kaixo,",
+        "text_new_lab": "Berria laborategian?", "btn_create_account": "Sortu Kontua",
+        "footer_text": "© 2026 SecurityShield - PIM Proiektua - Web Zerbitzariaren Defentsa",
+        "footer_source": "Iturburu Kodea"
     }
 };
 
@@ -195,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLang = localStorage.getItem('selectedLang');
         }
     } catch (e) {
-        
     }
 
     const selector = document.getElementById('language-selector');
