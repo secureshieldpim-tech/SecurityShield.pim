@@ -21,7 +21,17 @@
 <body>
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
-        <a href="index" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+        
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <select id="language-selector" class="lang-select">
+                <option value="es">🇪🇸 ES</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="ca">🏴 CA</option>
+                <option value="eu">🏴 EU</option>
+            </select>
+            
+            <a href="index" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+        </div>
     </nav>
 
     <div class="login-container">
@@ -55,7 +65,24 @@
             </div>
         </div>
     </div>
-    
+        <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
+            
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <i class='bx bx-envelope'></i> 
+                <a href="mailto:contact@securityshield.es" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
+                    contact@securityshield.es
+                </a>
+            </p>
+
+            <div class="social-links">
+                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank" rel="noopener noreferrer" title="Ver código fuente en GitHub">
+                    <i class='bx bxl-github'></i> Código Fuente
+                </a>
+            </div>
+        </div>
+    </footer>
     <script src="js/translations.js"></script>
 </body>
 </html>

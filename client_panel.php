@@ -45,7 +45,14 @@ $nombreMostrar = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : $_SESSION['u
             <h1><i class='bx bxs-user-detail'></i> <span data-i18n="panel_client_title">Área de Cliente</span></h1>
             <p style="color: var(--text-secondary);">Hola, <strong style="color: white;"><?php echo htmlspecialchars($nombreMostrar); ?></strong></p>
             
-            <div style="margin-top: 1.5rem;">
+            <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                <select id="language-selector" class="lang-select" style="margin: 0;">
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="ca">🏴 CA</option>
+                    <option value="eu">🏴 EU</option>
+                </select>
+
                 <a href="index.html" class="btn-danger" style="display:inline-block; text-decoration:none;">
                     <i class='bx bx-log-out'></i> <span data-i18n="btn_logout">Salir</span>
                 </a>
@@ -91,6 +98,24 @@ $nombreMostrar = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : $_SESSION['u
             <?php endif; ?>
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
+            
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <i class='bx bx-envelope'></i> 
+                <a href="mailto:contact@securityshield.es" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
+                    contact@securityshield.es
+                </a>
+            </p>
+
+            <div class="social-links">
+                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank" rel="noopener noreferrer" title="Ver código fuente en GitHub">
+                    <i class='bx bxl-github'></i> Código Fuente
+                </a>
+            </div>
+        </div>
+    </footer>
     <script src="js/translations.js"></script>
 </body>
 </html>

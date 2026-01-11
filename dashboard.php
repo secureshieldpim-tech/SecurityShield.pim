@@ -1,14 +1,11 @@
 <?php
 session_start();
 
-// 1. SEGURIDAD: Si no ha iniciado sesión, fuera.
 if (!isset($_SESSION['usuario'])) {
     header('Location: login');
     exit;
 }
 
-// 2. SEGURIDAD EXTRA: Si está logueado pero NO es Admin, a su panel de cliente.
-// Esto evita que un cliente escriba "dashboard.php" y vea tus datos.
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     header('Location: client_panel.php');
     exit;
@@ -36,7 +33,14 @@ $mensajes = $db->leerRegistros();
             <h1><i class='bx bxs-dashboard'></i> <span data-i18n="dash_title">Panel de Control</span></h1>
             <p style="color: var(--text-secondary);">Bienvenido, <strong style="color: var(--accent-blue);"><?php echo htmlspecialchars($_SESSION['usuario']);?></strong></p>
             
-            <div style="margin-top: 1.5rem;">
+            <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                <select id="language-selector" class="lang-select" style="margin: 0;">
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="ca">🏴 CA</option>
+                    <option value="eu">🏴 EU</option>
+                </select>
+
                 <a href="index" class="btn-danger">
                     <i class='bx bx-log-out'></i> <span data-i18n="btn_logout">Cerrar Sesión</span>
                 </a>
