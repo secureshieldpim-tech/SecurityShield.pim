@@ -70,3 +70,30 @@ UI Funcional: Bienvenida personalizada al usuario y botón de cierre de sesión.
 PHP Sessions
 HTML Dinámico
 CSS Glassmorphism (Reutilizado)
+
+## 🌍 Internacionalización y Mejoras de UX (v1.4)
+*Actualización enfocada en la accesibilidad, el alcance en redes y la experiencia de usuario global.*
+
+### 📦 Commits y Cambios Detallados
+
+#### 1. `feat(i18n): Implement multi-language support system`
+Se ha desarrollado un motor de traducción propio en Vanilla JS (`js/translations.js`) sin dependencias externas.
+* **Diccionario JSON:** Soporte nativo para Español (ES), Inglés (EN), Catalán (CA) y Euskera (EU).
+* **Persistencia:** Uso de `localStorage` para recordar la preferencia de idioma del usuario entre visitas.
+* **Detección de Fallos:** Implementación de bloques `try-catch` para evitar bloqueos en navegadores privados (Incógnito/Instagram) que restringen el acceso al almacenamiento local.
+
+#### 2. `feat(seo): Add Open Graph and Twitter Cards metadata`
+Optimización completa para compartir enlaces en redes sociales y aplicaciones de mensajería.
+* **Social Preview:** Generación e integración de `social-preview.jpg` para mostrar una tarjeta visual atractiva al compartir enlaces.
+* **Meta Tags:** Configuración de etiquetas `og:title`, `og:description` y `og:image` dinámicas según la vista (Inicio, Planes, Registro).
+* **Schema.org:** Inyección de JSON-LD para mejorar la indexación del logotipo y la organización en Google Search.
+
+#### 3. `fix(ui): Integrate language selector in Auth & Dashboard panels`
+Corrección de la interfaz de usuario en las áreas privadas (`dashboard.php` y `client_panel.php`) y de registro.
+* **Unificación UI:** Inserción del selector de idioma alineado junto al botón de "Cerrar Sesión" o "Salir".
+* **Hot-Fix CSS:** Ajuste de márgenes (`margin: 0`) en los selectores dentro de los headers para mantener la alineación vertical correcta en pantallas de escritorio.
+
+#### 4. `style(footer): Update footer with corporate contact info`
+Estandarización del pie de página en toda la plataforma.
+* **Acceso Directo:** Implementación de enlace `mailto:contact@securityshield.es` para abrir el cliente de correo predeterminado del usuario.
+* **Consistencia:** Despliegue del nuevo footer en vistas estáticas (`html`) y dinámicas (`php`), asegurando que la información legal y de contacto esté siempre visible.
