@@ -6,16 +6,16 @@
     <title>Crear Cuenta - SecurityShield</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
-        <meta property="og:type" content="website">
-    <meta property="og:url" content="https://securityshield.es/login">
-    <meta property="og:title" content="Acceso al Laboratorio - SecurityShield">
-    <meta property="og:description" content="Inicia sesión o regístrate para acceder al panel de control y herramientas de auditoría.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://securityshield.es/registro">
+    <meta property="og:title" content="Crear Cuenta - SecurityShield">
+    <meta property="og:description" content="Regístrate para acceder al panel de control y herramientas de auditoría.">
     <meta property="og:image" content="https://securityshield.es/images/social-preview.jpg">
 
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://securityshield.es/login">
-    <meta property="twitter:title" content="Acceso al Laboratorio - SecurityShield">
-    <meta property="twitter:description" content="Inicia sesión o regístrate para acceder al panel de control.">
+    <meta property="twitter:url" content="https://securityshield.es/registro">
+    <meta property="twitter:title" content="Crear Cuenta - SecurityShield">
+    <meta property="twitter:description" content="Regístrate para acceder al panel de control.">
     <meta property="twitter:image" content="https://securityshield.es/images/social-preview.jpg">
 </head>
 <body>
@@ -26,31 +26,36 @@
 
     <div class="login-container">
         <div class="glass-card login-card">
-            <h2 style="margin-bottom: 1.5rem; text-align: center;">Crear Cuenta</h2>
+            <h2 style="margin-bottom: 1.5rem; text-align: center;" data-i18n="reg_title">Crear Cuenta</h2>
             
             <form action="api/registro.php" method="POST">
                 <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" name="nombre" class="form-input" placeholder="Tu Nombre" required>
+                    <label data-i18n="lbl_name">Nombre</label>
+                    <input type="text" name="nombre" class="form-input" placeholder="Tu Nombre" data-i18n="ph_name" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-input" placeholder="usuario@ejemplo.com" required>
+                    <label data-i18n="lbl_email">Email</label>
+                    <input type="email" name="email" class="form-input" placeholder="usuario@ejemplo.com" data-i18n="ph_email_example" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Contraseña</label>
+                    <label data-i18n="lbl_pass">Contraseña</label>
                     <input type="password" name="password" class="form-input" placeholder="••••••••" required>
                 </div>
 
-                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;">Registrarse</button>
+                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;" data-i18n="btn_register">Registrarse</button>
             </form>
             
             <div style="margin-top: 1rem; text-align: center; font-size: 0.9rem;">
-                <p style="color: var(--text-muted);">¿Ya tienes cuenta? <a href="login" style="color: var(--primary);">Inicia Sesión</a></p>
+                <p style="color: var(--text-muted);">
+                    <span data-i18n="text_has_account">¿Ya tienes cuenta?</span> 
+                    <a href="login" style="color: var(--primary);" data-i18n="link_login_action">Inicia Sesión</a>
+                </p>
             </div>
         </div>
     </div>
+    
+    <script src="js/translations.js"></script>
 </body>
 </html>
