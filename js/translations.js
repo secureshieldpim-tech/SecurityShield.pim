@@ -76,7 +76,11 @@ const translations = {
         "text_new_lab": "¿Nuevo en el Lab?",
         "btn_create_account": "Crear Cuenta",
         "footer_text": "© 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web",
-        "footer_source": "Código Fuente"
+        "footer_source": "Código Fuente",
+        "title_login": "Acceso - SecurityShield",
+        "title_register": "Crear Cuenta - SecurityShield",
+        "title_dashboard": "Dashboard - SecurityShield",
+        "title_client": "Área Cliente - SecurityShield"
     },
     "en": {
         "nav_inicio": "Home", "nav_planes": "Pricing", "nav_contacto": "Contact", "nav_login": "Lab Access",
@@ -104,7 +108,11 @@ const translations = {
         "welcome_user": "Welcome,", "hello_user": "Hello,",
         "text_new_lab": "New to the Lab?", "btn_create_account": "Create Account",
         "footer_text": "© 2026 SecurityShield - PIM Project - Web Server Defense",
-        "footer_source": "Source Code"
+        "footer_source": "Source Code",
+        "title_login": "Login - SecurityShield",
+        "title_register": "Create Account - SecurityShield",
+        "title_dashboard": "Dashboard - SecurityShield",
+        "title_client": "Client Area - SecurityShield"
     },
     "ca": {
         "nav_inicio": "Inici", "nav_planes": "Plans", "nav_contacto": "Contacte", "nav_login": "Accés Lab",
@@ -131,7 +139,11 @@ const translations = {
         "welcome_user": "Benvingut,", "hello_user": "Hola,",
         "text_new_lab": "Nou al Lab?", "btn_create_account": "Crear Compte",
         "footer_text": "© 2026 SecurityShield - Projecte PIM - Defensa de Servidor Web",
-        "footer_source": "Codi Font"
+        "footer_source": "Codi Font",
+        "title_login": "Accés - SecurityShield",
+        "title_register": "Registre - SecurityShield",
+        "title_dashboard": "Tauler - SecurityShield",
+        "title_client": "Àrea Client - SecurityShield"
     },
     "eu": {
         "nav_inicio": "Hasiera", "nav_planes": "Planak", "nav_contacto": "Kontaktua", "nav_login": "Laborategi Sarbidea",
@@ -159,7 +171,11 @@ const translations = {
         "welcome_user": "Ongi etorri,", "hello_user": "Kaixo,",
         "text_new_lab": "Berria laborategian?", "btn_create_account": "Sortu Kontua",
         "footer_text": "© 2026 SecurityShield - PIM Proiektua - Web Zerbitzariaren Defentsa",
-        "footer_source": "Iturburu Kodea"
+        "footer_source": "Iturburu Kodea",
+        "title_login": "Sarbidea - SecurityShield",
+        "title_register": "Erregistroa - SecurityShield",
+        "title_dashboard": "Aginte-panela - SecurityShield",
+        "title_client": "Bezeroaren Arloa - SecurityShield"
     }
 };
 
@@ -169,8 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('selectedLang')) {
             currentLang = localStorage.getItem('selectedLang');
         }
-    } catch (e) {
-    }
+    } catch (e) { }
 
     const selector = document.getElementById('language-selector');
     if (selector) {
@@ -199,5 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+        
+        if (translations[lang]) {
+            const pageTitleKey = document.querySelector('title')?.getAttribute('data-i18n');
+            if (pageTitleKey && translations[lang][pageTitleKey]) {
+                document.title = translations[lang][pageTitleKey];
+            }
+        }
     }
 });

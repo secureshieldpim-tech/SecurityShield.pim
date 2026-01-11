@@ -21,7 +21,7 @@ $mensajes = $db->leerRegistros();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - SecurityShield</title>
+    <title data-i18n="title_dashboard">Dashboard - SecurityShield</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="images/shield.png">
     <link rel="stylesheet" href="css/style.css">
