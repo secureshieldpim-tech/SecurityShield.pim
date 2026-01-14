@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title_register">Crear Cuenta - SecurityShield</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="images/shield.png">
+    <link rel="icon" type="image/jpg" href="https://securityshield.es/images/shield_g.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://securityshield.es/registro">
     <meta property="og:title" content="Crear Cuenta - SecurityShield">
@@ -19,10 +20,11 @@
     <meta property="twitter:description" content="Regístrate para acceder al panel de control.">
     <meta property="twitter:image" content="https://securityshield.es/images/social-preview.jpg">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
-        
+
         <div style="display: flex; align-items: center; gap: 1rem;">
             <select id="language-selector" class="lang-select">
                 <option value="es">🇪🇸 ES</option>
@@ -30,7 +32,7 @@
                 <option value="ca">🏴 CA</option>
                 <option value="eu">🏴 EU</option>
             </select>
-            
+
             <a href="index" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
         </div>
     </nav>
@@ -38,16 +40,18 @@
     <div class="login-container">
         <div class="glass-card login-card">
             <h2 style="margin-bottom: 1.5rem; text-align: center;" data-i18n="reg_title">Crear Cuenta</h2>
-            
+
             <form action="api/registro.php" method="POST">
                 <div class="form-group">
                     <label data-i18n="lbl_name">Nombre</label>
-                    <input type="text" name="nombre" class="form-input" placeholder="Tu Nombre" data-i18n="ph_name" required>
+                    <input type="text" name="nombre" class="form-input" placeholder="Tu Nombre" data-i18n="ph_name"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label data-i18n="lbl_email">Email</label>
-                    <input type="email" name="email" class="form-input" placeholder="usuario@ejemplo.com" data-i18n="ph_email_example" required>
+                    <input type="email" name="email" class="form-input" placeholder="usuario@ejemplo.com"
+                        data-i18n="ph_email_example" required>
                 </div>
 
                 <div class="form-group">
@@ -55,30 +59,33 @@
                     <input type="password" name="password" class="form-input" placeholder="••••••••" required>
                 </div>
 
-                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;" data-i18n="btn_register">Registrarse</button>
+                <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;"
+                    data-i18n="btn_register">Registrarse</button>
             </form>
-            
+
             <div style="margin-top: 1rem; text-align: center; font-size: 0.9rem;">
                 <p style="color: var(--text-muted);">
-                    <span data-i18n="text_has_account">¿Ya tienes cuenta?</span> 
+                    <span data-i18n="text_has_account">¿Ya tienes cuenta?</span>
                     <a href="login" style="color: var(--primary);" data-i18n="link_login_action">Inicia Sesión</a>
                 </p>
             </div>
         </div>
     </div>
-        <footer class="footer">
+    <footer class="footer">
         <div class="footer-content">
             <p data-i18n="footer_text">&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
-            
+
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <i class='bx bx-envelope'></i> 
-                <a href="mailto:contact@securityshield.es" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
+                <i class='bx bx-envelope'></i>
+                <a href="mailto:contact@securityshield.es"
+                    style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
                     contact@securityshield.es
                 </a>
             </p>
 
             <div class="social-links">
-                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank" rel="noopener noreferrer" title="Ver código fuente en GitHub">
+                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"
+                    rel="noopener noreferrer" title="Ver código fuente en GitHub">
                     <i class='bx bxl-github'></i> <span data-i18n="footer_source">Código Fuente</span>
                 </a>
             </div>
@@ -86,4 +93,5 @@
     </footer>
     <script src="js/translations.js"></script>
 </body>
+
 </html>

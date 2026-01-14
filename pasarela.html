@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pasarela de Pago Segura</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" type="image/png" href="images/shield.png">
+    <link rel="icon" type="image/jpg" href="https://securityshield.es/images/shield_g.jpg">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .payment-container {
@@ -14,6 +15,7 @@
             align-items: center;
             min-height: 80vh;
         }
+
         .card-visual {
             background: linear-gradient(135deg, var(--secondary), #6366f1);
             border-radius: 15px;
@@ -21,8 +23,9 @@
             margin-bottom: 20px;
             height: 180px;
             position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
+
         .chip {
             width: 50px;
             height: 35px;
@@ -30,27 +33,46 @@
             border-radius: 5px;
             margin-bottom: 20px;
         }
-        .card-number { font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 20px; font-family: monospace; text-shadow: 1px 1px 2px black; }
-        .card-info { display: flex; justify-content: space-between; font-size: 0.9rem; text-transform: uppercase; }
-        
+
+        .card-number {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
         .spinner {
             display: none;
             width: 20px;
             height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: white;
             animation: spin 1s ease-in-out infinite;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-lock-alt'></i> SecureGateway</div>
-        
+
         <div style="display:flex; align-items:center; gap:1rem;">
-             <select id="language-selector" class="lang-select">
+            <select id="language-selector" class="lang-select">
                 <option value="es">🇪🇸 ES</option>
                 <option value="en">🇬🇧 EN</option>
                 <option value="ca">🏴 CA</option>
@@ -63,7 +85,8 @@
     <div class="container payment-container">
         <div class="glass-card login-card">
             <h2 style="text-align: center; margin-bottom: 1rem;" data-i18n="gw_title">Confirmar Suscripción</h2>
-            <p id="plan-display" style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-weight: bold;"></p>
+            <p id="plan-display"
+                style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-weight: bold;"></p>
 
             <div class="card-visual">
                 <div class="chip"></div>
@@ -94,29 +117,33 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit" style="width:100%; margin-top:1rem; display: flex; justify-content: center; gap: 10px;">
+                <button type="submit" class="btn-submit"
+                    style="width:100%; margin-top:1rem; display: flex; justify-content: center; gap: 10px;">
                     <span id="btn-text" data-i18n="btn_pay">Pagar y Activar</span>
                     <div class="spinner" id="spinner"></div>
                 </button>
             </form>
             <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
-                <i class='bx bxs-lock'></i> <span data-i18n="secure_msg">Transacción cifrada de extremo a extremo.</span>
+                <i class='bx bxs-lock'></i> <span data-i18n="secure_msg">Transacción cifrada de extremo a
+                    extremo.</span>
             </p>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
-            
+
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <i class='bx bx-envelope'></i> 
-                <a href="mailto:contact@securityshield.es" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
+                <i class='bx bx-envelope'></i>
+                <a href="mailto:contact@securityshield.es"
+                    style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
                     contact@securityshield.es
                 </a>
             </p>
 
             <div class="social-links">
-                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank" rel="noopener noreferrer" title="Ver código fuente en GitHub">
+                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"
+                    rel="noopener noreferrer" title="Ver código fuente en GitHub">
                     <i class='bx bxl-github'></i> Código Fuente
                 </a>
             </div>
@@ -125,4 +152,5 @@
     <script src="js/payment.js"></script>
     <script src="js/translations.js"></script>
 </body>
+
 </html>
