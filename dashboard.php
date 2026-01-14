@@ -34,7 +34,8 @@ $mensajes = $db->leerRegistros();
         <header style="text-align: center; margin: 3rem 0;">
             <h1><i class='bx bxs-dashboard'></i> <span data-i18n="dash_title">Panel de Control</span></h1>
             <p style="color: var(--text-secondary);"><span data-i18n="welcome_user">Bienvenido,</span> <strong
-                    style="color: var(--accent-blue);"><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong></p>
+                    style="color: var(--accent-blue);"><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>
+            </p>
 
             <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
                 <select id="language-selector" class="lang-select" style="margin: 0;">
@@ -79,7 +80,8 @@ $mensajes = $db->leerRegistros();
                                     <td>
                                         <div style="font-weight: bold;"><?php echo htmlspecialchars($msg['nombre']); ?></div>
                                         <div style="font-size: 0.8rem; color: var(--accent-blue);">
-                                            <?php echo htmlspecialchars($msg['email']); ?></div>
+                                            <?php echo htmlspecialchars($msg['email']); ?>
+                                        </div>
                                     </td>
                                     <td style="color: var(--text-primary);">
                                         <?php echo htmlspecialchars($msg['mensaje']); ?>
@@ -104,7 +106,15 @@ $mensajes = $db->leerRegistros();
                 </a>
             </p>
 
-            <div class="social-links">
+            <div class="social-links" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                <a href="https://x.com/SecurityShield_" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <i class='bx bxl-instagram'></i>
+                </a>
+
+                <a href="https://x.com/SecurityShield_" target="_blank" rel="noopener noreferrer" title="Twitter / X">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+
                 <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"
                     rel="noopener noreferrer" title="Ver código fuente en GitHub">
                     <i class='bx bxl-github'></i> <span data-i18n="footer_source">Código Fuente</span>
