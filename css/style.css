@@ -646,3 +646,57 @@ th {
     border-radius: 6px;
     cursor: pointer;
 }
+
+/* Estilos del menú de usuario logueado */
+.user-menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.user-toggle {
+    font-weight: 600;
+    color: var(--text-color, #fff);
+    /* Ajusta a tu color de texto */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.user-dropdown {
+    display: none;
+    /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(20, 20, 30, 0.95);
+    /* Fondo oscuro tipo glass */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 160px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.user-dropdown.show {
+    display: block;
+    /* Mostrar cuando tiene la clase show */
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.user-dropdown a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}

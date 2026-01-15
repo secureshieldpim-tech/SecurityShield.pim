@@ -11,21 +11,17 @@ $usuarios = $db->leerRegistros();
 foreach ($usuarios as $user) {
     // Comprobar email y contraseña
     if ($user['email'] === $emailIngresado && password_verify($passIngresada, $user['password'])) {
-        
+
         // 1. Guardamos datos básicos en la sesión
         $_SESSION['usuario'] = $user['email'];
-        $_SESSION['nombre']  = $user['nombre']; 
-        
+        $_SESSION['nombre'] = $user['nombre'];
+
         // 2. Leemos el ROL
         $rol = isset($user['rol']) ? $user['rol'] : 'cliente';
         $_SESSION['rol'] = $rol;
 
-        // 3. Decidimos a dónde enviarlo (SIN EXTENSIONES)
-        if ($rol === 'admin') {
-            header('Location: ../dashboard.php');
-        } else {
-            header('Location: ../client_panel.php');
-        }
+        // 3. Redirección única al nuevo perfil de usuario
+        header('Location: ../index.html');
         exit;
     }
 }
