@@ -80,16 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // 3. FUNCIONES PARA CAMBIAR EL MENÚ
 // ---------------------------------------------------------
 function updateNavForUser(nombreUsuario) {
-    // Buscamos los enlaces antiguos
-    const loginLink = document.querySelector('a[href="login.html"]');
-    const registerLink = document.querySelector('a[href="registro.html"]');
+    // 1. Buscamos los botones de forma "inteligente" (con o sin .html)
+    const loginLink = document.querySelector('a[href="login.html"]') || document.querySelector('a[href="login"]');
+    const registerLink = document.querySelector('a[href="registro.html"]') || document.querySelector('a[href="registro"]');
 
-    // Borramos "Iniciar Sesión"
+    // 2. Si existe el botón de "Iniciar Sesión", LO BORRAMOS por completo
     if (loginLink && loginLink.parentElement) {
-        loginLink.parentElement.remove();
+        loginLink.parentElement.remove(); // Adiós botón inútil 👋
     }
 
-    // Cambiamos "Registrarse" por el menú de usuario
+    // 3. Usamos el hueco del botón "Registrarse" para poner el Menú de Usuario
     if (registerLink && registerLink.parentElement) {
         const liPadre = registerLink.parentElement;
 
