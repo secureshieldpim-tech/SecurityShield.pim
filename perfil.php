@@ -26,7 +26,7 @@ if (!isset($_SESSION['usuario'])) {
         <div class="menu-toggle" id="mobile-menu"><i class='bx bx-menu'></i></div>
 
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Inicio</a></li>
+            <li><a href="principal.html">Inicio</a></li>
             <li><a href="planes.html">Planes</a></li>
             <li><a href="contacto.html">Contacto</a></li>
 

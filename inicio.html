@@ -4,28 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecurityShield - Cyber Defense</title>
-
-    <meta name="description"
-        content="SecurityShield: Bastionado de sistemas Linux, defensa activa con AppArmor y auditoría de ciberseguridad ofensiva y defensiva.">
-    <meta name="author" content="SecurityShield Team">
-    <link rel="canonical" href="https://www.securityshield.es/" />
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.securityshield.es/">
-    <meta property="og:title" content="SecurityShield - Cyber Defense & Hardening">
-    <meta property="og:description"
-        content="Protege tu infraestructura con bastionado avanzado, perfiles AppArmor y auditoría profesional.">
-    <meta property="og:image" content="https://www.securityshield.es/images/social-preview.jpg">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.securityshield.es/">
-    <meta property="twitter:title" content="SecurityShield - Cyber Defense">
-    <meta property="twitter:description"
-        content="Protege tu infraestructura con bastionado avanzado, perfiles AppArmor y auditoría profesional.">
-    <meta property="twitter:image" content="https://www.securityshield.es/images/social-preview.jpg">
-
-    <link rel="icon" type="image/jpg" href="images/shield_g.jpg">
+    <title>SecurityShield</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -40,6 +19,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            /* Fondo oscuro profundo */
             background: radial-gradient(circle at center, #1e293b 0%, #000000 100%);
             color: #fff;
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -47,22 +27,28 @@
             text-align: center;
         }
 
+        /* Contenedor invisible (solo para agrupar) */
         .content-wrapper {
             max-width: 800px;
             padding: 2rem;
-            animation: fadeIn 1s ease-out;
+            /* Sin bordes, sin fondo, sin sombra */
         }
 
+        /* 1. EL ESCUDO (Icono Gigante y Estático) */
         .main-icon {
             font-size: 7rem;
             color: #38bdf8;
+            /* Cyan corporativo */
             margin-bottom: 1rem;
             display: inline-block;
             text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            /* Resplandor suave */
         }
 
+        /* 2. NOMBRE DEL PROYECTO */
         h1 {
             font-size: 4.5rem;
+            /* Muy grande e impactante */
             margin: 0 0 2rem 0;
             font-weight: 800;
             letter-spacing: 2px;
@@ -70,8 +56,10 @@
             color: #fff;
         }
 
+        /* 3. INFORMACIÓN (Texto puro) */
         .info-text {
             color: #94a3b8;
+            /* Gris azulado para que no canse la vista */
             font-size: 1.25rem;
             line-height: 1.8;
             font-weight: 300;
@@ -81,6 +69,7 @@
             gap: 0.5rem;
         }
 
+        /* 4. BOTÓN EMPEZAR */
         .btn-start {
             display: inline-block;
             padding: 1rem 3.5rem;
@@ -95,7 +84,6 @@
             text-transform: uppercase;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-            cursor: pointer;
         }
 
         .btn-start:hover {
@@ -104,18 +92,7 @@
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Ajuste móvil */
         @media (max-width: 768px) {
             h1 {
                 font-size: 3rem;
@@ -132,6 +109,7 @@
 
     <div class="content-wrapper">
         <i class='bx bxs-shield-plus main-icon'></i>
+
         <h1>SecurityShield</h1>
 
         <div class="info-text">
@@ -140,7 +118,7 @@
             <span>Auditoría de seguridad ofensiva para blindar infraestructuras</span>
         </div>
 
-        <a href="principal.html" class="btn-start">Empezar</a>
+        <a href="index.html" class="btn-start">Empezar</a>
     </div>
 
 </body>

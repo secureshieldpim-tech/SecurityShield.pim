@@ -21,7 +21,7 @@ foreach ($usuarios as $user) {
         $_SESSION['rol'] = $rol;
 
         // 3. Redirección única al nuevo perfil de usuario
-        header('Location: ../index.html');
+        header('Location: ../principal.html');
         exit;
     }
 }
