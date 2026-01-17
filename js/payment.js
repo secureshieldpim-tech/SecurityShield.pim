@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (resultado.success || resultado.estado === 'exito') {
                     // Éxito
                     alert('✅ ¡Compra realizada con éxito!\n\nTe hemos enviado los scripts de instalación para ' + purchaseData.os + ' a tu correo: ' + purchaseData.email);
-                    window.location.href = 'dashboard.php'; // Redirigir al panel del cliente
+                    window.location.href = 'perfil.php'; // Redirigir al panel del cliente
                 } else {
                     alert('Error al procesar: ' + (resultado.message || resultado.mensaje));
                     submitBtn.textContent = originalText;
