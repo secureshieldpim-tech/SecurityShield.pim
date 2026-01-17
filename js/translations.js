@@ -80,7 +80,12 @@ const translations = {
         "title_login": "Acceso - SecurityShield",
         "title_register": "Crear Cuenta - SecurityShield",
         "title_dashboard": "Dashboard - SecurityShield",
-        "title_client": "Área Cliente - SecurityShield"
+        "title_client": "Área Cliente - SecurityShield",
+        "welcome_page_title": "SecurityShield - Cyber Defense",
+        "welcome_line1": "Bastionado de sistemas y hardening avanzado en Linux",
+        "welcome_line2": "Defensa en profundidad mediante perfiles AppArmor y Blue Team",
+        "welcome_line3": "Auditoría de seguridad ofensiva para blindar infraestructuras",
+        "welcome_btn": "Empezar"
     },
     "en": {
         "nav_inicio": "Home", "nav_planes": "Pricing", "nav_contacto": "Contact", "nav_login": "Lab Access",
@@ -112,7 +117,12 @@ const translations = {
         "title_login": "Login - SecurityShield",
         "title_register": "Create Account - SecurityShield",
         "title_dashboard": "Dashboard - SecurityShield",
-        "title_client": "Client Area - SecurityShield"
+        "title_client": "Client Area - SecurityShield",
+        "welcome_page_title": "SecurityShield - Cyber Defense",
+        "welcome_line1": "System hardening and advanced Linux hardening",
+        "welcome_line2": "Defense in depth via AppArmor profiles and Blue Team",
+        "welcome_line3": "Offensive security audit to shield infrastructures",
+        "welcome_btn": "Start"
     },
     "ca": {
         "nav_inicio": "Inici", "nav_planes": "Plans", "nav_contacto": "Contacte", "nav_login": "Accés Lab",
@@ -143,7 +153,12 @@ const translations = {
         "title_login": "Accés - SecurityShield",
         "title_register": "Registre - SecurityShield",
         "title_dashboard": "Tauler - SecurityShield",
-        "title_client": "Àrea Client - SecurityShield"
+        "title_client": "Àrea Client - SecurityShield",
+        "welcome_page_title": "SecurityShield - Cyber Defense",
+        "welcome_line1": "Bastionat de sistemes i hardening avançat a Linux",
+        "welcome_line2": "Defensa en profunditat mitjançant perfils AppArmor i Blue Team",
+        "welcome_line3": "Auditoria de seguretat ofensiva per blindar infraestructures",
+        "welcome_btn": "Començar"
     },
     "eu": {
         "nav_inicio": "Hasiera", "nav_planes": "Planak", "nav_contacto": "Kontaktua", "nav_login": "Laborategi Sarbidea",
@@ -175,7 +190,12 @@ const translations = {
         "title_login": "Sarbidea - SecurityShield",
         "title_register": "Erregistroa - SecurityShield",
         "title_dashboard": "Aginte-panela - SecurityShield",
-        "title_client": "Bezeroaren Arloa - SecurityShield"
+        "title_client": "Bezeroaren Arloa - SecurityShield",
+        "welcome_page_title": "SecurityShield - Cyber Defense",
+        "welcome_line1": "Sistemen bastionatzea eta Linux hardening aurreratua",
+        "welcome_line2": "Defentsa sakona AppArmor profil eta Blue Team bidez",
+        "welcome_line3": "Segurtasun auditoretza ofentsiboa azpiegiturak blindatzeko",
+        "welcome_btn": "Hasi"
     }
 };
 
@@ -194,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lang = e.target.value;
             try {
                 localStorage.setItem('selectedLang', lang);
-            } catch (e) {}
+            } catch (e) { }
             updateLanguage(lang);
         });
     }
@@ -203,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateLanguage(lang) {
         const elements = document.querySelectorAll('[data-i18n]');
-        
+
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
@@ -214,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        
+
         if (translations[lang]) {
             const pageTitleKey = document.querySelector('title')?.getAttribute('data-i18n');
             if (pageTitleKey && translations[lang][pageTitleKey]) {

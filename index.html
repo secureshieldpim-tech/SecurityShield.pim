@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecurityShield - Cyber Defense</title>
+    <title data-i18n="welcome_page_title">SecurityShield - Cyber Defense</title>
 
     <meta name="description"
         content="SecurityShield: Bastionado de sistemas Linux, defensa activa con AppArmor y auditoría de ciberseguridad ofensiva y defensiva.">
@@ -26,7 +26,6 @@
     <meta property="twitter:image" content="https://www.securityshield.es/images/social-preview.jpg">
 
     <link rel="icon" type="image/jpg" href="images/shield_g.jpg">
-
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -45,10 +44,50 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             overflow: hidden;
             text-align: center;
+            position: relative;
+            /* Necesario para el selector flotante */
         }
 
+        /* --- SELECTOR DE IDIOMA FLOTANTE --- */
+        .lang-floater {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 100;
+        }
+
+        .lang-select-welcome {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+            appearance: none;
+            /* Quita la flecha fea por defecto */
+            text-align: center;
+        }
+
+        .lang-select-welcome:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: #38bdf8;
+        }
+
+        .lang-select-welcome option {
+            background: #000;
+            color: #fff;
+            padding: 10px;
+        }
+
+        /* --- CONTENIDO CENTRAL --- */
         .content-wrapper {
-            max-width: 800px;
+            max-width: 90%;
+            /* Ajuste fluido para móvil */
+            width: 800px;
             padding: 2rem;
             animation: fadeIn 1s ease-out;
         }
@@ -59,6 +98,7 @@
             margin-bottom: 1rem;
             display: inline-block;
             text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            transition: font-size 0.3s ease;
         }
 
         h1 {
@@ -68,6 +108,8 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #fff;
+            line-height: 1.1;
+            transition: font-size 0.3s ease;
         }
 
         .info-text {
@@ -78,7 +120,7 @@
             margin-bottom: 3.5rem;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .btn-start {
@@ -116,13 +158,34 @@
             }
         }
 
+        /* --- MÓVIL (Responsividad Mejorada) --- */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
+            .main-icon {
+                font-size: 4.5rem;
+                margin-bottom: 1rem;
             }
 
-            .main-icon {
-                font-size: 5rem;
+            h1 {
+                font-size: 2.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .info-text {
+                font-size: 1rem;
+                line-height: 1.5;
+                gap: 1rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .btn-start {
+                width: 100%;
+                max-width: 280px;
+                padding: 1rem;
+            }
+
+            .lang-floater {
+                top: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -130,18 +193,30 @@
 
 <body>
 
+    <div class="lang-floater">
+        <select id="language-selector" class="lang-select-welcome">
+            <option value="es">🇪🇸 ES</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="ca">🏴 CA</option>
+            <option value="eu">🏴 EU</option>
+        </select>
+    </div>
+
     <div class="content-wrapper">
         <i class='bx bxs-shield-plus main-icon'></i>
+
         <h1>SecurityShield</h1>
 
         <div class="info-text">
-            <span>Bastionado de sistemas y hardening avanzado en Linux</span>
-            <span>Defensa en profundidad mediante perfiles AppArmor y Blue Team</span>
-            <span>Auditoría de seguridad ofensiva para blindar infraestructuras</span>
+            <span data-i18n="welcome_line1">Bastionado de sistemas y hardening avanzado en Linux</span>
+            <span data-i18n="welcome_line2">Defensa en profundidad mediante perfiles AppArmor y Blue Team</span>
+            <span data-i18n="welcome_line3">Auditoría de seguridad ofensiva para blindar infraestructuras</span>
         </div>
 
-        <a href="principal.html" class="btn-start">Empezar</a>
+        <a href="principal.html" class="btn-start" data-i18n="welcome_btn">Empezar</a>
     </div>
+
+    <script src="js/translations.js"></script>
 
 </body>
 
