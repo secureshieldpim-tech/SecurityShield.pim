@@ -7,7 +7,7 @@
     <title data-i18n="welcome_page_title">SecurityShield - Cyber Defense</title>
 
     <meta name="description"
-        content="SecurityShield: Bastionado de sistemas Linux, defensa activa con AppArmor y auditoría de ciberseguridad ofensiva y defensiva.">
+        content="SecurityShield: Bastionado de sistemas Linux, defensa activa con AppArmor y auditoría de ciberseguridad.">
     <meta name="author" content="SecurityShield Team">
     <link rel="canonical" href="https://www.securityshield.es/" />
 
@@ -45,7 +45,6 @@
             overflow: hidden;
             text-align: center;
             position: relative;
-            /* Necesario para el selector flotante */
         }
 
         /* --- SELECTOR DE IDIOMA FLOTANTE --- */
@@ -68,7 +67,6 @@
             outline: none;
             transition: all 0.3s ease;
             appearance: none;
-            /* Quita la flecha fea por defecto */
             text-align: center;
         }
 
@@ -86,10 +84,11 @@
         /* --- CONTENIDO CENTRAL --- */
         .content-wrapper {
             max-width: 90%;
-            /* Ajuste fluido para móvil */
             width: 800px;
             padding: 2rem;
             animation: fadeIn 1s ease-out;
+            box-sizing: border-box;
+            /* Importante para evitar desbordes */
         }
 
         .main-icon {
@@ -162,35 +161,28 @@
         @media (max-width: 768px) {
             .content-wrapper {
                 width: 100%;
-                /* Asegura usar todo el ancho */
                 padding: 1rem;
-                /* Reducimos padding (antes era 2rem, que es mucho espacio perdido) */
-                box-sizing: border-box;
-                /* Crucial para que el padding no sume ancho extra */
+                /* Menos padding para dar espacio al texto */
             }
 
             .main-icon {
                 font-size: 4rem;
-                /* Un poco más pequeño para que no domine tanto */
                 margin-bottom: 1rem;
             }
 
             h1 {
-                /* TRUCO CLAVE: Usar 'vw' (viewport width) en lugar de 'rem' */
-                /* Esto hace que el texto se encoja automáticamente si la pantalla es estrecha */
-                font-size: 11vw;
+                font-size: 3rem;
+                /* Tamaño controlado */
                 margin-bottom: 1.5rem;
-                word-wrap: break-word;
-                /* Por seguridad, si hay palabras muy largas */
+                line-height: 1.2;
+                /* Separación entre las dos líneas */
             }
 
             .info-text {
                 font-size: 1rem;
                 line-height: 1.5;
-                gap: 1rem;
-                margin-bottom: 2.5rem;
-                padding: 0 10px;
-                /* Un poco de margen lateral para que no toque los bordes */
+                gap: 0.8rem;
+                margin-bottom: 2rem;
             }
 
             .btn-start {
@@ -201,15 +193,7 @@
 
             .lang-floater {
                 top: 15px;
-                /* Subimos un poco el selector de idioma */
                 right: 15px;
-                /* Lo pegamos más a la derecha */
-            }
-
-            /* Ajuste para el selector en móvil */
-            .lang-select-welcome {
-                padding: 6px 12px;
-                font-size: 0.85rem;
             }
         }
     </style>
@@ -229,7 +213,7 @@
     <div class="content-wrapper">
         <i class='bx bxs-shield-plus main-icon'></i>
 
-        <h1>SecurityShield</h1>
+        <h1>Security<br>Shield</h1>
 
         <div class="info-text">
             <span data-i18n="welcome_line1">Bastionado de sistemas y hardening avanzado en Linux</span>
