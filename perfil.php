@@ -48,6 +48,8 @@ if (!isset($_SESSION['usuario'])) {
                 <select id="language-selector" class="lang-select">
                     <option value="es">🇪🇸 ES</option>
                     <option value="en">🇬🇧 EN</option>
+                    <option value="ca">🏴 CA</option>
+                    <option value="eu">🏴 EU</option>
                 </select>
             </li>
         </ul>
