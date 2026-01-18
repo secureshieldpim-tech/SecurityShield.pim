@@ -23,6 +23,30 @@
 </head>
 
 <body>
+
+    <script>
+        (function () {
+            // 1. Recuperar tema guardado
+            const tema = localStorage.getItem('user_theme');
+            const body = document.body;
+
+            // 2. Bloquear animaciones para que no haya 'fundido'
+            body.classList.add('preload');
+
+            // 3. Aplicar color de fondo INSTANTÁNEAMENTE
+            if (tema === 'light') {
+                body.classList.add('theme-light');
+            } else if (tema === 'dark') {
+                body.classList.add('theme-dark');
+            }
+
+            // 4. Reactivar animaciones tras un breve momento
+            setTimeout(() => {
+                body.classList.remove('preload');
+            }, 200);
+        })();
+    </script>
+
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
 
@@ -76,15 +100,17 @@
         <div class="footer-content">
             <p data-i18n="footer_text">&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
 
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <i class='bx bx-envelope'></i>
-                <a href="mailto:contact@securityshield.es"
-                    style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
-                    contact@securityshield.es
-                </a>
-            </p>
-
             <div class="social-links" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+
+                <a href="mailto:contact@securityshield.es" title="Enviar correo">
+                    <i class='bx bx-envelope'></i> Email
+                </a>
+
+                <a href="https://gemini.google.com/gem/1YTeuh1x1zmtDcu17j-3S1yLJLdXN3juP?usp=sharing" target="_blank"
+                    rel="noopener noreferrer" title="Asistente Gemini">
+                    <i class='bx bx-bot'></i>
+                </a>
+
                 <a href="https://www.instagram.com/securityshield_/" target="_blank" rel="noopener noreferrer"
                     title="Instagram">
                     <i class='bx bxl-instagram'></i>
@@ -95,8 +121,8 @@
                 </a>
 
                 <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"
-                    rel="noopener noreferrer" title="Ver código fuente en GitHub">
-                    <i class='bx bxl-github'></i> <span data-i18n="footer_source">Código Fuente</span>
+                    rel="noopener noreferrer" title="GitHub">
+                    <i class='bx bxl-github'></i>
                 </a>
             </div>
         </div>
