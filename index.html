@@ -214,6 +214,28 @@
 </head>
 
 <body>
+    <script>
+        (function () {
+            // 1. Recuperar tema guardado
+            const tema = localStorage.getItem('user_theme');
+            const body = document.body;
+
+            // 2. Bloquear animaciones para que no haya 'fundido'
+            body.classList.add('preload');
+
+            // 3. Aplicar color de fondo INSTANTÁNEAMENTE
+            if (tema === 'light') {
+                body.classList.add('theme-light');
+            } else if (tema === 'dark') {
+                body.classList.add('theme-dark');
+            }
+
+            // 4. Reactivar animaciones tras un breve momento
+            setTimeout(() => {
+                body.classList.remove('preload');
+            }, 200);
+        })();
+    </script>
 
     <div class="lang-floater">
         <select id="language-selector" class="lang-select-welcome">

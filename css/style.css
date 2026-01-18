@@ -661,3 +661,7 @@ body.theme-light .btn-cancel:hover {
     border-color: #0f172a;
     color: #0f172a;
 }
+
+.preload {
+    transition: none !important;
+}

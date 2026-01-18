@@ -17,6 +17,30 @@ if (!isset($_SESSION['usuario'])) {
     <script src="js/theme.js" defer></script>
 </head>
 <body>
+
+    <script>
+        (function () {
+            // 1. Recuperar tema guardado
+            const tema = localStorage.getItem('user_theme');
+            const body = document.body;
+
+            // 2. Bloquear animaciones para que no haya 'fundido'
+            body.classList.add('preload');
+
+            // 3. Aplicar color de fondo INSTANTÁNEAMENTE
+            if (tema === 'light') {
+                body.classList.add('theme-light');
+            } else if (tema === 'dark') {
+                body.classList.add('theme-dark');
+            }
+
+            // 4. Reactivar animaciones tras un breve momento
+            setTimeout(() => {
+                body.classList.remove('preload');
+            }, 200);
+        })();
+    </script>
+
     <nav class="navbar">
         <div style="display: flex; align-items: center; gap: 15px;">
             <i class='bx bx-left-arrow-alt' onclick="window.history.back()" 
