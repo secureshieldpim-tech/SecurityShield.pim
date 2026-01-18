@@ -6,6 +6,32 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: login.html');
     exit;
 }
+
+// --- LÓGICA PARA OBTENER PLANES ACTIVOS ---
+$planesActivos = [];
+$archivoUsuarios = 'data/users.json'; // Ruta relativa desde perfil.php
+
+if (file_exists($archivoUsuarios)) {
+    $usuarios = json_decode(file_get_contents($archivoUsuarios), true);
+    foreach ($usuarios as $user) {
+        if ($user['email'] === $_SESSION['usuario']) {
+            if (isset($user['planes']) && is_array($user['planes'])) {
+                foreach ($user['planes'] as $plan) {
+                    // Comprobar si la fecha de expiración es mayor a hoy
+                    $fechaExpiracion = strtotime($plan['fecha_expiracion']);
+                    $ahora = time();
+                    
+                    if ($fechaExpiracion > $ahora) {
+                        // El plan sigue activo
+                        $plan['dias_restantes'] = ceil(($fechaExpiracion - $ahora) / (60 * 60 * 24));
+                        $planesActivos[] = $plan;
+                    }
+                }
+            }
+            break;
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,31 +85,41 @@ if (!isset($_SESSION['usuario'])) {
         <div class="glass-card">
             <h2 style="margin-bottom: 1rem;">Bienvenido a tu área personal</h2>
             <p style="color: var(--text-muted);">
-                Has iniciado sesión correctamente con el correo:
-                <strong style="color: var(--primary);"><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>
+                Usuario identificado: <strong style="color: var(--primary);"><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>
             </p>
 
             <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
 
             <div style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div
-                    style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                    <i class='bx bx-check-shield'
-                        style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                
+                <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <i class='bx bx-check-shield' style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
                     <h3>Estado de Cuenta</h3>
-                    <p style="color: #94a3b8; font-size: 0.9rem;">Tu cuenta está activa y funcionando correctamente.</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem;">Tu cuenta está verificada.</p>
                 </div>
 
-                <div
-                    style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                    <i class='bx bx-package'
-                        style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem;"></i>
-                    <h3>Mis Planes</h3>
-                    <p style="color: #94a3b8; font-size: 0.9rem;">No tienes planes activos actualmente.</p>
-                    <a href="planes.html"
-                        style="color: var(--primary); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 0.5rem;">Ver
-                        planes disponibles &rarr;</a>
+                <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <i class='bx bx-package' style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                    <h3>Mis Planes Activos</h3>
+                    
+                    <?php if (count($planesActivos) > 0): ?>
+                        <div style="margin-top: 1rem;">
+                            <?php foreach ($planesActivos as $plan): ?>
+                                <div style="background: rgba(56, 189, 248, 0.1); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--primary); margin-bottom: 0.5rem;">
+                                    <strong style="color: var(--primary); display:block;"><?php echo htmlspecialchars($plan['nombre']); ?></strong>
+                                    <small style="color: #ccc;">Caduca en: <?php echo $plan['dias_restantes']; ?> días</small><br>
+                                    <small style="color: #94a3b8; font-size: 0.8rem;">(<?php echo date('d/m/Y', strtotime($plan['fecha_expiracion'])); ?>)</small>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">No tienes planes activos actualmente.</p>
+                        <a href="planes.html" style="color: var(--primary); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 0.5rem;">
+                            Contratar nuevo plan &rarr;
+                        </a>
+                    <?php endif; ?>
                 </div>
+
             </div>
         </div>
     </div>
@@ -91,50 +127,24 @@ if (!isset($_SESSION['usuario'])) {
     <footer class="footer" style="margin-top: auto;">
         <div class="footer-content">
             <p>&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
-
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <i class='bx bx-envelope'></i>
-                <a href="mailto:contact@securityshield.es"
-                    style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
-                    contact@securityshield.es
-                </a>
-            </p>
-
             <div class="social-links" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
-                <a href="https://www.instagram.com/securityshield_/" target="_blank" rel="noopener noreferrer" title="Instagram">
-                    <i class='bx bxl-instagram'></i>
-                </a>
-
-                <a href="https://x.com/SecurityShield_" target="_blank" rel="noopener noreferrer" title="Twitter / X">
-                    <i class='bx bxl-twitter'></i>
-                </a>
-
-                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"
-                    rel="noopener noreferrer" title="Ver código fuente en GitHub">
-                    <i class='bx bxl-github'></i> <span data-i18n="footer_source">Código Fuente</span>
-                </a>
+                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"><i class='bx bxl-github'></i></a>
             </div>
         </div>
     </footer>
 
     <script src="js/translations.js"></script>
     <script>
-        // Menú Móvil
+        // Menú Móvil y User Dropdown
         const menuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
-
         if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
+            menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); });
         }
-
-        // Desplegable de Usuario
         function toggleUserMenu(e) {
             e.preventDefault();
             const menu = document.getElementById('userDropdown');
             menu.classList.toggle('show');
-
             document.addEventListener('click', function closeMenu(event) {
                 if (!event.target.closest('.user-menu-container')) {
                     menu.classList.remove('show');
@@ -144,5 +154,4 @@ if (!isset($_SESSION['usuario'])) {
         }
     </script>
 </body>
-
 </html>

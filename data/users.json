@@ -3,7 +3,15 @@
         "nombre": "Administrador",
         "email": "admin@secureshield.com",
         "password": "$2y$10$6ZWqZvCk1gSxI7v3loWMdeklxWDRIJ\/ONlyMqhvUk7bq4EGEAnwoS",
-        "rol": "admin"
+        "rol": "admin",
+        "planes": [
+            {
+                "nombre": "personal",
+                "fecha_compra": "2026-01-18 01:46:08",
+                "fecha_expiracion": "2026-01-25 01:46:08",
+                "activo": true
+            }
+        ]
     },
     {
         "nombre": "Iván ",

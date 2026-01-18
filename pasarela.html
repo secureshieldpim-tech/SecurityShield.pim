@@ -65,6 +65,20 @@
             }
         }
     </style>
+    <script>
+        // VERIFICACIÓN DE SEGURIDAD
+        fetch('api/check_session.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.logged_in) {
+                    alert("Debes iniciar sesión para procesar un pago.");
+                    window.location.href = 'login.html';
+                }
+            })
+            .catch(error => {
+                console.error('Error verificando sesión:', error);
+            });
+    </script>
 </head>
 
 <body>
