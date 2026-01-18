@@ -44,7 +44,7 @@ if (file_exists($archivoUsuarios)) {
     <link rel="icon" type="image/jpg" href="images/shield_g.jpg">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/theme.js"></script>
+    <script src="js/theme.js" defer></script>
 </head>
 
 <body>
