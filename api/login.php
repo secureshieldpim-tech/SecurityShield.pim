@@ -15,6 +15,7 @@ foreach ($usuarios as $user) {
         // 1. Guardamos datos básicos en la sesión
         $_SESSION['usuario'] = $user['email'];
         $_SESSION['nombre'] = $user['nombre'];
+        $_SESSION['tema'] = $user['tema'] ?? 'default'; // <--- AQUI LEEMOS EL TEMA
 
         // 2. Leemos el ROL
         $rol = isset($user['rol']) ? $user['rol'] : 'cliente';

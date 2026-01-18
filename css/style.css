@@ -700,3 +700,55 @@ th {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
+
+/* --- TEMAS DE PERSONALIZACIÓN --- */
+
+/* El tema "Default" y "Negro" usan las variables raíz que ya definiste al principio del archivo.
+   Aquí definimos solo las sobreescrituras para el modo CLARO (Blanco) */
+
+body.theme-light {
+    --bg-body: #f8fafc;
+    /* Fondo casi blanco */
+    --bg-glass: rgba(0, 0, 0, 0.05);
+    /* Cristal oscuro para resaltar en fondo blanco */
+    --border-glass: rgba(0, 0, 0, 0.1);
+
+    --text-main: #0f172a;
+    /* Texto casi negro */
+    --text-muted: #475569;
+    /* Gris medio */
+
+    /* Ajustes específicos para inputs y tarjetas en modo claro */
+    --card-bg: #ffffff;
+}
+
+/* Ajustes específicos para componentes en modo claro */
+body.theme-light .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.theme-light .navbar {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.theme-light .form-input {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    border: 1px solid #cbd5e1;
+}
+
+body.theme-light .user-dropdown {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e2e8f0;
+}
+
+body.theme-light .user-dropdown a {
+    color: #334155;
+}
+
+body.theme-light .user-dropdown a:hover {
+    background: #f1f5f9;
+}
