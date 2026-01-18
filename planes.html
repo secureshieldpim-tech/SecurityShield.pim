@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planes - SecurityShield</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" type="image/jpg" href="https://securityshield.es/images/shield_g.jpg">
+    <link rel="icon" type="image/jpg" href="images/shield_g.jpg">
     <link rel="stylesheet" href="css/style.css">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://securityshield.es/planes">
@@ -41,19 +41,6 @@
                     Registrarse
                 </a>
             </li>
-            <li id="user-menu-li" style="display: none;">
-                <div class="user-menu-container">
-                    <a href="#" class="user-toggle" onclick="toggleUserMenu(event)">
-                        <i class='bx bxs-user-circle'></i>
-                        <span id="nav-user-name">Usuario</span> <i class='bx bx-chevron-down'></i>
-                    </a>
-                    <div class="user-dropdown" id="userDropdown">
-                        <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
-                        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
-                        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
-                    </div>
-                </div>
-            </li>
             <li>
                 <select id="language-selector" class="lang-select">
                     <option value="es">🇪🇸 ES</option>
@@ -87,7 +74,7 @@
                             Básico</span></li>
                 </ul>
                 <a href="pasarela?plan=personal&precio=0" class="btn-submit"
-                    style="display:inline-block; text-align:center; background: transparent; border: 1px solid var(--primary); color: #fff; margin-top: 2rem; text-decoration: none;">
+                    style="display:inline-block; text-align:center; background: transparent; border: 1px solid var(--primary); color: var(--text-main); margin-top: 2rem; text-decoration: none;">
                     <span data-i18n="btn_request">Solicitar</span>
                 </a>
             </div>
@@ -116,17 +103,14 @@
     </main>
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
-
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <i class='bx bx-envelope'></i>
-                <a href="mailto:contact@securityshield.es"
-                    style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">
-                    contact@securityshield.es
-                </a>
-            </p>
+            <p>&copy; 2026 SecurityShield - Proyecto PIM</p>
 
             <div class="social-links" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+
+                <a href="mailto:contact@securityshield.es" title="Enviar correo">
+                    <i class='bx bx-envelope'></i> Email
+                </a>
+
                 <a href="https://www.instagram.com/securityshield_/" target="_blank" rel="noopener noreferrer"
                     title="Instagram">
                     <i class='bx bxl-instagram'></i>
@@ -137,8 +121,8 @@
                 </a>
 
                 <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"
-                    rel="noopener noreferrer" title="Ver código fuente en GitHub">
-                    <i class='bx bxl-github'></i> <span data-i18n="footer_source">Código Fuente</span>
+                    rel="noopener noreferrer" title="GitHub">
+                    <i class='bx bxl-github'></i>
                 </a>
             </div>
         </div>

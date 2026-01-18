@@ -66,7 +66,9 @@ if (file_exists($archivoUsuarios)) {
                     </a>
                     <div class="user-dropdown" id="userDropdown">
                         <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
-                        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a> <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
+                        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
+                        
+                        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
                     </div>
                 </div>
             </li>
@@ -125,11 +127,27 @@ if (file_exists($archivoUsuarios)) {
         </div>
     </div>
 
-    <footer class="footer" style="margin-top: auto;">
+<footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2026 SecurityShield - Proyecto PIM - Defensa de Servidor Web</p>
+            <p>&copy; 2026 SecurityShield - Proyecto PIM</p>
+
             <div class="social-links" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
-                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"><i class='bx bxl-github'></i></a>
+                
+                <a href="mailto:contact@securityshield.es" title="Enviar correo">
+                    <i class='bx bx-envelope'></i> Email
+                </a>
+
+                <a href="https://www.instagram.com/securityshield_/" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <i class='bx bxl-instagram'></i>
+                </a>
+
+                <a href="https://x.com/SecurityShield_" target="_blank" rel="noopener noreferrer" title="Twitter / X">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+
+                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class='bx bxl-github'></i>
+                </a>
             </div>
         </div>
     </footer>

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ---------------------------------------------------------
-    // 1. LÓGICA DE SESIÓN DE USUARIO (EL CÓDIGO NUEVO)
+    // 1. LÓGICA DE SESIÓN DE USUARIO
     // ---------------------------------------------------------
     // Esto pregunta al archivo PHP si estamos logueados
     fetch('api/check_session.php')
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             // Si PHP dice que sí, actualizamos el menú
             if (data.logged_in) {
-                console.log("Usuario logueado:", data.nombre); // Para depurar en consola
+                // console.log("Usuario logueado:", data.nombre); // Descomenta para depurar
                 updateNavForUser(data.nombre);
             }
         })
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ---------------------------------------------------------
-    // 2. LÓGICA DEL FORMULARIO DE CONTACTO (TU CÓDIGO ANTIGUO)
+    // 2. LÓGICA DEL FORMULARIO DE CONTACTO (TU CÓDIGO ORIGINAL)
     // ---------------------------------------------------------
     const botonEnviar = document.querySelector('.btn-submit');
 
@@ -93,7 +93,7 @@ function updateNavForUser(nombreUsuario) {
     if (registerLink && registerLink.parentElement) {
         const liPadre = registerLink.parentElement;
 
-        // Inyectamos el HTML del menú desplegable
+        // Inyectamos el HTML del menú desplegable (AQUÍ ESTÁ TU MENÚ COMPLETO + CONFIGURACIÓN)
         liPadre.innerHTML = `
             <div class="user-menu-container">
                 <a href="#" class="user-toggle" onclick="toggleUserMenu(event)">
@@ -101,6 +101,9 @@ function updateNavForUser(nombreUsuario) {
                 </a>
                 <div class="user-dropdown" id="userDropdown">
                     <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
+                    
+                    <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
+                    
                     <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
                 </div>
             </div>
@@ -114,7 +117,7 @@ function toggleUserMenu(e) {
     if (menu) {
         menu.classList.toggle('show');
 
-        // Cerrar al hacer clic fuera
+        // Cerrar al hacer click fuera
         document.addEventListener('click', function closeMenu(event) {
             if (!event.target.closest('.user-menu-container')) {
                 menu.classList.remove('show');
