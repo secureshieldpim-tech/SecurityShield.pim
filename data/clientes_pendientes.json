@@ -28,5 +28,20 @@
             "arquitectura": "arm64"
         },
         "estado": "pagado_pendiente_envio"
+    },
+    {
+        "id_pedido": "ORD-696c42b7a0833",
+        "fecha": "2026-01-18 03:17:27",
+        "cliente": "adawd",
+        "email": "admin@secureshield.com",
+        "plan_info": {
+            "nombre_plan": "personal",
+            "precio": "0"
+        },
+        "datos_tecnicos": {
+            "sistema_operativo": "ubuntu",
+            "arquitectura": "x86_64"
+        },
+        "estado": "pagado_pendiente_envio"
     }
 ]
