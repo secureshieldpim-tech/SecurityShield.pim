@@ -10,12 +10,6 @@
                 "fecha_compra": "2026-01-18 01:46:08",
                 "fecha_expiracion": "2026-01-25 01:46:08",
                 "activo": true
-            },
-            {
-                "nombre": "personal",
-                "fecha_compra": "2026-01-18 03:17:27",
-                "fecha_expiracion": "2026-01-25 03:17:27",
-                "activo": true
             }
         ],
         "tema": "default"
