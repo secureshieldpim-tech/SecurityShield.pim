@@ -58,7 +58,19 @@
                     Registrarse
                 </a>
             </li>
-
+            <li id="user-menu-li" style="display: none;">
+                <div class="user-menu-container">
+                    <a href="#" class="user-toggle" onclick="toggleUserMenu(event)">
+                        <i class='bx bxs-user-circle'></i>
+                        <span id="nav-user-name">Usuario</span> <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
+                        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
+                        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
+                    </div>
+                </div>
+            </li>
             <li>
                 <select id="language-selector" class="lang-select">
                     <option value="es">🇪🇸 ES</option>

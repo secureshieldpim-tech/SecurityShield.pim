@@ -65,8 +65,8 @@ if (file_exists($archivoUsuarios)) {
                         <i class='bx bx-chevron-down'></i>
                     </a>
                     <div class="user-dropdown" id="userDropdown">
-                        <a href="#" class="active"><i class='bx bx-id-card'></i> Mi Perfil</a>
-                        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
+                        <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
+                        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a> <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
                     </div>
                 </div>
             </li>
