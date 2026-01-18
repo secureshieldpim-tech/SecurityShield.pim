@@ -39,7 +39,7 @@ if (file_exists($archivoUsuarios)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil - SecurityShield</title>
+    <title data-i18n="title_profile">Mi Perfil - SecurityShield</title>
 
     <link rel="icon" type="image/jpg" href="images/shield_g.jpg">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -65,10 +65,10 @@ if (file_exists($archivoUsuarios)) {
                         <i class='bx bx-chevron-down'></i>
                     </a>
                     <div class="user-dropdown" id="userDropdown">
-                        <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
-                        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
+                        <a href="perfil.php"><i class='bx bx-id-card'></i> <span data-i18n="menu_profile">Mi Perfil</span></a>
+                        <a href="configuracion.php"><i class='bx bx-cog'></i> <span data-i18n="menu_config">Configuración</span></a>
                         
-                        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
+                        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> <span data-i18n="menu_logout">Cerrar Sesión</span></a>
                     </div>
                 </div>
             </li>
@@ -86,9 +86,9 @@ if (file_exists($archivoUsuarios)) {
 
     <div class="container" style="min-height: 60vh; margin-top: 2rem;">
         <div class="glass-card">
-            <h2 style="margin-bottom: 1rem;">Bienvenido a tu área personal</h2>
+            <h2 style="margin-bottom: 1rem;" data-i18n="profile_welcome">Bienvenido a tu área personal</h2>
             <p style="color: var(--text-muted);">
-                Usuario identificado: <strong style="color: var(--primary);"><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>
+                <span data-i18n="profile_user_id">Usuario identificado:</span> <strong style="color: var(--primary);"><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>
             </p>
 
             <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
@@ -97,8 +97,8 @@ if (file_exists($archivoUsuarios)) {
                 
                 <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
                     <i class='bx bx-check-shield' style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                    <h3>Estado de Cuenta</h3>
-                    <p style="color: #94a3b8; font-size: 0.9rem;">Tu cuenta está verificada.</p>
+                    <h3 data-i18n="profile_status_title">Estado de Cuenta</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem;" data-i18n="profile_status_verified">Tu cuenta está verificada.</p>
                 </div>
 
                 <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
@@ -110,7 +110,7 @@ if (file_exists($archivoUsuarios)) {
                             <?php foreach ($planesActivos as $plan): ?>
                                 <div style="background: rgba(56, 189, 248, 0.1); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--primary); margin-bottom: 0.5rem;">
                                     <strong style="color: var(--primary); display:block;"><?php echo htmlspecialchars($plan['nombre']); ?></strong>
-                                    <small style="color: #ccc;">Caduca en: <?php echo $plan['dias_restantes']; ?> días</small><br>
+                                    <small style="color: #ccc;"><span data-i18n="profile_plans_expire">Caduca en:</span> <?php echo $plan['dias_restantes']; ?> <span data-i18n="profile_plans_days">días</span></small>
                                     <small style="color: #94a3b8; font-size: 0.8rem;">(<?php echo date('d/m/Y', strtotime($plan['fecha_expiracion'])); ?>)</small>
                                 </div>
                             <?php endforeach; ?>
