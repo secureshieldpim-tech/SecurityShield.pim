@@ -1,4 +1,14 @@
 <?php
+$duracion = 60 * 60 * 24 * 30; // 30 días en segundos
+ini_set('session.gc_maxlifetime', $duracion);
+session_set_cookie_params([
+    'lifetime' => $duracion,
+    'path' => '/',
+    'domain' => '', // Dejar vacío para dominio actual
+    'secure' => true, // Cambiar a false si estás en localhost sin https
+    'httponly' => true
+]);
+
 session_start();
 require_once '../classes/JsonHandler.php';
 

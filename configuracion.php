@@ -18,10 +18,16 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo"><i class='bx bxs-cog'></i> Configuración</div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <i class='bx bx-left-arrow-alt' onclick="window.history.back()" 
+               style="font-size: 2rem; cursor: pointer; color: var(--primary);"></i>
+            
+            <div class="logo"><i class='bx bxs-cog'></i> Configuración</div>
+        </div>
+
         <div class="nav-links">
             <a href="perfil.php" class="btn-login" style="background: transparent; border: 1px solid var(--primary); color: var(--text-main)!important;">
-                <i class='bx bx-arrow-back'></i> <span data-i18n="btn_back_profile">Volver al Perfil</span>
+                <i class='bx bx-user'></i> <span data-i18n="btn_back_profile">Ir al Perfil</span>
             </a>
         </div>
     </nav>
