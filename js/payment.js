@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Enviar al Backend (PHP)
-                const respuesta = await fetch('api/procesar_compra.php', {
+                const respuesta = await fetch('/api/procesar_compra.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(purchaseData)

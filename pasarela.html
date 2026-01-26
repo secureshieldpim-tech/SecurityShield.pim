@@ -68,7 +68,7 @@
     <script src="js/theme.js" defer></script>
     <script>
         // VERIFICACIÓN DE SEGURIDAD
-        fetch('api/check_session.php')
+        fetch('/api/check_session.php')
             .then(response => response.json())
             .then(data => {
                 if (!data.logged_in) {

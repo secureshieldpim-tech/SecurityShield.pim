@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. LÓGICA DE SESIÓN DE USUARIO
     // ---------------------------------------------------------
     // Esto pregunta al archivo PHP si estamos logueados
-    fetch('api/check_session.php')
+    fetch('/api/check_session.php')
         .then(response => {
             if (!response.ok) {
                 throw new Error('No se encontró check_session.php');
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             botonEnviar.disabled = true;
 
             try {
-                const respuesta = await fetch('api/procesar_contacto.php', {
+                const respuesta = await fetch('/api/procesar_contacto.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)

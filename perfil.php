@@ -181,6 +181,7 @@ if (file_exists($archivoUsuarios)) {
         </div>
     </footer>
 
+    <script src="js/logic.js"></script>
     <script src="js/translations.js"></script>
     <script>
         // Menú Móvil y User Dropdown

@@ -96,7 +96,7 @@ if (!isset($_SESSION['usuario'])) {
             localStorage.setItem('user_theme', tema);
 
             // 2. Guardar en servidor
-            fetch('api/guardar_tema.php', {
+            fetch('/api/guardar_tema.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ tema: tema })

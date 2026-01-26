@@ -8,7 +8,7 @@ function aplicarTema(tema) {
 // Lógica de inicio
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Verificar sesión ANTES de decidir qué tema dejar fijo
-    fetch('api/check_session.php')
+    fetch('/api/check_session.php')
         .then(res => res.json())
         .then(data => {
             if (data.logged_in) {
