@@ -90,24 +90,49 @@ function updateNavForUser(nombreUsuario) {
     }
 
     // 3. Usamos el hueco del botón "Registrarse" para poner el Menú de Usuario
+    // ✅ FORMA SEGURA
     if (registerLink && registerLink.parentElement) {
         const liPadre = registerLink.parentElement;
 
-        // Inyectamos el HTML del menú desplegable (AQUÍ ESTÁ TU MENÚ COMPLETO + CONFIGURACIÓN)
-        liPadre.innerHTML = `
-            <div class="user-menu-container">
-                <a href="#" class="user-toggle" onclick="toggleUserMenu(event)">
-                    <i class='bx bxs-user-circle'></i> ${nombreUsuario} <i class='bx bx-chevron-down'></i>
-                </a>
-                <div class="user-dropdown" id="userDropdown">
-                    <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
-                    
-                    <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
-                    
-                    <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
-                </div>
-            </div>
-        `;
+        // 1. Limpiamos el contenedor
+        liPadre.innerHTML = '';
+
+        // 2. Creamos el contenedor del menú
+        const container = document.createElement('div');
+        container.className = 'user-menu-container';
+
+        // 3. Creamos el enlace del usuario de forma segura
+        const toggleLink = document.createElement('a');
+        toggleLink.href = '#';
+        toggleLink.className = 'user-toggle';
+        toggleLink.onclick = toggleUserMenu;
+
+        // Icono (esto sí es HTML seguro fijo)
+        toggleLink.innerHTML = "<i class='bx bxs-user-circle'></i> ";
+
+        // 4. AQUÍ LA MAGIA: Insertamos el nombre como TEXTO PLANO
+        const textNode = document.createTextNode(nombreUsuario + " ");
+        toggleLink.appendChild(textNode);
+
+        // Flechita
+        const arrowIcon = document.createElement('i');
+        arrowIcon.className = 'bx bx-chevron-down';
+        toggleLink.appendChild(arrowIcon);
+
+        // 5. Añadimos el resto del menú (que es código fijo, no peligroso)
+        const dropdown = document.createElement('div');
+        dropdown.className = 'user-dropdown';
+        dropdown.id = 'userDropdown';
+        dropdown.innerHTML = `
+        <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
+        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
+        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
+    `;
+
+        // 6. Ensamblamos todo
+        container.appendChild(toggleLink);
+        container.appendChild(dropdown);
+        liPadre.appendChild(container);
     }
 }
 
