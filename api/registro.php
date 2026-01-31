@@ -1,5 +1,5 @@
 <?php
-require_once '../classes/JsonHandler.php';
+require_once 'CloudflareHandler.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'] ?? '';
@@ -8,37 +8,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($nombre) && !empty($email) && !empty($password)) {
         
-        $db = new JsonHandler('users.json');
+        $db = new CloudflareHandler();
         
-        // 1. Verificar si el email ya existe
-        $usuariosExistentes = $db->leerRegistros();
-        foreach ($usuariosExistentes as $usuario) {
-            if ($usuario['email'] === $email) {
-                echo "<script>
-                        alert('Error: Este email ya está registrado.');
-                        window.location.href='../registro';
-                      </script>";
-                exit;
-            }
-        }
-
-        // 2. Crear el nuevo usuario
-        $nuevoUsuario = [
-            'nombre' => $nombre,
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
-        ];
-
-        // 3. Guardar
-        if ($db->guardarRegistro($nuevoUsuario)) {
+        // 1. Comprobar si existe el email (SQL)
+        $sqlCheck = "SELECT id FROM usuarios WHERE email = ?";
+        $existe = $db->query($sqlCheck, [$email]);
+        
+        if (!empty($existe)) {
             echo "<script>
-                    alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
-                    window.location.href='../login';
-                  </script>";
-        } else {
-            echo "<script>alert('Error al guardar en la base de datos.'); window.history.back();</script>";
+                    alert('Error: Este email ya está registrado.');
+                    window.location.href='../registro.html'; 
+                  </script>"; // Ojo: verifica si es registro.html o ../registro a secas según tu routing
+            exit;
         }
+
+        // 2. Crear usuario (SQL)
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $sqlInsert = "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)";
+        
+        $db->query($sqlInsert, [$nombre, $email, $passwordHash]);
+
+        echo "<script>
+                alert('¡Cuenta creada en Cloudflare D1! Inicia sesión.');
+                window.location.href='../login.html';
+              </script>";
     } else {
-        echo "<script>alert('Por favor completa todos los campos.'); window.history.back();</script>";
+        echo "<script>alert('Completa todos los campos.'); window.history.back();</script>";
     }
 }
+?>
