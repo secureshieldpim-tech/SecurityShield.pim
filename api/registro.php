@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         echo "<script>
                 alert('¡Cuenta creada en Cloudflare D1! Inicia sesión.');
-                window.location.href='../login.html';
+                window.location.href='../login';
               </script>";
     } else {
         echo "<script>alert('Completa todos los campos.'); window.history.back();</script>";
