@@ -1,4 +1,5 @@
 <?php
+// Asegúrate de que CloudflareHandler.php está en la misma carpeta 'api'
 require_once 'CloudflareHandler.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,30 +11,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $db = new CloudflareHandler();
         
-        // 1. Comprobar si existe el email (SQL)
+        // 1. Verificar si existe
         $sqlCheck = "SELECT id FROM usuarios WHERE email = ?";
         $existe = $db->query($sqlCheck, [$email]);
         
         if (!empty($existe)) {
             echo "<script>
-                    alert('Error: Este email ya está registrado.');
-                    window.location.href='../registro.html'; 
-                  </script>"; // Ojo: verifica si es registro.html o ../registro a secas según tu routing
+                    alert('Error: Este email ya existe.');
+                    window.location.href='../registro.html';
+                  </script>";
             exit;
         }
 
-        // 2. Crear usuario (SQL)
+        // 2. Insertar usuario
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $sqlInsert = "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)";
         
+        // Ejecutar
         $db->query($sqlInsert, [$nombre, $email, $passwordHash]);
 
+        // 3. Redirección CORRECTA
+        // Aquí estaba el fallo: ahora te enviamos a login.html que SÍ funciona
         echo "<script>
-                alert('¡Cuenta creada en Cloudflare D1! Inicia sesión.');
-                window.location.href='../login';
+                alert('¡CUENTA CREADA EN CLOUDFLARE! Pulsa Aceptar para entrar.');
+                window.location.href='../login.html';
               </script>";
     } else {
-        echo "<script>alert('Completa todos los campos.'); window.history.back();</script>";
+        echo "<script>alert('Faltan datos.'); window.history.back();</script>";
     }
 }
 ?>
