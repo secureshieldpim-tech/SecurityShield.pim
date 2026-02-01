@@ -2,12 +2,15 @@
 // Archivo: api/guardar_tema.php
 session_start();
 header('Content-Type: application/json');
+require_once 'CloudflareHandler.php';
 
+// Validar sesión
 if (!isset($_SESSION['usuario'])) {
     echo json_encode(['success' => false, 'message' => 'No autorizado']);
     exit;
 }
 
+// Leer datos entrada
 $input = json_decode(file_get_contents('php://input'), true);
 $nuevoTema = $input['tema'] ?? 'default';
 
@@ -17,28 +20,20 @@ if (!in_array($nuevoTema, $temasValidos)) {
     $nuevoTema = 'default';
 }
 
-$archivoUsuarios = '../data/users.json';
+try {
+    $db = new CloudflareHandler();
+    
+    // SQL para actualizar el tema del usuario logueado
+    $sql = "UPDATE usuarios SET tema = ? WHERE email = ?";
+    // Ejecutamos la consulta. Cloudflare devuelve un resultado, pero en un UPDATE nos interesa que no dé error.
+    $db->query($sql, [$nuevoTema, $_SESSION['usuario']]);
 
-if (file_exists($archivoUsuarios)) {
-    $usuarios = json_decode(file_get_contents($archivoUsuarios), true);
-    $usuarioEncontrado = false;
+    // Actualizamos la sesión para que se note el cambio sin recargar
+    $_SESSION['tema'] = $nuevoTema;
 
-    foreach ($usuarios as &$user) {
-        if ($user['email'] === $_SESSION['usuario']) {
-            $user['tema'] = $nuevoTema; // Guardamos el tema
-            $_SESSION['tema'] = $nuevoTema; // Actualizamos la sesión también
-            $usuarioEncontrado = true;
-            break;
-        }
-    }
+    echo json_encode(['success' => true]);
 
-    if ($usuarioEncontrado) {
-        file_put_contents($archivoUsuarios, json_encode($usuarios, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        echo json_encode(['success' => true]);
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Usuario no encontrado']);
-    }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Error de base de datos']);
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Error al guardar tema: ' . $e->getMessage()]);
 }
 ?>
