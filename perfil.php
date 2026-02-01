@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Seguridad: Si no está logueado, mandar al login
 if (!isset($_SESSION['usuario'])) {
     header('Location: login.html');
     exit;
@@ -15,40 +14,31 @@ $errorMsg = "";
 try {
     $db = new CloudflareHandler();
     
-    // 1. Necesitamos el ID del usuario. Si está en sesión lo usamos, sino lo buscamos por email.
     $userId = $_SESSION['user_id'] ?? null;
     
     if (!$userId) {
         $userResult = $db->query("SELECT id FROM usuarios WHERE email = ?", [$_SESSION['usuario']]);
         if (!empty($userResult) && isset($userResult[0]['id'])) {
             $userId = $userResult[0]['id'];
-            $_SESSION['user_id'] = $userId; // Lo guardamos para la próxima
+            $_SESSION['user_id'] = $userId;
         }
     }
 
     if ($userId) {
-        // 2. Buscamos los planes de este usuario en la base de datos
-        // Filtramos solo los que estén marcados como activos (activo = 1)
         $sqlPlanes = "SELECT * FROM planes_usuarios WHERE usuario_id = ? AND activo = 1";
         $misPlanes = $db->query($sqlPlanes, [$userId]);
 
-        // Cloudflare a veces devuelve la estructura diferente, normalizamos a array
         if (isset($misPlanes['results'])) { $misPlanes = $misPlanes['results']; }
         if (!is_array($misPlanes)) { $misPlanes = []; }
 
-        // 3. Procesamos para ver si han caducado
         foreach ($misPlanes as $plan) {
             $fechaExpiracion = strtotime($plan['fecha_expiracion']);
             $ahora = time();
             
             if ($fechaExpiracion > $ahora) {
-                // El plan sigue vigente
-                $plan['nombre'] = $plan['nombre_plan']; // Ajuste de nombre de columna para el HTML
+                $plan['nombre'] = $plan['nombre_plan'];
                 $plan['dias_restantes'] = ceil(($fechaExpiracion - $ahora) / (60 * 60 * 24));
                 $planesActivos[] = $plan;
-            } else {
-                // (Opcional) Podríamos marcarlo como inactivo en la DB si ya expiró, 
-                // pero por rendimiento lo dejamos así, simplemente no lo mostramos.
             }
         }
     }
