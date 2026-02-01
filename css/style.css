@@ -574,6 +574,23 @@ body.theme-light .footer p a {
     color: #a0a0b0;
 }
 
+/* --- CORRECCIÓN ADAPTATIVA PARA DESPLEGABLES (WINDOWS) --- */
+
+/* 1. Por defecto (TEMA OSCURO) */
+.styled-select option {
+    background-color: #1e1e28;
+    /* Fondo oscuro */
+    color: #fff;
+    /* Texto blanco */
+}
+
+/* 2. Cuando está activo el TEMA CLARO */
+body.theme-light .styled-select option {
+    background-color: #ffffff;
+    /* Fondo blanco */
+    color: #333333;
+    /* Texto oscuro */
+}
 
 .input-group {
     position: relative;
