@@ -9,53 +9,160 @@
     <link rel="icon" type="image/jpg" href="https://securityshield.es/images/shield_g.jpg">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* --- ESTILOS ESPECÍFICOS DE LA PASARELA --- */
         .payment-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 80vh;
+            min-height: 85vh;
+            padding: 20px;
         }
 
-        .card-visual {
-            background: linear-gradient(135deg, var(--secondary), #6366f1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            height: 180px;
+        .payment-wrapper {
+            background: rgba(30, 30, 40, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             position: relative;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Efecto de luz ambiental */
+        .payment-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .payment-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- TARJETA DE CRÉDITO HOLOGRÁFICA --- */
+        .card-visual {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            height: 200px;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card-visual:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Brillo decorativo en la tarjeta */
+        .card-visual::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(125deg, transparent 30%, rgba(255, 255, 255, 0.1) 40%, transparent 50%);
+            z-index: 0;
         }
 
         .chip {
-            width: 50px;
+            width: 45px;
             height: 35px;
-            background: #ffbd72;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            border-radius: 6px;
+            position: relative;
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .card-logo {
+            font-size: 2.5rem;
+            color: #fff;
+            text-align: right;
+            transition: all 0.3s ease;
         }
 
         .card-number {
             font-size: 1.4rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-family: monospace;
-            text-shadow: 1px 1px 2px black;
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
+            z-index: 1;
+            min-height: 30px;
         }
 
-        .card-info {
+        .card-footer {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
             text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .card-holder {
+            font-weight: 600;
+            letter-spacing: 1px;
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Botón de Cerrar (X) mejorado */
+        .btn-close-page {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-close-page:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border-color: #ef4444;
+            transform: rotate(90deg);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
         }
 
         .spinner {
             display: none;
             width: 20px;
             height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(0, 0, 0, 0.3);
             border-radius: 50%;
-            border-top-color: white;
+            border-top-color: #000;
             animation: spin 1s ease-in-out infinite;
         }
 
@@ -64,20 +171,30 @@
                 transform: rotate(360deg);
             }
         }
+
+        .secure-footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
     </style>
+
     <script src="js/theme.js" defer></script>
     <script>
+        // VERIFICACIÓN DE SEGURIDAD
         fetch('/api/check_session.php')
             .then(response => response.json())
             .then(data => {
                 if (!data.logged_in) {
-                    alert("Debes iniciar sesión para procesar un pago.");
                     window.location.href = 'login.html';
                 }
             })
-            .catch(error => {
-                console.error('Error verificando sesión:', error);
-            });
+            .catch(() => { });
     </script>
 </head>
 
@@ -87,23 +204,15 @@
         (function () {
             const tema = localStorage.getItem('user_theme');
             const body = document.body;
-
             body.classList.add('preload');
-
-            if (tema === 'light') {
-                body.classList.add('theme-light');
-            } else if (tema === 'dark') {
-                body.classList.add('theme-dark');
-            }
-
-            setTimeout(() => {
-                body.classList.remove('preload');
-            }, 200);
+            if (tema === 'light') body.classList.add('theme-light');
+            else if (tema === 'dark') body.classList.add('theme-dark');
+            setTimeout(() => body.classList.remove('preload'), 200);
         })();
     </script>
 
     <nav class="navbar">
-        <div class="logo"><i class='bx bxs-lock-alt'></i> SecureGateway</div>
+        <div class="logo"><i class='bx bxs-shield-plus'></i> SecureGateway</div>
 
         <div style="display:flex; align-items:center; gap:1rem;">
             <select id="language-selector" class="lang-select">
@@ -112,89 +221,100 @@
                 <option value="ca">🏴 CA</option>
                 <option value="eu">🏴 EU</option>
             </select>
-            <a href="planes" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
+            <a href="planes" class="btn-close-page" title="Cancelar pago"><i class='bx bx-x'
+                    style="font-size: 1.5rem;"></i></a>
         </div>
     </nav>
 
-    <div class="container payment-container">
-        <div class="glass-card login-card">
-            <h2 style="text-align: center; margin-bottom: 1rem;" data-i18n="gw_title">Confirmar Suscripción</h2>
-            <p id="plan-display"
-                style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-weight: bold;"></p>
+    <div class="payment-container">
+        <div class="payment-wrapper">
+            <div class="payment-content">
+                <h2 style="text-align: center; margin-bottom: 0.5rem;" data-i18n="gw_title">Confirmar Pago</h2>
+                <p id="plan-display"
+                    style="text-align: center; color: var(--primary); margin-bottom: 1.5rem; font-weight: bold; letter-spacing: 0.5px;">
+                </p>
 
-            <div class="card-visual">
-                <div class="chip"></div>
-                <div class="card-number">•••• •••• •••• 4242</div>
-                <div class="card-info">
-                    <span>Usuario Anónimo</span>
-                    <span>12/28</span>
+                <div class="card-visual">
+                    <div style="display:flex; justify-content:space-between; align-items:start;">
+                        <div class="chip"></div>
+                        <i class='bx bx-wifi'
+                            style="font-size: 2rem; color: rgba(255,255,255,0.6); transform: rotate(90deg);"></i>
+                    </div>
+
+                    <div class="card-number" id="cardVisualNumber">•••• •••• •••• ••••</div>
+
+                    <div class="card-footer">
+                        <div>
+                            <div style="font-size: 0.6rem; opacity: 0.7;">TITULAR</div>
+                            <div class="card-holder" id="cardVisualHolder">USUARIO REGISTRADO</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.6rem; opacity: 0.7;">EXPIRA</div>
+                            <span id="cardVisualDate">MM/YY</span>
+                        </div>
+                    </div>
+                    <div class="card-logo" id="cardLogo" style="position: absolute; bottom: 20px; right: 25px;">
+                        <i class='bx bx-credit-card'></i>
+                    </div>
+                </div>
+
+                <form id="payment-form">
+                    <div class="input-group">
+                        <label data-i18n="lbl_cardholder">Nombre en la tarjeta</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-user'></i>
+                            <input type="text" id="cardHolderInput" class="styled-input"
+                                placeholder="Como aparece en la tarjeta" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label data-i18n="lbl_cardnumber">Número de Tarjeta</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-credit-card'></i>
+                            <input type="text" id="cardInput" class="styled-input" placeholder="0000 0000 0000 0000"
+                                maxlength="19" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group" style="flex:1;">
+                            <label data-i18n="lbl_expire">Caducidad</label>
+                            <div class="input-wrapper">
+                                <i class='bx bx-calendar'></i>
+                                <input type="text" id="cardDateInput" class="styled-input" placeholder="MM/YY"
+                                    maxlength="5" required>
+                            </div>
+                        </div>
+                        <div class="input-group" style="flex:1;">
+                            <label data-i18n="lbl_cvc">CVC</label>
+                            <div class="input-wrapper">
+                                <i class='bx bx-lock-alt'></i>
+                                <input type="text" class="styled-input" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="pay-button" class="btn-submit" style="width:100%; margin-top:1rem;">
+                        <span id="btn-text" data-i18n="btn_pay">Pagar Ahora</span>
+                        <div class="spinner" id="spinner"></div>
+                    </button>
+                </form>
+
+                <div class="secure-footer">
+                    <i class='bx bxs-check-shield' style="color: #10b981;"></i>
+                    <span data-i18n="secure_msg">Pago cifrado SSL de 256 bits</span>
                 </div>
             </div>
-
-            <form id="payment-form">
-                <div class="form-group">
-                    <label data-i18n="lbl_cardholder">Titular de la Tarjeta</label>
-                    <input type="text" class="form-input" placeholder="Nombre completo" required>
-                </div>
-                <div class="form-group">
-                    <label data-i18n="lbl_cardnumber">Número de Tarjeta</label>
-                    <input type="text" class="form-input" placeholder="0000 0000 0000 0000" maxlength="19" required>
-                </div>
-                <div style="display: flex; gap: 10px;">
-                    <div class="form-group" style="flex:1;">
-                        <label data-i18n="lbl_expire">Expira</label>
-                        <input type="text" class="form-input" placeholder="MM/YY" maxlength="5" required>
-                    </div>
-                    <div class="form-group" style="flex:1;">
-                        <label data-i18n="lbl_cvc">CVC</label>
-                        <input type="text" class="form-input" placeholder="123" maxlength="3" required>
-                    </div>
-                </div>
-
-                <button type="button" id="pay-button" class="btn-submit"
-                    style="width:100%; margin-top:1rem; display: flex; justify-content: center; gap: 10px;">
-
-                    <span id="btn-text" data-i18n="btn_pay">Pagar y Activar</span>
-                    <div class="spinner" id="spinner"></div>
-                </button>
-            </form>
-            <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
-                <i class='bx bxs-lock'></i> <span data-i18n="secure_msg">Transacción cifrada de extremo a
-                    extremo.</span>
-            </p>
         </div>
     </div>
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2026 SecurityShield - Proyecto PIM</p>
 
-            <div class="social-links" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
-
-                <a href="mailto:contact@securityshield.es" title="Enviar correo">
-                    <i class='bx bx-envelope'></i> Email
-                </a>
-
-                <a href="https://gemini.google.com/gem/1YTeuh1x1zmtDcu17j-3S1yLJLdXN3juP?usp=sharing" target="_blank"
-                    rel="noopener noreferrer" title="Asistente Gemini">
-                    <i class='bx bx-bot'></i>
-                </a>
-
-                <a href="https://www.instagram.com/securityshield_/" target="_blank" rel="noopener noreferrer"
-                    title="Instagram">
-                    <i class='bx bxl-instagram'></i>
-                </a>
-
-                <a href="https://x.com/SecurityShield_" target="_blank" rel="noopener noreferrer" title="Twitter / X">
-                    <i class='bx bxl-twitter'></i>
-                </a>
-
-                <a href="https://github.com/secureshieldpim-tech/SecurityShield.pim" target="_blank"
-                    rel="noopener noreferrer" title="GitHub">
-                    <i class='bx bxl-github'></i>
-                </a>
-            </div>
+    <footer class="footer" style="background: transparent; border: none; padding-top: 0;">
+        <div class="footer-content" style="justify-content: center;">
+            <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 SecurityShield Payments</p>
         </div>
     </footer>
+
     <div id="techInfoModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -239,7 +359,7 @@
                             <select id="clientArch" class="styled-select" required>
                                 <option value="" disabled selected>CPU...</option>
                                 <option value="x86_64">x86_64 (64-bit)</option>
-                                <option value="arm64">ARM64 (Apple/AWS)</option>
+                                <option value="arm64">ARM64 (Apple Silicon)</option>
                                 <option value="x86">x86 (32-bit)</option>
                             </select>
                         </div>
@@ -249,8 +369,8 @@
                 <div class="input-group">
                     <label>Cuenta Vinculada <span style="font-size:0.7em; opacity:0.7;">(No editable)</span></label>
                     <div class="input-wrapper">
-                        <i class='bx bxs-lock-alt' style="color: #6366f1;"></i> <input type="email" id="clientEmail"
-                            class="styled-input" readonly>
+                        <i class='bx bxs-lock-alt' style="color: #6366f1;"></i>
+                        <input type="email" id="clientEmail" class="styled-input" readonly>
                     </div>
                 </div>
 
@@ -264,8 +384,81 @@
             </form>
         </div>
     </div>
+
     <script src="js/payment.js"></script>
     <script src="js/translations.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Referencias
+            const cardInput = document.getElementById('cardInput');
+            const cardVisual = document.getElementById('cardVisualNumber');
+            const cardLogo = document.getElementById('cardLogo');
+
+            // Referencias NUEVAS
+            const cardHolderInput = document.getElementById('cardHolderInput');
+            const cardVisualHolder = document.getElementById('cardVisualHolder');
+
+            const cardDateInput = document.getElementById('cardDateInput');
+            const cardVisualDate = document.getElementById('cardVisualDate');
+
+            // 1. LÓGICA DEL NÚMERO Y LOGO
+            if (cardInput && cardVisual && cardLogo) {
+                cardInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+
+                    // Detectar Logo
+                    if (value.startsWith('4')) {
+                        cardLogo.innerHTML = "<i class='bx bxl-visa' style='font-size: 3rem;'></i>";
+                    } else if (value.startsWith('5')) {
+                        cardLogo.innerHTML = "<i class='bx bxl-mastercard' style='font-size: 3rem;'></i>";
+                    } else {
+                        cardLogo.innerHTML = "<i class='bx bx-credit-card' style='font-size: 3rem;'></i>";
+                    }
+
+                    // Formatear espacios
+                    let formattedValue = '';
+                    for (let i = 0; i < value.length; i++) {
+                        if (i > 0 && i % 4 === 0) formattedValue += ' ';
+                        formattedValue += value[i];
+                    }
+                    e.target.value = formattedValue;
+
+                    // Espejo
+                    cardVisual.textContent = formattedValue.length > 0 ? formattedValue : '•••• •••• •••• ••••';
+                });
+            }
+
+            // 2. LÓGICA DEL TITULAR (NUEVA)
+            if (cardHolderInput && cardVisualHolder) {
+                cardHolderInput.addEventListener('input', (e) => {
+                    const texto = e.target.value;
+                    if (texto.length > 0) {
+                        cardVisualHolder.textContent = texto.toUpperCase();
+                    } else {
+                        cardVisualHolder.textContent = 'USUARIO REGISTRADO';
+                    }
+                });
+            }
+
+            // 3. LÓGICA DE LA FECHA (NUEVA)
+            if (cardDateInput && cardVisualDate) {
+                cardDateInput.addEventListener('input', (e) => {
+                    let val = e.target.value.replace(/\D/g, ''); // Solo números
+
+                    // Añadir la barra / automáticamente
+                    if (val.length >= 3) {
+                        val = val.slice(0, 2) + '/' + val.slice(2, 4);
+                    }
+
+                    e.target.value = val; // Actualizar input
+
+                    // Actualizar tarjeta visual
+                    cardVisualDate.textContent = val.length > 0 ? val : 'MM/YY';
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
