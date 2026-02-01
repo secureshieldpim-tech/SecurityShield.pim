@@ -114,13 +114,11 @@
 
         .card-footer {
             display: flex;
-            justify-content: flex-start;
-            gap: 40px;
+            justify-content: space-between;
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.8rem;
             text-transform: uppercase;
             z-index: 1;
-            align-items: flex-end;
         }
 
         .card-holder {
@@ -188,6 +186,7 @@
 
     <script src="js/theme.js" defer></script>
     <script>
+        // VERIFICACIÓN DE SEGURIDAD
         fetch('/api/check_session.php')
             .then(response => response.json())
             .then(data => {
@@ -249,218 +248,217 @@
                             <div style="font-size: 0.6rem; opacity: 0.7;">TITULAR</div>
                             <div class="card-holder" id="cardVisualHolder">USUARIO REGISTRADO</div>
                         </div>
-
-                        <div>
+                        <div style="text-align: right;">
                             <div style="font-size: 0.6rem; opacity: 0.7;">EXPIRA</div>
                             <span id="cardVisualDate">MM/YY</span>
                         </div>
                     </div>
-
                     <div class="card-logo" id="cardLogo" style="position: absolute; bottom: 20px; right: 25px;">
                         <i class='bx bx-credit-card'></i>
                     </div>
-
-                    <form id="payment-form">
-                        <div class="input-group">
-                            <label data-i18n="lbl_cardholder">Nombre en la tarjeta</label>
-                            <div class="input-wrapper">
-                                <i class='bx bx-user'></i>
-                                <input type="text" id="cardHolderInput" class="styled-input"
-                                    placeholder="Como aparece en la tarjeta" required>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <label data-i18n="lbl_cardnumber">Número de Tarjeta</label>
-                            <div class="input-wrapper">
-                                <i class='bx bx-credit-card'></i>
-                                <input type="text" id="cardInput" class="styled-input" placeholder="0000 0000 0000 0000"
-                                    maxlength="19" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="input-group" style="flex:1;">
-                                <label data-i18n="lbl_expire">Caducidad</label>
-                                <div class="input-wrapper">
-                                    <i class='bx bx-calendar'></i>
-                                    <input type="text" id="cardDateInput" class="styled-input" placeholder="MM/YY"
-                                        maxlength="5" required>
-                                </div>
-                            </div>
-                            <div class="input-group" style="flex:1;">
-                                <label data-i18n="lbl_cvc">CVC</label>
-                                <div class="input-wrapper">
-                                    <i class='bx bx-lock-alt'></i>
-                                    <input type="text" class="styled-input" placeholder="123" maxlength="3" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="button" id="pay-button" class="btn-submit" style="width:100%; margin-top:1rem;">
-                            <span id="btn-text" data-i18n="btn_pay">Pagar Ahora</span>
-                            <div class="spinner" id="spinner"></div>
-                        </button>
-                    </form>
-
-                    <div class="secure-footer">
-                        <i class='bx bxs-check-shield' style="color: #10b981;"></i>
-                        <span data-i18n="secure_msg">Pago cifrado SSL de 256 bits</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer" style="background: transparent; border: none; padding-top: 0;">
-            <div class="footer-content" style="justify-content: center;">
-                <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 SecurityShield Payments</p>
-            </div>
-        </footer>
-
-        <div id="techInfoModal" class="modal-overlay">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div style="font-size: 3rem; color: #6366f1; margin-bottom: 10px;">
-                        <i class='bx bx-server'></i>
-                    </div>
-                    <h3 data-i18n="modal_tech_title">Configuración del Entorno</h3>
-                    <p data-i18n="modal_tech_desc">Necesitamos estos datos para preparar tu script de instalación
-                        personalizado.</p>
                 </div>
 
-                <form id="techForm">
+                <form id="payment-form">
                     <div class="input-group">
-                        <label data-i18n="lbl_client_name">Nombre del Proyecto / Cliente</label>
+                        <label data-i18n="lbl_cardholder">Nombre en la tarjeta</label>
                         <div class="input-wrapper">
-                            <i class='bx bx-briefcase-alt-2'></i>
-                            <input type="text" id="clientName" class="styled-input" required
-                                placeholder="Ej: TechSolutions SL">
-                        </div>
-                    </div>
-
-                    <div class="row-grid">
-                        <div class="input-group">
-                            <label data-i18n="lbl_os">Sistema Operativo</label>
-                            <div class="input-wrapper">
-                                <i class='bx bxl-tux'></i>
-                                <select id="clientOS" class="styled-select" required>
-                                    <option value="" disabled selected>Elige SO...</option>
-                                    <option value="ubuntu">Ubuntu / Debian</option>
-                                    <option value="centos">CentOS / RHEL</option>
-                                    <option value="windows">Windows Server</option>
-                                    <option value="macos">macOS</option>
-                                    <option value="otro">Otro</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <label data-i18n="lbl_arch">Arquitectura</label>
-                            <div class="input-wrapper">
-                                <i class='bx bx-microchip'></i>
-                                <select id="clientArch" class="styled-select" required>
-                                    <option value="" disabled selected>CPU...</option>
-                                    <option value="x86_64">x86_64 (64-bit)</option>
-                                    <option value="arm64">ARM64 (Apple Silicon)</option>
-                                    <option value="x86">x86 (32-bit)</option>
-                                </select>
-                            </div>
+                            <i class='bx bx-user'></i>
+                            <input type="text" id="cardHolderInput" class="styled-input"
+                                placeholder="Como aparece en la tarjeta" required>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label>Cuenta Vinculada <span style="font-size:0.7em; opacity:0.7;">(No editable)</span></label>
+                        <label data-i18n="lbl_cardnumber">Número de Tarjeta</label>
                         <div class="input-wrapper">
-                            <i class='bx bxs-lock-alt' style="color: #6366f1;"></i>
-                            <input type="email" id="clientEmail" class="styled-input" readonly>
+                            <i class='bx bx-credit-card'></i>
+                            <input type="text" id="cardInput" class="styled-input" placeholder="0000 0000 0000 0000"
+                                maxlength="19" required>
                         </div>
                     </div>
 
-                    <div class="modal-buttons">
-                        <button type="button" class="btn-cancel" onclick="closeTechModal()"
-                            data-i18n="btn_cancel">Cancelar</button>
-                        <button type="submit" class="btn-confirm" data-i18n="btn_confirm_pay">
-                            <i class='bx bx-check-circle' style="margin-right:5px;"></i> Confirmar y Pagar
-                        </button>
+                    <div class="form-row">
+                        <div class="input-group" style="flex:1;">
+                            <label data-i18n="lbl_expire">Caducidad</label>
+                            <div class="input-wrapper">
+                                <i class='bx bx-calendar'></i>
+                                <input type="text" id="cardDateInput" class="styled-input" placeholder="MM/YY"
+                                    maxlength="5" required>
+                            </div>
+                        </div>
+                        <div class="input-group" style="flex:1;">
+                            <label data-i18n="lbl_cvc">CVC</label>
+                            <div class="input-wrapper">
+                                <i class='bx bx-lock-alt'></i>
+                                <input type="text" class="styled-input" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
                     </div>
+
+                    <button type="button" id="pay-button" class="btn-submit" style="width:100%; margin-top:1rem;">
+                        <span id="btn-text" data-i18n="btn_pay">Pagar Ahora</span>
+                        <div class="spinner" id="spinner"></div>
+                    </button>
                 </form>
+
+                <div class="secure-footer">
+                    <i class='bx bxs-check-shield' style="color: #10b981;"></i>
+                    <span data-i18n="secure_msg">Pago cifrado SSL de 256 bits</span>
+                </div>
             </div>
         </div>
+    </div>
 
-        <script src="js/payment.js"></script>
-        <script src="js/translations.js"></script>
+    <footer class="footer" style="background: transparent; border: none; padding-top: 0;">
+        <div class="footer-content" style="justify-content: center;">
+            <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 SecurityShield Payments</p>
+        </div>
+    </footer>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                // Referencias
-                const cardInput = document.getElementById('cardInput');
-                const cardVisual = document.getElementById('cardVisualNumber');
-                const cardLogo = document.getElementById('cardLogo');
+    <div id="techInfoModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div style="font-size: 3rem; color: #6366f1; margin-bottom: 10px;">
+                    <i class='bx bx-server'></i>
+                </div>
+                <h3 data-i18n="modal_tech_title">Configuración del Entorno</h3>
+                <p data-i18n="modal_tech_desc">Necesitamos estos datos para preparar tu script de instalación
+                    personalizado.</p>
+            </div>
 
-                // Referencias NUEVAS
-                const cardHolderInput = document.getElementById('cardHolderInput');
-                const cardVisualHolder = document.getElementById('cardVisualHolder');
+            <form id="techForm">
+                <div class="input-group">
+                    <label data-i18n="lbl_client_name">Nombre del Proyecto / Cliente</label>
+                    <div class="input-wrapper">
+                        <i class='bx bx-briefcase-alt-2'></i>
+                        <input type="text" id="clientName" class="styled-input" required
+                            placeholder="Ej: TechSolutions SL">
+                    </div>
+                </div>
 
-                const cardDateInput = document.getElementById('cardDateInput');
-                const cardVisualDate = document.getElementById('cardVisualDate');
+                <div class="row-grid">
+                    <div class="input-group">
+                        <label data-i18n="lbl_os">Sistema Operativo</label>
+                        <div class="input-wrapper">
+                            <i class='bx bxl-tux'></i>
+                            <select id="clientOS" class="styled-select" required>
+                                <option value="" disabled selected>Elige SO...</option>
+                                <option value="ubuntu">Ubuntu / Debian</option>
+                                <option value="centos">CentOS / RHEL</option>
+                                <option value="windows">Windows Server</option>
+                                <option value="macos">macOS</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
 
-                // 1. LÓGICA DEL NÚMERO Y LOGO
-                if (cardInput && cardVisual && cardLogo) {
-                    cardInput.addEventListener('input', (e) => {
-                        let value = e.target.value.replace(/\D/g, '');
+                    <div class="input-group">
+                        <label data-i18n="lbl_arch">Arquitectura</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-microchip'></i>
+                            <select id="clientArch" class="styled-select" required>
+                                <option value="" disabled selected>CPU...</option>
+                                <option value="x86_64">x86_64 (64-bit)</option>
+                                <option value="arm64">ARM64 (Apple Silicon)</option>
+                                <option value="x86">x86 (32-bit)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-                        // Detectar Logo
-                        if (value.startsWith('4')) {
-                            cardLogo.innerHTML = "<i class='bx bxl-visa' style='font-size: 3rem;'></i>";
-                        } else if (value.startsWith('5')) {
-                            cardLogo.innerHTML = "<i class='bx bxl-mastercard' style='font-size: 3rem;'></i>";
-                        } else {
-                            cardLogo.innerHTML = "<i class='bx bx-credit-card' style='font-size: 3rem;'></i>";
-                        }
+                <div class="input-group">
+                    <label>Cuenta Vinculada <span style="font-size:0.7em; opacity:0.7;">(No editable)</span></label>
+                    <div class="input-wrapper">
+                        <i class='bx bxs-lock-alt' style="color: #6366f1;"></i>
+                        <input type="email" id="clientEmail" class="styled-input" readonly>
+                    </div>
+                </div>
 
-                        // Formatear espacios
-                        let formattedValue = '';
-                        for (let i = 0; i < value.length; i++) {
-                            if (i > 0 && i % 4 === 0) formattedValue += ' ';
-                            formattedValue += value[i];
-                        }
-                        e.target.value = formattedValue;
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeTechModal()"
+                        data-i18n="btn_cancel">Cancelar</button>
+                    <button type="submit" class="btn-confirm" data-i18n="btn_confirm_pay">
+                        <i class='bx bx-check-circle' style="margin-right:5px;"></i> Confirmar y Pagar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-                        // Espejo
-                        cardVisual.textContent = formattedValue.length > 0 ? formattedValue : '•••• •••• •••• ••••';
-                    });
-                }
+    <script src="js/payment.js"></script>
+    <script src="js/translations.js"></script>
 
-                // 2. LÓGICA DEL TITULAR (NUEVA)
-                if (cardHolderInput && cardVisualHolder) {
-                    cardHolderInput.addEventListener('input', (e) => {
-                        const texto = e.target.value;
-                        if (texto.length > 0) {
-                            cardVisualHolder.textContent = texto.toUpperCase();
-                        } else {
-                            cardVisualHolder.textContent = 'USUARIO REGISTRADO';
-                        }
-                    });
-                }
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Referencias
+            const cardInput = document.getElementById('cardInput');
+            const cardVisual = document.getElementById('cardVisualNumber');
+            const cardLogo = document.getElementById('cardLogo');
 
-                // 3. LÓGICA DE LA FECHA (NUEVA)
-                if (cardDateInput && cardVisualDate) {
-                    cardDateInput.addEventListener('input', (e) => {
-                        let val = e.target.value.replace(/\D/g, ''); // Solo números
+            // Referencias NUEVAS
+            const cardHolderInput = document.getElementById('cardHolderInput');
+            const cardVisualHolder = document.getElementById('cardVisualHolder');
 
-                        // Añadir la barra / automáticamente
-                        if (val.length >= 3) {
-                            val = val.slice(0, 2) + '/' + val.slice(2, 4);
-                        }
+            const cardDateInput = document.getElementById('cardDateInput');
+            const cardVisualDate = document.getElementById('cardVisualDate');
 
-                        e.target.value = val; // Actualizar input
+            // 1. LÓGICA DEL NÚMERO Y LOGO
+            if (cardInput && cardVisual && cardLogo) {
+                cardInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
 
-                        // Actualizar tarjeta visual
-                        cardVisualDate.textContent = val.length > 0 ? val : 'MM/YY';
-                    });
-                }
-            });
-        </script>
+                    // Detectar Logo
+                    if (value.startsWith('4')) {
+                        cardLogo.innerHTML = "<i class='bx bxl-visa' style='font-size: 3rem;'></i>";
+                    } else if (value.startsWith('5')) {
+                        cardLogo.innerHTML = "<i class='bx bxl-mastercard' style='font-size: 3rem;'></i>";
+                    } else {
+                        cardLogo.innerHTML = "<i class='bx bx-credit-card' style='font-size: 3rem;'></i>";
+                    }
+
+                    // Formatear espacios
+                    let formattedValue = '';
+                    for (let i = 0; i < value.length; i++) {
+                        if (i > 0 && i % 4 === 0) formattedValue += ' ';
+                        formattedValue += value[i];
+                    }
+                    e.target.value = formattedValue;
+
+                    // Espejo
+                    cardVisual.textContent = formattedValue.length > 0 ? formattedValue : '•••• •••• •••• ••••';
+                });
+            }
+
+            // 2. LÓGICA DEL TITULAR
+            if (cardHolderInput && cardVisualHolder) {
+                cardHolderInput.addEventListener('input', (e) => {
+                    const texto = e.target.value;
+                    if (texto.length > 0) {
+                        cardVisualHolder.textContent = texto.toUpperCase();
+                    } else {
+                        cardVisualHolder.textContent = 'USUARIO REGISTRADO';
+                    }
+                });
+            }
+
+            // 3. LÓGICA DE LA FECHA
+            if (cardDateInput && cardVisualDate) {
+                cardDateInput.addEventListener('input', (e) => {
+                    let val = e.target.value.replace(/\D/g, ''); // Solo números
+
+                    // Añadir la barra / automáticamente
+                    if (val.length >= 3) {
+                        val = val.slice(0, 2) + '/' + val.slice(2, 4);
+                    }
+
+                    e.target.value = val; // Actualizar input
+
+                    // Actualizar tarjeta visual
+                    cardVisualDate.textContent = val.length > 0 ? val : 'MM/YY';
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
