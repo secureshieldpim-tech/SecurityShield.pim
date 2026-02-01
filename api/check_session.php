@@ -1,17 +1,20 @@
 <?php
-// api/check_session.php ACTUALIZADO
+// api/check_session.php
 session_start();
 header('Content-Type: application/json');
 
+// Verificamos si la variable de sesión existe
 if (isset($_SESSION['usuario'])) {
-    // Intentar leer el tema actualizado del fichero si no está en sesión
-    // (Simplificación: Devolvemos lo que hay en sesión, asegúrate de actualizar $_SESSION al login)
     echo json_encode([
         'logged_in' => true,
         'nombre' => $_SESSION['nombre'] ?? 'Usuario',
-        'tema' => $_SESSION['tema'] ?? 'default' // <--- NUEVO CAMPO
+        'email' => $_SESSION['usuario'],
+        'rol' => $_SESSION['rol'] ?? 'cliente',
+        'tema' => $_SESSION['tema'] ?? 'default'
     ]);
 } else {
-    echo json_encode(['logged_in' => false]);
+    echo json_encode([
+        'logged_in' => false
+    ]);
 }
 ?>
