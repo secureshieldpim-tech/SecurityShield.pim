@@ -19,16 +19,6 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 
 <body>
-    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
-        <select id="language-selector" class="lang-select" 
-            style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid #38bdf8; padding: 8px 12px; border-radius: 20px; cursor: pointer; box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);">
-            <option value="es">🇪🇸 ES</option>
-            <option value="en">🇬🇧 EN</option>
-            <option value="ca">🏴 CA</option>
-            <option value="eu">🏴 EU</option>
-        </select>
-    </div>
-
     <script>
         (function () {
             const tema = localStorage.getItem('user_theme');
@@ -56,6 +46,15 @@ if (!isset($_SESSION['usuario'])) {
             
             <li><a href="login.html" data-i18n="nav_item_login">Iniciar Sesión</a></li>
             <li><a href="registro.html" class="btn-login" data-i18n="nav_item_register">Registrarse</a></li>
+
+            <li>
+                <select id="language-selector" class="lang-select">
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="ca">🏴 CA</option>
+                    <option value="eu">🏴 EU</option>
+                </select>
+            </li>
         </ul>
     </nav>
 
@@ -110,7 +109,7 @@ if (!isset($_SESSION['usuario'])) {
             .then(data => {
                 const msg = document.getElementById('mensaje-estado');
                 if (data.success) {
-                    msg.textContent = "Tema guardado correctamente."; 
+                    msg.textContent = "Tema guardado / Theme saved"; 
                     setTimeout(() => msg.textContent = "", 2000);
                 } else {
                     msg.style.color = 'red';
@@ -128,7 +127,7 @@ if (!isset($_SESSION['usuario'])) {
         }
     </script>
     
-    <script src="js/translations.js"></script>
     <script src="js/logic.js"></script>
+    <script src="js/translations.js"></script>
 </body>
 </html>

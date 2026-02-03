@@ -12,16 +12,6 @@
 </head>
 
 <body>
-    <div style="position: absolute; top: 25px; right: 70px; z-index: 9999;">
-        <select id="language-selector" class="lang-select"
-            style="background: rgba(0,0,0,0.6); color: #fff; border: 1px solid #38bdf8; padding: 4px 8px; border-radius: 15px; cursor: pointer; font-size: 0.9rem;">
-            <option value="es">🇪🇸 ES</option>
-            <option value="en">🇬🇧 EN</option>
-            <option value="ca">🏴 CA</option>
-            <option value="eu">🏴 EU</option>
-        </select>
-    </div>
-
     <script>
         (function () {
             // 1. Recuperar tema guardado
@@ -47,7 +37,14 @@
 
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
+
         <div style="display:flex; align-items:center; gap:1rem;">
+            <select id="language-selector" class="lang-select">
+                <option value="es">🇪🇸 ES</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="ca">🏴 CA</option>
+                <option value="eu">🏴 EU</option>
+            </select>
             <a href="principal.html" style="color: white; font-size: 1.5rem;"><i class='bx bx-x'></i></a>
         </div>
     </nav>
