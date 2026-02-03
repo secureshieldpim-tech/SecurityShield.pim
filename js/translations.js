@@ -4,38 +4,52 @@ const translations = {
         "nav_planes": "Planes",
         "nav_contacto": "Contacto",
         "nav_login": "Acceso Lab",
-        "hero_title": "Defensa en Profundidad",
-        "hero_text": "Un usuario informado es la barrera más eficaz. Protegemos tu infraestructura con estrategias proactivas y auditorías avanzadas.",
-        "hero_btn": "Ver Soluciones",
-        "feat_nmap_title": "Auditoría Nmap",
-        "feat_nmap_text": "Identificamos tu superficie de ataque visible antes de que lo hagan los ciberdelincuentes.",
-        "feat_armor_title": "AppArmor Hardening",
-        "feat_armor_text": "Contención de daños mediante perfiles de seguridad obligatorios. Tu servidor, blindado.",
-        "feat_ssh_title": "Autenticación SSH",
-        "feat_ssh_text": "Implementación de llaves criptográficas para eliminar el riesgo de las contraseñas débiles.",
+
+        // SECCIÓN HERO (PRINCIPAL) - Actualizada con la filosofía "Suelo Seguro"
+        "hero_title": "Fortaleza Digital Automatizada",
+        "hero_text": "Transformamos servidores vulnerables en fortalezas. Aplicamos capas de seguridad en Sistema, Red (UFW), Web (Nginx) y Kernel para blindar tu infraestructura.",
+        "hero_btn": "Ver Defensa Activa",
+
+        // CARACTERÍSTICAS (PRINCIPAL.HTML) - Basado en tus capas 2, 3 y 4
+        "feat_nmap_title": "Auditoría de Superficie",
+        "feat_nmap_text": "Identificamos puertos abiertos y vulnerabilidades visibles antes de aplicar el bastionado.",
+
+        "feat_armor_title": "Hardening Web y Kernel", // Antes era AppArmor
+        "feat_armor_text": "Protección Anti-Clickjacking en Nginx, ocultación de versiones y bloqueo de Spoofing a nivel de núcleo.",
+
+        "feat_ssh_title": "Acceso SSH Blindado",
+        "feat_ssh_text": "Baneo automático de intrusos (Fail2Ban), banners legales y limitación estricta de intentos de acceso.",
+
+        // SECCIÓN PLANES
         "page_planes_title": "Nuestros Planes",
-        "page_planes_subtitle": "Escalabilidad desde la auditoría básica hasta la contención total.",
+        "page_planes_subtitle": "Desde el diagnóstico inicial hasta el bastionado integral por capas.",
+
         "plan_personal_title": "Plan Personal",
         "plan_personal_price": "Gratis",
-        "plan_personal_desc": "Ideal para diagnósticos iniciales.",
+        "plan_personal_desc": "Diagnóstico de vulnerabilidades.",
         "feat_audit": "Auditoría de Puertos Nmap",
         "feat_report": "Informe de Exposición",
-        "feat_no_armor": "Sin Hardening AppArmor",
-        "feat_support": "Soporte Básico",
+        "feat_no_armor": "Sin Hardening de Kernel",
+        "feat_support": "Sin Protección Activa",
         "btn_request": "Solicitar",
         "badge_rec": "RECOMENDADO",
+
         "plan_business_title": "Plan Empresarial",
         "plan_business_price": "Consultar",
-        "plan_business_desc": "Defensa en profundidad completa.",
-        "feat_armor_custom": "Perfiles AppArmor Custom",
-        "feat_bastion": "Bastionado SSH & SQL",
-        "feat_fw": "Configuración Firewall UFW",
-        "feat_sim": "Simulación de Ataques",
+        "plan_business_desc": "Implementación total del Playbook de Seguridad.",
+
+        // CARACTERÍSTICAS DEL PLAN EMPRESARIAL (Basado en tu script Ansible)
+        "feat_armor_custom": "Hardening Nginx (Anti-Sniffing)", // Capa 3
+        "feat_bastion": "Fail2Ban y Banner Legal SSH", // Capa 1 y 4
+        "feat_fw": "Firewall UFW de Mínimo Privilegio", // Capa 2
+        "feat_sim": "Actualizaciones Desatendidas", // Capa 1
         "btn_hire": "Contratar Escudo",
+
+        // CONTACTO Y FORMULARIOS (Se mantienen igual, pero revisados)
         "contact_title": "Hablemos de Seguridad",
-        "contact_desc": "Estamos ubicados en el IES Pablo Serrano, Zaragoza. Contáctanos para auditorías o formación.",
+        "contact_desc": "Estamos ubicados en el IES Pablo Serrano, Zaragoza. Contáctanos para auditorías o implementación de defensas.",
         "role_red": "Red Team / Auditoría Ofensiva",
-        "role_blue": "Blue Team / Hardening",
+        "role_blue": "Blue Team / Hardening Ansible", // Pequeño ajuste
         "role_infra": "Infraestructura / Cyber Range",
         "lbl_name": "Nombre",
         "ph_name": "Tu nombre",
@@ -81,11 +95,14 @@ const translations = {
         "title_register": "Crear Cuenta - SecurityShield",
         "title_dashboard": "Dashboard - SecurityShield",
         "title_client": "Área Cliente - SecurityShield",
-        "welcome_page_title": "SecurityShield - Cyber Defense",
-        "welcome_line1": "Bastionado de sistemas y hardening avanzado en Linux",
-        "welcome_line2": "Defensa en profundidad mediante perfiles AppArmor y Blue Team",
-        "welcome_line3": "Auditoría de seguridad ofensiva para blindar infraestructuras",
+
+        // PÁGINA DE BIENVENIDA (INDEX.HTML) - Actualizada
+        "welcome_page_title": "SecurityShield - Defensa Linux Avanzada",
+        "welcome_line1": "Automatización de seguridad: Actualizaciones desatendidas y Mantenimiento", // Capa 1
+        "welcome_line2": "Protección de Red: Firewall UFW y Hardening de Nginx", // Capas 2 y 3
+        "welcome_line3": "Defensa profunda: Protección de Kernel y SSH seguro", // Capas 4 y 5
         "welcome_btn": "Empezar",
+
         "title_profile": "Mi Perfil - SecurityShield",
         "title_config": "Configuración - SecurityShield",
         "menu_profile": "Mi Perfil",
@@ -121,17 +138,51 @@ const translations = {
     },
     "en": {
         "nav_inicio": "Home", "nav_planes": "Pricing", "nav_contacto": "Contact", "nav_login": "Lab Access",
-        "hero_title": "Defense in Depth", "hero_text": "An informed user is the most effective barrier. We protect your infrastructure with proactive strategies and advanced audits.", "hero_btn": "See Solutions",
-        "feat_nmap_title": "Nmap Audit", "feat_nmap_text": "We identify your visible attack surface before cybercriminals do.",
-        "feat_armor_title": "AppArmor Hardening", "feat_armor_text": "Damage containment through mandatory security profiles. Your server, armored.",
-        "feat_ssh_title": "SSH Authentication", "feat_ssh_text": "Implementation of cryptographic keys to eliminate the risk of weak passwords.",
-        "page_planes_title": "Our Plans", "page_planes_subtitle": "Scalability from basic audit to total containment.",
-        "plan_personal_title": "Personal Plan", "plan_personal_price": "Free", "plan_personal_desc": "Ideal for initial diagnostics.",
-        "feat_audit": "Nmap Port Audit", "feat_report": "Exposure Report", "feat_no_armor": "No AppArmor Hardening", "feat_support": "Basic Support", "btn_request": "Request",
-        "badge_rec": "RECOMMENDED", "plan_business_title": "Business Plan", "plan_business_price": "Contact Us", "plan_business_desc": "Complete defense in depth.",
-        "feat_armor_custom": "Custom AppArmor Profiles", "feat_bastion": "SSH & SQL Hardening", "feat_fw": "UFW Firewall Configuration", "feat_sim": "Attack Simulation", "btn_hire": "Hire Shield",
-        "contact_title": "Let's Talk Security", "contact_desc": "Located at IES Pablo Serrano, Zaragoza. Contact us for audits or training.",
-        "role_red": "Red Team / Offensive Audit", "role_blue": "Blue Team / Hardening", "role_infra": "Infrastructure / Cyber Range",
+
+        // HERO SECTION
+        "hero_title": "Automated Digital Fortress",
+        "hero_text": "We transform vulnerable servers into fortresses. We apply security layers at System, Network (UFW), Web (Nginx), and Kernel levels to shield your infrastructure.",
+        "hero_btn": "See Active Defense",
+
+        // FEATURES (Main Page)
+        "feat_nmap_title": "Surface Audit",
+        "feat_nmap_text": "We identify open ports and visible vulnerabilities before applying hardening measures.",
+
+        "feat_armor_title": "Web & Kernel Hardening",
+        "feat_armor_text": "Anti-Clickjacking protection in Nginx, version hiding, and Anti-Spoofing blocking at the kernel level.",
+
+        "feat_ssh_title": "Armored SSH Access",
+        "feat_ssh_text": "Automatic intruder banning (Fail2Ban), legal banners, and strict access attempt limiting.",
+
+        // PLANS PAGE
+        "page_planes_title": "Our Plans",
+        "page_planes_subtitle": "From initial diagnostics to comprehensive layered hardening.",
+
+        "plan_personal_title": "Personal Plan",
+        "plan_personal_price": "Free",
+        "plan_personal_desc": "Vulnerability diagnostics.",
+        "feat_audit": "Nmap Port Audit",
+        "feat_report": "Exposure Report",
+        "feat_no_armor": "No Kernel Hardening",
+        "feat_support": "No Active Protection",
+        "btn_request": "Request",
+        "badge_rec": "RECOMMENDED",
+
+        "plan_business_title": "Business Plan",
+        "plan_business_price": "Contact Us",
+        "plan_business_desc": "Full Security Playbook implementation.",
+        "feat_armor_custom": "Nginx Hardening (Anti-Sniffing)",
+        "feat_bastion": "Fail2Ban & SSH Legal Banner",
+        "feat_fw": "Least Privilege UFW Firewall",
+        "feat_sim": "Unattended Upgrades",
+        "btn_hire": "Hire Shield",
+
+        // CONTACT & OTHERS
+        "contact_title": "Let's Talk Security",
+        "contact_desc": "Located at IES Pablo Serrano, Zaragoza. Contact us for audits or defense implementation.",
+        "role_red": "Red Team / Offensive Audit",
+        "role_blue": "Blue Team / Ansible Hardening",
+        "role_infra": "Infrastructure / Cyber Range",
         "lbl_name": "Name", "ph_name": "Your name", "lbl_email": "Email", "lbl_msg": "Message", "ph_msg": "How can we help you?", "btn_send": "Send Message",
         "login_title": "Login", "lbl_user": "User", "lbl_pass": "Password", "btn_enter": "Enter Panel",
         "gw_title": "Confirm Subscription", "lbl_cardholder": "Card Holder", "lbl_cardnumber": "Card Number", "lbl_expire": "Expires", "lbl_cvc": "CVC", "btn_pay": "Pay & Activate", "secure_msg": "End-to-end encrypted transaction.",
@@ -150,12 +201,15 @@ const translations = {
         "title_register": "Create Account - SecurityShield",
         "title_dashboard": "Dashboard - SecurityShield",
         "title_client": "Client Area - SecurityShield",
-        "welcome_page_title": "SecurityShield - Cyber Defense",
-        "welcome_line1": "System hardening and advanced Linux hardening",
-        "welcome_line2": "Defense in depth via AppArmor profiles and Blue Team",
-        "welcome_line3": "Offensive security audit to shield infrastructures",
+
+        // WELCOME PAGE (INDEX)
+        "welcome_page_title": "SecurityShield - Advanced Linux Defense",
+        "welcome_line1": "Security automation: Unattended upgrades and Maintenance",
+        "welcome_line2": "Network Protection: UFW Firewall and Nginx Hardening",
+        "welcome_line3": "Defense in depth: Kernel protection and Secure SSH",
         "welcome_btn": "Start",
-        // --- NEW: Profile, Config & Modal ---
+
+        // PROFILE & CONFIG
         "title_profile": "My Profile - SecurityShield",
         "title_config": "Settings - SecurityShield",
         "menu_profile": "My Profile",
@@ -191,17 +245,43 @@ const translations = {
     },
     "ca": {
         "nav_inicio": "Inici", "nav_planes": "Plans", "nav_contacto": "Contacte", "nav_login": "Accés Lab",
-        "hero_title": "Defensa en Profunditat", "hero_text": "Un usuari informat és la barrera més eficaç. Protegim la teva infraestructura amb estratègies proactives i auditories avançades.", "hero_btn": "Veure Solucions",
-        "feat_nmap_title": "Auditoria Nmap", "feat_nmap_text": "Identifiquem la teva superfície d'atac visible abans que ho facin els ciberdelinqüents.",
-        "feat_armor_title": "AppArmor Hardening", "feat_armor_text": "Contenció de danys mitjançant perfils de seguretat obligatoris. El teu servidor, blindat.",
-        "feat_ssh_title": "Autenticació SSH", "feat_ssh_text": "Implementació de claus criptogràfiques per eliminar el risc de les contrasenyes febles.",
-        "page_planes_title": "Els Nostres Plans", "page_planes_subtitle": "Escalabilitat des de l'auditoria bàsica fins a la contenció total.",
-        "plan_personal_title": "Pla Personal", "plan_personal_price": "Gratuït", "plan_personal_desc": "Ideal per a diagnòstics inicials.",
-        "feat_audit": "Auditoria de Ports Nmap", "feat_report": "Informe d'Exposició", "feat_no_armor": "Sense Hardening AppArmor", "feat_support": "Suport Bàsic", "btn_request": "Sol·licitar",
-        "badge_rec": "RECOMANAT", "plan_business_title": "Pla Empresarial", "plan_business_price": "Consultar", "plan_business_desc": "Defensa en profunditat completa.",
-        "feat_armor_custom": "Perfils AppArmor Custom", "feat_bastion": "Bastionat SSH & SQL", "feat_fw": "Configuració Firewall UFW", "feat_sim": "Simulació d'Atacs", "btn_hire": "Contractar Escut",
-        "contact_title": "Parlem de Seguretat", "contact_desc": "Estem ubicats a l'IES Pablo Serrano, Saragossa. Contacta'ns per a auditories o formació.",
-        "role_red": "Red Team / Auditoria Ofensiva", "role_blue": "Blue Team / Hardening", "role_infra": "Infraestructura / Cyber Range",
+
+        // HERO
+        "hero_title": "Fortalesa Digital Automatitzada",
+        "hero_text": "Transformem servidors vulnerables en fortaleses. Apliquem capes de seguretat en Sistema, Xarxa (UFW), Web (Nginx) i Kernel per blindar la teva infraestructura.",
+        "hero_btn": "Veure Defensa Activa",
+
+        // FEATURES
+        "feat_nmap_title": "Auditoria de Superfície",
+        "feat_nmap_text": "Identifiquem ports oberts i vulnerabilitats visibles abans d'aplicar el bastionat.",
+
+        "feat_armor_title": "Hardening Web i Kernel",
+        "feat_armor_text": "Protecció Anti-Clickjacking a Nginx, ocultació de versions i bloqueig d'Spoofing a nivell de nucli.",
+
+        "feat_ssh_title": "Accés SSH Blindat",
+        "feat_ssh_text": "Baneig automàtic d'intrusos (Fail2Ban), banners legals i limitació estricta d'intents d'accés.",
+
+        // PLANS
+        "page_planes_title": "Els Nostres Plans",
+        "page_planes_subtitle": "Des del diagnòstic inicial fins al bastionat integral per capes.",
+        "plan_personal_title": "Pla Personal", "plan_personal_price": "Gratuït", "plan_personal_desc": "Diagnòstic de vulnerabilitats.",
+        "feat_audit": "Auditoria de Ports Nmap",
+        "feat_report": "Informe d'Exposició",
+        "feat_no_armor": "Sense Hardening de Kernel",
+        "feat_support": "Sense Protecció Activa",
+        "btn_request": "Sol·licitar",
+        "badge_rec": "RECOMANAT",
+
+        "plan_business_title": "Pla Empresarial", "plan_business_price": "Consultar", "plan_business_desc": "Implementació total del Playbook de Seguretat.",
+        "feat_armor_custom": "Hardening Nginx (Anti-Sniffing)",
+        "feat_bastion": "Fail2Ban i Banner Legal SSH",
+        "feat_fw": "Firewall UFW de Mínim Privilegi",
+        "feat_sim": "Actualitzacions Desateses",
+        "btn_hire": "Contractar Escut",
+
+        // CONTACT
+        "contact_title": "Parlem de Seguretat", "contact_desc": "Estem ubicats a l'IES Pablo Serrano, Saragossa. Contacta'ns per a auditories o implementació de defenses.",
+        "role_red": "Red Team / Auditoria Ofensiva", "role_blue": "Blue Team / Hardening Ansible", "role_infra": "Infraestructura / Cyber Range",
         "lbl_name": "Nom", "ph_name": "El teu nom", "lbl_email": "Email", "lbl_msg": "Missatge", "ph_msg": "Com et podem ajudar?", "btn_send": "Enviar Missatge",
         "login_title": "Iniciar Sessió", "lbl_user": "Usuari", "lbl_pass": "Contrasenya", "btn_enter": "Entrar al Panell",
         "gw_title": "Confirmar Subscripció", "lbl_cardholder": "Titular de la Targeta", "lbl_cardnumber": "Número de Targeta", "lbl_expire": "Expira", "lbl_cvc": "CVC", "btn_pay": "Pagar i Activar", "secure_msg": "Transacció xifrada d'extrem a extrem.",
@@ -219,12 +299,15 @@ const translations = {
         "title_register": "Registre - SecurityShield",
         "title_dashboard": "Tauler - SecurityShield",
         "title_client": "Àrea Client - SecurityShield",
-        "welcome_page_title": "SecurityShield - Cyber Defense",
-        "welcome_line1": "Bastionat de sistemes i hardening avançat a Linux",
-        "welcome_line2": "Defensa en profunditat mitjançant perfils AppArmor i Blue Team",
-        "welcome_line3": "Auditoria de seguretat ofensiva per blindar infraestructures",
+
+        // WELCOME PAGE
+        "welcome_page_title": "SecurityShield - Defensa Linux Avançada",
+        "welcome_line1": "Automatització de seguretat: Actualitzacions desateses i Manteniment",
+        "welcome_line2": "Protecció de Xarxa: Firewall UFW i Hardening de Nginx",
+        "welcome_line3": "Defensa profunda: Protecció de Kernel i SSH segur",
         "welcome_btn": "Començar",
-        // --- NOUS: Perfil, Configuració i Modal ---
+
+        // PROFILE & CONFIG
         "title_profile": "El meu Perfil - SecurityShield",
         "title_config": "Configuració - SecurityShield",
         "menu_profile": "El meu Perfil",
@@ -260,17 +343,43 @@ const translations = {
     },
     "eu": {
         "nav_inicio": "Hasiera", "nav_planes": "Planak", "nav_contacto": "Kontaktua", "nav_login": "Laborategi Sarbidea",
-        "hero_title": "Defentsa Sakona", "hero_text": "Erabiltzaile informatua da oztoporik eraginkorrena. Zure azpiegitura babesten dugu estrategia proaktiboekin eta auditoretza aurreratuekin.", "hero_btn": "Ikusi Konponbideak",
-        "feat_nmap_title": "Nmap Auditoretza", "feat_nmap_text": "Zure eraso-azalera ikusgarria identifikatzen dugu ziberdelitugileek egin aurretik.",
-        "feat_armor_title": "AppArmor Hardening", "feat_armor_text": "Kalteen euste-lana segurtasun-profil derrigorrezkoen bidez. Zure zerbitzaria, blindatuta.",
-        "feat_ssh_title": "SSH Autentifikazioa", "feat_ssh_text": "Gako kriptografikoen inplementazioa pasahitz ahulen arriskua ezabatzeko.",
-        "page_planes_title": "Gure Planak", "page_planes_subtitle": "Eskalagarritasuna oinarrizko auditoretzatik erabateko eusteraino.",
-        "plan_personal_title": "Plan Pertsonala", "plan_personal_price": "Doan", "plan_personal_desc": "Hasierako diagnostikoetarako aproposa.",
-        "feat_audit": "Nmap Portuen Auditoretza", "feat_report": "Esposizio Txostena", "feat_no_armor": "AppArmor Hardening gabe", "feat_support": "Oinarrizko Laguntza", "btn_request": "Eskatu",
-        "badge_rec": "GOMENDATUA", "plan_business_title": "Enpresa Plana", "plan_business_price": "Kontsultatu", "plan_business_desc": "Defentsa sakon osoa.",
-        "feat_armor_custom": "AppArmor Profil Pertsonalizatuak", "feat_bastion": "SSH eta SQL Bastionatzea", "feat_fw": "UFW Firewall Konfigurazioa", "feat_sim": "Eraso Simulazioa", "btn_hire": "Eskudoa Kontratatu",
-        "contact_title": "Hitz egin dezagun segurtasunaz", "contact_desc": "IES Pablo Serranon gaude, Zaragozan. Jarri gurekin harremanetan auditoretza edo formakuntzarako.",
-        "role_red": "Red Team / Auditoretza Ofentsiboa", "role_blue": "Blue Team / Hardening", "role_infra": "Azpiegitura / Cyber Range",
+
+        // HERO
+        "hero_title": "Gotorleku Digital Automatizatua",
+        "hero_text": "Zerbitzari zaurgarriak gotorleku bihurtzen ditugu. Segurtasun geruzak aplikatzen ditugu Sisteman, Sarean (UFW), Webean (Nginx) eta Kernelean zure azpiegitura blindatzeko.",
+        "hero_btn": "Defentsa Aktiboa Ikusi",
+
+        // FEATURES
+        "feat_nmap_title": "Azalera-auditoretza",
+        "feat_nmap_text": "Ataka irekiak eta zaurgarritasun ikusgarriak identifikatzen ditugu bastionatzea aplikatu aurretik.",
+
+        "feat_armor_title": "Web eta Kernel Hardening-a",
+        "feat_armor_text": "Anti-Clickjacking babesa Nginx-en, bertsio ezkutaketa eta Anti-Spoofing blokeoa nukleo mailan.",
+
+        "feat_ssh_title": "SSH Sarbide Blindatua",
+        "feat_ssh_text": "Sartzaileen blokeo automatikoa (Fail2Ban), legezko bannerrak eta sarbide saiakeren muga zorrotza.",
+
+        // PLANS
+        "page_planes_title": "Gure Planak",
+        "page_planes_subtitle": "Hasierako diagnostikotik geruzakako bastionatze integralera.",
+        "plan_personal_title": "Plan Pertsonala", "plan_personal_price": "Doan", "plan_personal_desc": "Zaurgarritasun diagnostikoa.",
+        "feat_audit": "Nmap Portuen Auditoretza",
+        "feat_report": "Esposizio Txostena",
+        "feat_no_armor": "Kernel Hardening gabe",
+        "feat_support": "Babes Aktiborik Gabe",
+        "btn_request": "Eskatu",
+        "badge_rec": "GOMENDATUA",
+
+        "plan_business_title": "Enpresa Plana", "plan_business_price": "Kontsultatu", "plan_business_desc": "Segurtasun Playbook-aren inplementazio osoa.",
+        "feat_armor_custom": "Nginx Hardening (Anti-Sniffing)",
+        "feat_bastion": "Fail2Ban eta SSH Bannerra",
+        "feat_fw": "Pribilegio Gutxieneko UFW Firewall-a",
+        "feat_sim": "Eguneraketa Desatendituak",
+        "btn_hire": "Eskudoa Kontratatu",
+
+        // CONTACT
+        "contact_title": "Hitz egin dezagun segurtasunaz", "contact_desc": "IES Pablo Serranon gaude, Zaragozan. Jarri gurekin harremanetan auditoretza edo defentsen inplementaziorako.",
+        "role_red": "Red Team / Auditoretza Ofentsiboa", "role_blue": "Blue Team / Ansible Hardening", "role_infra": "Azpiegitura / Cyber Range",
         "lbl_name": "Izena", "ph_name": "Zure izena", "lbl_email": "Posta", "lbl_msg": "Mezua", "ph_msg": "Nola lagun zaitzakegu?", "btn_send": "Mezua Bidali",
         "login_title": "Saioa Hasi", "lbl_user": "Erabiltzailea", "lbl_pass": "Pasahitza", "btn_enter": "Panelean Sartu",
         "gw_title": "Harpidetza Berretsi", "lbl_cardholder": "Txartelaren Jabea", "lbl_cardnumber": "Txartel Zenbakia", "lbl_expire": "Iraungitze", "lbl_cvc": "CVC", "btn_pay": "Ordaindu eta Aktibatu", "secure_msg": "Muturretik muturrera zifratutako transakzioa.",
@@ -289,12 +398,15 @@ const translations = {
         "title_register": "Erregistroa - SecurityShield",
         "title_dashboard": "Aginte-panela - SecurityShield",
         "title_client": "Bezeroaren Arloa - SecurityShield",
-        "welcome_page_title": "SecurityShield - Cyber Defense",
-        "welcome_line1": "Sistemen bastionatzea eta Linux hardening aurreratua",
-        "welcome_line2": "Defentsa sakona AppArmor profil eta Blue Team bidez",
-        "welcome_line3": "Segurtasun auditoretza ofentsiboa azpiegiturak blindatzeko",
+
+        // WELCOME PAGE
+        "welcome_page_title": "SecurityShield - Linux Defentsa Aurreratua",
+        "welcome_line1": "Segurtasun automatizazioa: Eguneraketa desatendituak eta Mantentzea",
+        "welcome_line2": "Sare Babesa: UFW Firewall-a eta Nginx Hardening-a",
+        "welcome_line3": "Defentsa sakona: Kernel babesa eta SSH segurua",
         "welcome_btn": "Hasi",
-        // --- BERRIAK: Profila, Konfigurazioa eta Modala ---
+
+        // PROFILE & CONFIG
         "title_profile": "Nire Profila - SecurityShield",
         "title_config": "Konfigurazioa - SecurityShield",
         "menu_profile": "Nire Profila",
