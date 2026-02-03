@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - SecurityShield</title>
+    <title data-i18n="title_login">Iniciar Sesión - SecurityShield</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/jpg" href="images/shield_g.jpg">
@@ -12,6 +12,15 @@
 </head>
 
 <body>
+    <div style="position: absolute; top: 25px; right: 70px; z-index: 9999;">
+        <select id="language-selector" class="lang-select"
+            style="background: rgba(0,0,0,0.6); color: #fff; border: 1px solid #38bdf8; padding: 4px 8px; border-radius: 15px; cursor: pointer; font-size: 0.9rem;">
+            <option value="es">🇪🇸 ES</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="ca">🏴 CA</option>
+            <option value="eu">🏴 EU</option>
+        </select>
+    </div>
 
     <script>
         (function () {
@@ -45,32 +54,36 @@
 
     <div class="login-container">
         <div class="glass-card login-card">
-            <h2 style="margin-bottom: 1.5rem; text-align: center;">Iniciar Sesión</h2>
+            <h2 style="margin-bottom: 1.5rem; text-align: center;" data-i18n="login_title">Iniciar Sesión</h2>
 
             <form action="api/login.php" method="POST">
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-input" placeholder="usuario@ejemplo.com" required>
+                    <label data-i18n="lbl_email">Email</label>
+                    <input type="email" name="email" class="form-input" placeholder="usuario@ejemplo.com"
+                        data-i18n="ph_email_example" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Contraseña</label>
+                    <label data-i18n="lbl_pass">Contraseña</label>
                     <input type="password" name="password" class="form-input" placeholder="••••••••" required>
                 </div>
 
                 <button type="submit" class="btn-login" style="width:100%; margin-top:1rem; cursor: pointer;">
-                    Entrar
+                    <span data-i18n="btn_enter">Entrar</span>
                 </button>
             </form>
 
             <div style="margin-top: 1.5rem; text-align: center;">
-                <p style="color: #94a3b8; font-size: 0.9rem;"><span data-i18n="text_no_account">¿No tienes
-                        cuenta?</span></p>
+                <p style="color: #94a3b8; font-size: 0.9rem;">
+                    <span data-i18n="text_no_account">¿No tienes cuenta?</span>
+                </p>
                 <a href="registro.html" style="color: #38bdf8; text-decoration: none;"
                     data-i18n="link_register_action">Regístrate aquí</a>
             </div>
         </div>
     </div>
+
+    <script src="js/translations.js"></script>
 </body>
 
 </html>

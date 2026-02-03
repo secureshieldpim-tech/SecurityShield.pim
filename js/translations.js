@@ -134,7 +134,15 @@ const translations = {
         "btn_cancel": "Cancelar",
         "btn_confirm_pay": "Confirmar y Pagar",
         "text_no_account": "¿No tienes cuenta?",
-        "link_register_action": "Regístrate aquí"
+        "link_register_action": "Regístrate aquí",
+        "nav_item_login": "Iniciar Sesión",
+        "nav_item_register": "Registrarse",
+        "lbl_card_holder": "Titular de la Tarjeta", // Para pasarela
+        "lbl_card_expire": "Expira",               // Para pasarela
+        "lbl_linked_account": "Cuenta Vinculada (No editable)", // Para el popup
+        "menu_profile_sidebar": "Mi Perfil",
+        "menu_config_sidebar": "Configuración",
+        "menu_logout_sidebar": "Cerrar Sesión",
     },
     "en": {
         "nav_inicio": "Home", "nav_planes": "Pricing", "nav_contacto": "Contact", "nav_login": "Lab Access",
@@ -241,7 +249,15 @@ const translations = {
         "btn_cancel": "Cancel",
         "btn_confirm_pay": "Confirm and Pay",
         "text_no_account": "Don't have an account?",
-        "link_register_action": "Register here"
+        "link_register_action": "Register here",
+        "nav_item_login": "Log In",
+        "nav_item_register": "Sign Up",
+        "lbl_card_holder": "Card Holder",
+        "lbl_card_expire": "Expires",
+        "lbl_linked_account": "Linked Account (Read-only)",
+        "menu_profile_sidebar": "My Profile",
+        "menu_config_sidebar": "Settings",
+        "menu_logout_sidebar": "Logout",
     },
     "ca": {
         "nav_inicio": "Inici", "nav_planes": "Plans", "nav_contacto": "Contacte", "nav_login": "Accés Lab",
@@ -339,7 +355,15 @@ const translations = {
         "btn_cancel": "Cancel·lar",
         "btn_confirm_pay": "Confirmar i Pagar",
         "text_no_account": "No tens compte?",
-        "link_register_action": "Registra't aquí"
+        "link_register_action": "Registra't aquí",
+        "nav_item_login": "Iniciar Sessió",
+        "nav_item_register": "Registrar-se",
+        "lbl_card_holder": "Titular de la Targeta",
+        "lbl_card_expire": "Caduca",
+        "lbl_linked_account": "Compte Vinculat (No editable)",
+        "menu_profile_sidebar": "El meu Perfil",
+        "menu_config_sidebar": "Configuració",
+        "menu_logout_sidebar": "Tancar Sessió",
     },
     "eu": {
         "nav_inicio": "Hasiera", "nav_planes": "Planak", "nav_contacto": "Kontaktua", "nav_login": "Laborategi Sarbidea",
@@ -420,7 +444,6 @@ const translations = {
         "profile_plans_expire": "Iraungitzen da:",
         "profile_plans_days": "egun",
         "profile_no_plans": "Ez daukazu plan aktiborik une honetan.",
-        "btn_hire_new_plan": "Plan berria kontratatu →",
         "btn_back_profile": "Profilera Itzuli",
         "config_personalization_title": "Pertsonalizazioa",
         "config_personalization_desc": "Aukeratu nola ikusi nahi duzun SecurityShield. Zure lehentasuna gordeko da.",
@@ -438,7 +461,15 @@ const translations = {
         "btn_cancel": "Utzi",
         "btn_confirm_pay": "Baieztatu eta Ordaindu",
         "text_no_account": "Ez duzu konturik?",
-        "link_register_action": "Erregistratu hemen"
+        "link_register_action": "Erregistratu hemen",
+        "nav_item_login": "Saioa Hasi",
+        "nav_item_register": "Erregistratu",
+        "lbl_card_holder": "Txartelaren Jabea",
+        "lbl_card_expire": "Iraungitze",
+        "lbl_linked_account": "Lotutako Kontua (Ez editagarria)",
+        "menu_profile_sidebar": "Nire Profila",
+        "menu_config_sidebar": "Konfigurazioa",
+        "menu_logout_sidebar": "Saioa Itxi",
     }
 };
 

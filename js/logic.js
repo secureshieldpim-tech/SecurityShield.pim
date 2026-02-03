@@ -1,24 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ---------------------------------------------------------
-    // 1. LÓGICA DE SESIÓN DE USUARIO
+    // 1. LÓGICA DE SESIÓN DE USUARIO (Mejorada con traducciones)
     // ---------------------------------------------------------
-    // Esto pregunta al archivo PHP si estamos logueados
-    fetch('/api/check_session.php')
+    fetch('api/check_session.php')
         .then(response => {
             if (!response.ok) {
-                throw new Error('No se encontró check_session.php');
+                // Si falla (ej: 404), no pasa nada, seguimos como invitado
+                return { logged_in: false };
             }
             return response.json();
         })
         .then(data => {
-            // Si PHP dice que sí, actualizamos el menú
             if (data.logged_in) {
-                // console.log("Usuario logueado:", data.nombre); // Descomenta para depurar
-                updateNavForUser(data.nombre);
+                // Si el usuario está logueado, actualizamos la barra de navegación
+                updateNavForUser(data.user || { nombre: data.nombre });
             }
         })
-        .catch(error => console.error('Error de sesión:', error));
+        .catch(error => console.error('Estado de sesión: Invitado (o error):', error));
 
 
     // ---------------------------------------------------------
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------
     const botonEnviar = document.querySelector('.btn-submit');
 
-    // Solo ejecutamos esto si existe el botón (para evitar errores en Inicio/Login)
+    // Solo ejecutamos esto si existe el botón (para evitar errores en otras páginas)
     if (botonEnviar) {
         botonEnviar.addEventListener('click', async (e) => {
             // Verificamos si es el formulario de contacto real revisando si hay inputs
@@ -47,11 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             const textoOriginal = botonEnviar.innerHTML;
-            botonEnviar.innerHTML = 'Guardando...';
+
+            // Texto de carga (podríamos traducirlo también, pero por ahora lo dejamos simple)
+            botonEnviar.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ...';
             botonEnviar.disabled = true;
 
             try {
-                const respuesta = await fetch('/api/procesar_contacto.php', {
+                const respuesta = await fetch('api/procesar_contacto.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
@@ -67,71 +68,76 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) {
                 console.error(error);
-                alert('Error de conexión.');
+                alert('Error de conexión con el servidor.');
             } finally {
                 botonEnviar.innerHTML = textoOriginal;
                 botonEnviar.disabled = false;
             }
         });
     }
+
+    // Listener global para el logout (porque el botón se crea dinámicamente)
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('#logout-btn')) {
+            e.preventDefault();
+            fetch('api/logout.php')
+                .then(() => window.location.href = 'index.html')
+                .catch(err => console.error(err));
+        }
+    });
 });
 
 // ---------------------------------------------------------
-// 3. FUNCIONES PARA CAMBIAR EL MENÚ
+// 3. FUNCIONES PARA CAMBIAR EL MENÚ (CON TRADUCCIÓN)
 // ---------------------------------------------------------
-function updateNavForUser(nombreUsuario) {
-    // 1. Buscamos los botones de forma "inteligente" (con o sin .html)
-    const loginLink = document.querySelector('a[href="login.html"]') || document.querySelector('a[href="login"]');
-    const registerLink = document.querySelector('a[href="registro.html"]') || document.querySelector('a[href="registro"]');
+function updateNavForUser(usuario) {
+    // 1. Buscamos los botones de Login/Registro
+    const loginLink = document.querySelector('a[data-i18n="nav_item_login"]') || document.querySelector('a[href="login.html"]');
+    const registerLink = document.querySelector('a[data-i18n="nav_item_register"]') || document.querySelector('a[href="registro.html"]');
 
-    // 2. Si existe el botón de "Iniciar Sesión", LO BORRAMOS por completo
+    // 2. Ocultamos el botón de Iniciar Sesión (mejor ocultar que borrar para evitar saltos)
     if (loginLink && loginLink.parentElement) {
-        loginLink.parentElement.remove(); // Adiós botón inútil 👋
+        loginLink.parentElement.style.display = 'none';
     }
 
-    // 3. Usamos el hueco del botón "Registrarse" para poner el Menú de Usuario
-    // ✅ FORMA SEGURA
+    // 3. Usamos el contenedor del botón "Registrarse" para poner el menú
     if (registerLink && registerLink.parentElement) {
         const liPadre = registerLink.parentElement;
 
-        // 1. Limpiamos el contenedor
+        // Limpiamos el contenido actual (el botón de registro)
         liPadre.innerHTML = '';
+        liPadre.className = 'user-menu-wrapper'; // Clase para CSS si la necesitas
 
-        // 2. Creamos el contenedor del menú
+        // --- PREPARAR TRADUCCIONES ---
+        const currentLang = localStorage.getItem('selectedLang') || 'es';
+        let t = {};
+        // Intentamos cargar las traducciones si el archivo translations.js ya cargó
+        if (typeof translations !== 'undefined') {
+            t = translations[currentLang] || translations['es'] || {};
+        }
+
+        // Textos por defecto por si falla la carga
+        const txtProfile = t.menu_profile || "Mi Perfil";
+        const txtConfig = t.menu_config || "Configuración";
+        const txtLogout = t.menu_logout || "Cerrar Sesión";
+        const nombreMostrar = usuario.nombre || "Usuario";
+
+        // 4. CREAR EL HTML DEL MENÚ
+        // Usamos la estructura que tenías antes para no romper estilos
         const container = document.createElement('div');
-        container.className = 'user-menu-container';
+        container.className = 'user-menu-container'; // Asegúrate de tener estilos para esto
 
-        // 3. Creamos el enlace del usuario de forma segura
-        const toggleLink = document.createElement('a');
-        toggleLink.href = '#';
-        toggleLink.className = 'user-toggle';
-        toggleLink.onclick = toggleUserMenu;
+        container.innerHTML = `
+            <a href="#" class="user-toggle" onclick="toggleUserMenu(event)">
+                <i class='bx bxs-user-circle'></i> ${nombreMostrar} <i class='bx bx-chevron-down'></i>
+            </a>
+            <div class="user-dropdown" id="userDropdown">
+                <a href="perfil.php"><i class='bx bx-id-card'></i> ${txtProfile}</a>
+                <a href="configuracion.php"><i class='bx bx-cog'></i> ${txtConfig}</a>
+                <a href="#" id="logout-btn" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> ${txtLogout}</a>
+            </div>
+        `;
 
-        // Icono (esto sí es HTML seguro fijo)
-        toggleLink.innerHTML = "<i class='bx bxs-user-circle'></i> ";
-
-        // 4. AQUÍ LA MAGIA: Insertamos el nombre como TEXTO PLANO
-        const textNode = document.createTextNode(nombreUsuario + " ");
-        toggleLink.appendChild(textNode);
-
-        // Flechita
-        const arrowIcon = document.createElement('i');
-        arrowIcon.className = 'bx bx-chevron-down';
-        toggleLink.appendChild(arrowIcon);
-
-        // 5. Añadimos el resto del menú (que es código fijo, no peligroso)
-        const dropdown = document.createElement('div');
-        dropdown.className = 'user-dropdown';
-        dropdown.id = 'userDropdown';
-        dropdown.innerHTML = `
-        <a href="perfil.php"><i class='bx bx-id-card'></i> Mi Perfil</a>
-        <a href="configuracion.php"><i class='bx bx-cog'></i> Configuración</a>
-        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> Cerrar Sesión</a>
-    `;
-
-        // 6. Ensamblamos todo
-        container.appendChild(toggleLink);
-        container.appendChild(dropdown);
         liPadre.appendChild(container);
     }
 }
@@ -142,12 +148,17 @@ function toggleUserMenu(e) {
     if (menu) {
         menu.classList.toggle('show');
 
-        // Cerrar al hacer click fuera
-        document.addEventListener('click', function closeMenu(event) {
+        // Cerrar al hacer click fuera (solo se activa una vez)
+        const closeMenu = (event) => {
             if (!event.target.closest('.user-menu-container')) {
                 menu.classList.remove('show');
                 document.removeEventListener('click', closeMenu);
             }
-        });
+        };
+
+        // Pequeño timeout para que el click actual no cierre el menú inmediatamente
+        setTimeout(() => {
+            document.addEventListener('click', closeMenu);
+        }, 10);
     }
 }

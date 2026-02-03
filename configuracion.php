@@ -7,6 +7,7 @@ if (!isset($_SESSION['usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,25 +17,28 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="stylesheet" href="css/style.css">
     <script src="js/theme.js" defer></script>
 </head>
+
 <body>
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+        <select id="language-selector" class="lang-select" 
+            style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid #38bdf8; padding: 8px 12px; border-radius: 20px; cursor: pointer; box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);">
+            <option value="es">🇪🇸 ES</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="ca">🏴 CA</option>
+            <option value="eu">🏴 EU</option>
+        </select>
+    </div>
 
     <script>
         (function () {
-            // 1. Recuperar tema guardado
             const tema = localStorage.getItem('user_theme');
             const body = document.body;
-
-            // 2. Bloquear animaciones para que no haya 'fundido'
             body.classList.add('preload');
-
-            // 3. Aplicar color de fondo INSTANTÁNEAMENTE
             if (tema === 'light') {
                 body.classList.add('theme-light');
             } else if (tema === 'dark') {
                 body.classList.add('theme-dark');
             }
-
-            // 4. Reactivar animaciones tras un breve momento
             setTimeout(() => {
                 body.classList.remove('preload');
             }, 200);
@@ -42,43 +46,42 @@ if (!isset($_SESSION['usuario'])) {
     </script>
 
     <nav class="navbar">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <i class='bx bx-left-arrow-alt' onclick="window.history.back()" 
-               style="font-size: 2rem; cursor: pointer; color: var(--primary);"></i>
-            
-            <div class="logo"><i class='bx bxs-cog'></i> Configuración</div>
-        </div>
-
-        <div class="nav-links">
-            <a href="perfil.php" class="btn-login" style="background: transparent; border: 1px solid var(--primary); color: var(--text-main)!important;">
-                <i class='bx bx-user'></i> <span data-i18n="btn_back_profile">Ir al Perfil</span>
-            </a>
-        </div>
+        <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
+        <div class="menu-toggle" id="mobile-menu"><i class='bx bx-menu'></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="principal.html" data-i18n="nav_inicio">Inicio</a></li>
+            <li><a href="planes.html" data-i18n="nav_planes">Planes</a></li>
+            <li><a href="contacto.html" data-i18n="nav_contacto">Contacto</a></li>
+            </ul>
     </nav>
 
-    <div class="container" style="margin-top: 3rem;">
-        <div class="glass-card" style="max-width: 600px; margin: 0 auto;">
-            <h2><i class='bx bx-palette'></i> <span data-i18n="config_personalization_title">Personalización</span></h2>
-            <p data-i18n="config_personalization_desc">Elige como quieres ver SecurityShield. Tu preferencia se guardará para futuras sesiones.</p>
+    <div class="container" style="margin-top: 100px;">
+        <h2 style="margin-bottom: 2rem; text-align: center;" data-i18n="menu_config">Configuración</h2>
+
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+            <h3 style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;" data-i18n="config_personalization_title">
+                Personalización
+            </h3>
             
-            <div class="theme-selector" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem;">
-                
-                <div class="theme-option" onclick="guardarTema('default')" style="cursor: pointer; text-align: center;">
-                    <div style="height: 80px; background: #0a0e17; border: 2px solid var(--border-glass); border-radius: 10px; margin-bottom: 10px; position: relative;">
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff;">Default</span>
-                    </div>
+            <p style="color: #94a3b8; margin-bottom: 1.5rem;" data-i18n="config_personalization_desc">
+                Elige como quieres ver SecurityShield. Tu preferencia se guardará para futuras sesiones.
+            </p>
+
+            <div class="theme-selector" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <div class="theme-option" onclick="guardarTema('default')" style="text-align: center; cursor: pointer;">
+                    <div style="width: 100px; height: 60px; background: linear-gradient(135deg, #0f172a 0%, #000 100%); border: 2px solid #38bdf8; border-radius: 10px; margin-bottom: 10px;"></div>
                     <span data-i18n="theme_default">Original</span>
                 </div>
 
-                <div class="theme-option" onclick="guardarTema('light')" style="cursor: pointer; text-align: center;">
-                    <div style="height: 80px; background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 10px; margin-bottom: 10px; position: relative;">
-                         <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000;">Light</span>
+                <div class="theme-option" onclick="guardarTema('light')" style="text-align: center; cursor: pointer;">
+                    <div style="width: 100px; height: 60px; background: #f8fafc; border: 1px solid #ccc; border-radius: 10px; margin-bottom: 10px; position: relative;">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: bold;">Light</span>
                     </div>
                     <span data-i18n="theme_light">Modo Claro</span>
                 </div>
 
-                <div class="theme-option" onclick="guardarTema('dark')" style="cursor: pointer; text-align: center;">
-                    <div style="height: 80px; background: #000000; border: 2px solid #333; border-radius: 10px; margin-bottom: 10px; position: relative;">
+                <div class="theme-option" onclick="guardarTema('dark')" style="text-align: center; cursor: pointer;">
+                    <div style="width: 100px; height: 60px; background: #1e293b; border: 1px solid #334155; border-radius: 10px; margin-bottom: 10px; position: relative;">
                          <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff;">Dark</span>
                     </div>
                     <span data-i18n="theme_dark">Modo Oscuro</span>
@@ -105,7 +108,8 @@ if (!isset($_SESSION['usuario'])) {
             .then(data => {
                 const msg = document.getElementById('mensaje-estado');
                 if (data.success) {
-                    msg.textContent = "Tema guardado correctamente.";
+                    // Podríamos traducir este mensaje también, pero requeriría lógica JS extra
+                    msg.textContent = "Tema guardado / Theme saved"; 
                     setTimeout(() => msg.textContent = "", 2000);
                 } else {
                     msg.style.color = 'red';
@@ -113,6 +117,18 @@ if (!isset($_SESSION['usuario'])) {
                 }
             });
         }
+
+        // Lógica del menú móvil
+        const menuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        if(menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
     </script>
+    
+    <script src="js/logic.js"></script>
+    <script src="js/translations.js"></script>
 </body>
 </html>

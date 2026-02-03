@@ -86,7 +86,7 @@ try {
                     <div class="user-dropdown" id="userDropdown">
                         <a href="perfil.php"><i class='bx bx-id-card'></i> <span data-i18n="menu_profile">Mi Perfil</span></a>
                         <a href="configuracion.php"><i class='bx bx-cog'></i> <span data-i18n="menu_config">Configuración</span></a>
-                        <a href="api/logout.php" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> <span data-i18n="menu_logout">Cerrar Sesión</span></a>
+                        <a href="#" id="logout-btn" style="color: #ff6b6b;"><i class='bx bx-log-out'></i> <span data-i18n="menu_logout">Cerrar Sesión</span></a>
                     </div>
                 </div>
             </li>
@@ -124,7 +124,7 @@ try {
 
                 <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
                     <i class='bx bx-package' style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem;"></i>
-                    <h3>Mis Planes Activos</h3>
+                    <h3 data-i18n="profile_plans_title">Mis Planes Activos</h3>
                     
                     <?php if (count($planesActivos) > 0): ?>
                         <div style="margin-top: 1rem;">
