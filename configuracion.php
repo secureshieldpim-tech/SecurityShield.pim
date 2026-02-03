@@ -48,11 +48,15 @@ if (!isset($_SESSION['usuario'])) {
     <nav class="navbar">
         <div class="logo"><i class='bx bxs-shield-plus'></i> SecurityShield</div>
         <div class="menu-toggle" id="mobile-menu"><i class='bx bx-menu'></i></div>
+        
         <ul class="nav-links" id="nav-links">
             <li><a href="principal.html" data-i18n="nav_inicio">Inicio</a></li>
             <li><a href="planes.html" data-i18n="nav_planes">Planes</a></li>
             <li><a href="contacto.html" data-i18n="nav_contacto">Contacto</a></li>
-            </ul>
+            
+            <li><a href="login.html" data-i18n="nav_item_login">Iniciar Sesión</a></li>
+            <li><a href="registro.html" class="btn-login" data-i18n="nav_item_register">Registrarse</a></li>
+        </ul>
     </nav>
 
     <div class="container" style="margin-top: 100px;">
@@ -94,11 +98,9 @@ if (!isset($_SESSION['usuario'])) {
 
     <script>
         function guardarTema(tema) {
-            // 1. Aplicar visualmente al instante
             aplicarTema(tema); 
             localStorage.setItem('user_theme', tema);
 
-            // 2. Guardar en servidor
             fetch('/api/guardar_tema.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -108,8 +110,7 @@ if (!isset($_SESSION['usuario'])) {
             .then(data => {
                 const msg = document.getElementById('mensaje-estado');
                 if (data.success) {
-                    // Podríamos traducir este mensaje también, pero requeriría lógica JS extra
-                    msg.textContent = "Tema guardado / Theme saved"; 
+                    msg.textContent = "Tema guardado correctamente."; 
                     setTimeout(() => msg.textContent = "", 2000);
                 } else {
                     msg.style.color = 'red';
@@ -118,7 +119,6 @@ if (!isset($_SESSION['usuario'])) {
             });
         }
 
-        // Lógica del menú móvil
         const menuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
         if(menuBtn && navLinks) {
@@ -128,7 +128,7 @@ if (!isset($_SESSION['usuario'])) {
         }
     </script>
     
-    <script src="js/logic.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/logic.js"></script>
 </body>
 </html>
