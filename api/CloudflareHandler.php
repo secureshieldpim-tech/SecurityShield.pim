@@ -3,8 +3,17 @@ class CloudflareHandler {
     // URL del Worker (Coincide con la que tienes en el código que me pasaste)
     private $workerUrl = "https://securityshield-api.rosadocortesivan.workers.dev/"; 
 
-    // Tu contraseña de seguridad (Debe coincidir con la del Worker en JS)
-    private $apiSecret = "ClaveSegura_2026"; 
+    // Variable para la contraseña (se cargará desde secrets.php)
+    private $apiSecret; 
+
+    public function __construct() {
+        // Cargamos la configuración desde el archivo externo protegido
+        // Usamos __DIR__ para asegurar la ruta correcta dentro de la carpeta 'api'
+        $config = require __DIR__ . '/secrets.php';
+        
+        // Asignamos la contraseña del archivo a la variable privada
+        $this->apiSecret = $config['api_secret'];
+    }
 
     public function query($sql, $params = []) {
         $ch = curl_init($this->workerUrl);
@@ -24,8 +33,7 @@ class CloudflareHandler {
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         
-        // 1. DETECCIÓN DE ERRORES DE CONEXIÓN (NUEVO)
-        // Si la URL está mal o no tienes internet, esto te avisará en lugar de dar un error genérico.
+        // 1. DETECCIÓN DE ERRORES DE CONEXIÓN
         if (curl_errno($ch)) {
             $error_msg = curl_error($ch);
             curl_close($ch);
