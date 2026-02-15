@@ -1,14 +1,37 @@
 <?php
-// Incluimos el archivo que acabamos de crear
+// api/registro.php
+
+// Incluimos el handler para la BD
 require_once 'CloudflareHandler.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // --- INICIO VERIFICACIÓN TURNSTILE ---
+    
+    // 1. Recogemos los datos del formulario
+    $nombre = $_POST['nombre'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $passwordConfirm = $_POST['password_confirm'] ?? ''; // El campo nuevo
     $turnstileResponse = $_POST['cf-turnstile-response'] ?? '';
-    $secretKey = $config['turnstile_secret'];
-    $ip = $_SERVER['REMOTE_ADDR'];
 
+    // 2. VALIDACIÓN DE CONTRASEÑAS (NUEVO)
+    // Antes de molestar a Cloudflare, comprobamos esto que es básico
+    if ($password !== $passwordConfirm) {
+        echo "<script>
+                alert('Error: Las contraseñas no coinciden. Inténtalo de nuevo.');
+                window.history.back(); 
+              </script>";
+        exit;
+    }
+
+    // 3. CARGAR CLAVE SECRETA (SEGURIDAD)
+    // Cargamos el archivo que pusimos en .gitignore para no exponer la clave
+    $config = require __DIR__ . '/secrets.php';
+    $secretKey = $config['turnstile_secret']; 
+
+    // 4. VERIFICACIÓN TURNSTILE (CAPTCHA)
+    $ip = $_SERVER['REMOTE_ADDR'];
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+    
     $data = [
         'secret' => $secretKey,
         'response' => $turnstileResponse,
@@ -27,47 +50,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = file_get_contents($url, false, $context);
     $response = json_decode($result);
 
+    // Si Cloudflare dice que es un robot o el token es inválido:
     if ($response->success == false) {
         echo "<script>
-            alert('Error de seguridad: Por favor completa el captcha.');
+            alert('Error de seguridad: No has superado la verificación (Captcha).');
             window.location.href='../registro.html';
         </script>";
         exit;
     }
-    // --- FIN VERIFICACIÓN TURNSTILE ---
-    $nombre = $_POST['nombre'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
 
+    // 5. REGISTRO EN BASE DE DATOS (Si llega aquí, es humano y las claves coinciden)
     if (!empty($nombre) && !empty($email) && !empty($password)) {
 
         $db = new CloudflareHandler();
 
-        // 1. Comprobar si ya existe el email
+        // A. Comprobar si ya existe el email
         $sqlCheck = "SELECT id FROM usuarios WHERE email = ?";
         $existe = $db->query($sqlCheck, [$email]);
 
         if (!empty($existe)) {
             echo "<script>
-                    alert('Error: Ese email ya está registrado en Cloudflare.');
+                    alert('Error: Ese email ya está registrado en SecurityShield.');
                     window.location.href='../registro.html';
                   </script>";
             exit;
         }
 
-        // 2. Guardar el nuevo usuario
+        // B. Guardar el nuevo usuario (Hash de contraseña)
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $sqlInsert = "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)";
 
         $db->query($sqlInsert, [$nombre, $email, $passwordHash]);
 
-        // ÉXITO
+        // C. ÉXITO TOTAL
         echo "<script>
-                alert('¡CONEXIÓN ÉXITOSA! Usuario guardado en la base de datos.');
+                alert('¡CUENTA CREADA! Ya puedes iniciar sesión.');
                 window.location.href='../login.html';
               </script>";
     } else {
-        echo "<script>alert('Faltan datos.'); window.history.back();</script>";
+        echo "<script>alert('Faltan datos obligatorios.'); window.history.back();</script>";
     }
+} else {
+    // Si intentan entrar directo al archivo sin enviar formulario
+    header('Location: ../registro.html');
+    exit;
 }
 ?>

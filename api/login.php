@@ -1,4 +1,6 @@
 <?php
+// api/login.php
+
 // Configuración de la sesión (duración de 30 días)
 $duracion = 60 * 60 * 24 * 30;
 ini_set('session.gc_maxlifetime', $duracion);
@@ -6,19 +8,24 @@ session_set_cookie_params([
     'lifetime' => $duracion,
     'path' => '/',
     'domain' => '', 
-    'secure' => true, // Pon false si pruebas en localhost sin https, true en producción
+    'secure' => true, // true en producción (https)
     'httponly' => true
 ]);
 
 session_start();
 
-// CAMBIO: Usamos el handler de Cloudflare en vez de JsonHandler
+// Incluimos el handler de Cloudflare
 require_once 'CloudflareHandler.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    // 1. CARGAR CLAVE SECRETA (ESTO ES LO QUE TE FALTABA)
+    // Sin esto, $config no existe y el login falla
+    $config = require __DIR__ . '/secrets.php';
+    $secretKey = $config['turnstile_secret']; 
+
     // --- INICIO VERIFICACIÓN TURNSTILE ---
     $turnstileResponse = $_POST['cf-turnstile-response'] ?? '';
-    $secretKey = $config['turnstile_secret'];
     $ip = $_SERVER['REMOTE_ADDR'];
 
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -48,51 +55,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     // --- FIN VERIFICACIÓN TURNSTILE ---
+
+
+    // 2. PROCESAR EL LOGIN NORMAL
     $emailIngresado = $_POST['email'] ?? '';
     $passIngresada = $_POST['password'] ?? '';
 
     // Instanciamos la conexión a Cloudflare
     $db = new CloudflareHandler();
 
-    // 1. Buscamos el usuario por su email en la base de datos
+    // Buscamos el usuario por su email
     $sql = "SELECT * FROM usuarios WHERE email = ?";
     $resultados = $db->query($sql, [$emailIngresado]);
 
     // Verificamos si la base de datos devolvió algún usuario
-    // (Cloudflare suele devolver un array de resultados)
     $usuarioEncontrado = null;
     if (!empty($resultados) && isset($resultados[0])) {
         $usuarioEncontrado = $resultados[0];
     } elseif (!empty($resultados) && isset($resultados['id'])) {
-        // Por si acaso devuelve el objeto directo (depende de la estructura exacta del worker)
         $usuarioEncontrado = $resultados;
     }
 
-    // 2. Comprobamos la contraseña
+    // Comprobamos la contraseña
     if ($usuarioEncontrado && password_verify($passIngresada, $usuarioEncontrado['password'])) {
         
-        // ¡LOGIN CORRECTO! Guardamos datos en la sesión
+        // ¡LOGIN CORRECTO!
         $_SESSION['usuario'] = $usuarioEncontrado['email'];
-        $_SESSION['user_id'] = $usuarioEncontrado['id']; // Guardamos el ID para futuras consultas
+        $_SESSION['user_id'] = $usuarioEncontrado['id'];
         $_SESSION['nombre'] = $usuarioEncontrado['nombre'];
         $_SESSION['rol'] = $usuarioEncontrado['rol'] ?? 'cliente';
         $_SESSION['tema'] = $usuarioEncontrado['tema'] ?? 'default';
 
-        // 3. Redirección al panel principal
-        // Nota: Asegúrate de que 'principal' existe (puede ser principal.html o principal.php)
+        // Redirección al panel principal
         header('Location: ../principal'); 
         exit;
 
     } else {
         // Login Fallido
         echo "<script>
-            alert('Usuario o contraseña incorrectos (Verificado en D1 Cloudflare)');
-            window.location.href='../login';
+            alert('Usuario o contraseña incorrectos.');
+            window.location.href='../login.html';
         </script>";
     }
 } else {
     // Si intentan entrar directo al archivo sin POST
-    header('Location: ../login');
+    header('Location: ../login.html');
     exit;
 }
 ?>
