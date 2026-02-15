@@ -20,6 +20,7 @@
     <meta property="twitter:description" content="Regístrate para acceder al panel de control.">
     <meta property="twitter:image" content="https://securityshield.es/images/social-preview.jpg">
     <script src="js/theme.js" defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -83,7 +84,8 @@
                     <label data-i18n="lbl_pass">Contraseña</label>
                     <input type="password" name="password" class="form-input" placeholder="••••••••" required>
                 </div>
-
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAACdSVnb5hN7HV1CF" data-theme="auto"></div>
+                <br>
                 <button type="submit" class="btn-login" style="width:100%; margin-top:1rem;"
                     data-i18n="btn_register">Registrarse</button>
             </form>
